@@ -1,0 +1,12 @@
+.example-wrap {
+  min-height: 500px;
+
+  .example-content {
+    height: 200px;
+    background: #f44;
+
+    &__text {
+      color: #fff;
+    }
+  }
+}

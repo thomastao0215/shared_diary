@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "预约寄回",
+  "usingComponents": {
+    "van-icon": "./../../_vant-weapp@0.5.23@vant-weapp/dist/icon/index",
+    "van-action-sheet": "./../../_vant-weapp@0.5.23@vant-weapp/dist/action-sheet/index",
+    "van-tree-select": "./../../_vant-weapp@0.5.23@vant-weapp/dist/tree-select/index",
+    "van-toast": "./../../_vant-weapp@0.5.23@vant-weapp/dist/toast/index"
+  }
+}

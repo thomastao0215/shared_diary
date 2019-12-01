@@ -1,0 +1,16 @@
+<view class="wrap {{ animate ? 'animate' : '' }}">
+  <view
+    class="content"
+    bindtouchstart="handleTouchStart"
+    bindtouchmove="handleTouchMove"
+  >
+    <slot />
+  </view>
+  <view
+    class="del"
+    bindtap="handleAction"
+    data-type="del"
+  >
+    <view class="del__text">删除</view>
+  </view>
+</view>

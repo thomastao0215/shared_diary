@@ -1,0 +1,65 @@
+.success {
+    margin: 48rpx;
+}
+.payment-icon {
+    display: table-cell;
+    text-align: center;
+    width: 100vw;
+}
+.des {
+    position: absolute;
+    top: 448rpx;
+    margin: auto;
+    width:100vw;
+}
+.des view {
+    text-align: center;
+    margin: auto;
+}
+.des .title {
+    font-size:48rpx;
+    font-family:PingFang-SC-Semibold;
+    font-weight:600;
+    color:rgba(51,51,51,1);
+    margin-bottom: 80rpx;
+}
+.des .content {
+    font-size:24rpx;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(155,155,155,1);
+margin: 40rpx;
+}
+
+.payment-ad {
+    display: table-cell;
+    text-align: center;
+    width: 100vw;
+}
+.success-a {
+    display: flex;
+    position: absolute;
+    bottom: 48rpx;
+}
+.more-feedback{
+    margin: 30rpx;
+    width:376rpx;
+    height:68rpx;
+    border-radius:8px;
+    border:1px solid rgba(242,172,174,1);
+    font-size:12px;
+    line-height: 68rpx;
+font-family:PingFang-SC-Regular;
+font-weight:400;
+color:rgba(218,121,124,1);
+}
+button {
+    width: 90%;
+    background-color: white;
+    color: #FFF;
+  
+    
+}
+button::after{
+    border: 0;
+}

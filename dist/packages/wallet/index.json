@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的钱包",
+  "usingComponents": {
+    "van-field": "./../../_vant-weapp@0.5.23@vant-weapp/dist/field/index",
+    "van-toast": "./../../_vant-weapp@0.5.23@vant-weapp/dist/toast/index"
+  }
+}

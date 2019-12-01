@@ -1,0 +1,45 @@
+<view
+  class="select-box"
+  style="width: {{ boxWidth }}; height: {{ boxHeight }}; line-height: {{ boxLineHeight }}; border: {{ selectShow ? '1px solid #a6a6a6' : '1px solid #e2e2e2' }}; border-radius: {{ borderRadius }};"
+>
+  <view
+    class="select-box__content"
+    bindtap="selectToggle"
+  >
+    <view class="text" style="color: {{ !hasSelected ? '#d9d9d9' : '#000' }};">{{ nowText }}</view>
+    <view
+      class="image"
+      animation="{{ animationData }}"
+    >
+      <van-icon
+        name="arrow-down"
+        custom-style="position: relative; top: 2px;"
+      />
+    </view>
+  </view>
+  <view
+    wx:if="{{ selectShow && mode === 1 }}"
+    class="select-box__list"
+    style="border: 1px solid #a6a6a6; border-radius: 0 0 {{ borderRadius }} {{ borderRadius }};"
+  >
+    <view
+      wx:for="{{ propArray }}"
+      wx:key="{{ index }}"
+      data-index="{{ index }}"
+      class="list-item"
+      catchtap="setText"
+    >
+      {{ item }}
+    </view>
+  </view>
+</view>
+
+<van-action-sheet overlay show="{{ selectShow && mode === 2 }}" >
+  <van-picker
+    columns="{{ propArray }}"
+    default-index="{{ 2 }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+    show-toolbar
+  />
+</van-action-sheet>

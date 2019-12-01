@@ -1,0 +1,40 @@
+<view class="wallet">
+  <view wx:for="{{ couponList }}" wx:key="{{ index }}" class="coupon-wrapper">
+    <view class="coupon" data-index="{{ index }}" bindtap="onClickCoupon">
+      <view class="coupon__left">
+        <view class="title">{{ item.title }}</view>
+        <view class="time-scope">有效截止日期：</view>
+        <view class="time-scope">{{ item.timeScope }}</view>
+      </view>
+      <view class="coupon__right">
+        <view class="value">
+          <text wx:if="{{ item.valueType === 2 }}" class="value__unit-front">¥</text>
+          <text class="value__content">{{ item.valueContent }}</text>
+          <text wx:if="{{ item.valueType === 1 }}" class="value__unit-end">折</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view
+    class="fetch-coupon"
+    style="{{ isIphoneX ? 'padding: 36rpx 26px 72rpx;' : 'padding: 36rpx 26px;' }};"
+  >
+    <view class="fetch-coupon__field">
+      <van-field
+        value="{{ fetchCode }}"
+        placeholder="请输入优惠码"
+        border="{{ false }}"
+        bind:input="onFetchCodeInput"
+      />
+    </view>
+    <view
+      class="fetch-coupon__btn"
+      bindtap="onClickFetchCoupon"
+    >
+      优惠码兑换
+    </view>
+  </view>
+
+  <van-toast id="van-toast" />
+</view>

@@ -1,0 +1,235 @@
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+  .function-box {
+    display: flex;
+    margin: 0 auto;
+  
+  }
+  .function-box .function-cell {
+    flex: 33.33%;
+    align-content: center;
+  }
+  .function-cell-up {
+    display:flex;         
+    padding-top: 15px;        
+   justify-content: center;
+  }
+  .function-cell-up image {
+    width: 29px;
+    height: 29px;
+  }
+  .function-cell-down {
+    padding-top: 10px;
+    text-align: center;
+    color: #3C3C3C;
+    font-size:12px;
+  }
+  
+  
+  .userinfo-nickname {
+    color: white;
+    font-size:16px;
+  }
+  
+  .userinfo-date {
+    color: white;
+    font-size:12px;
+  
+  }
+  .card {
+    width:670rpx;
+    min-height:522rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 6px 46px 0px rgba(210,210,210,0.42);
+    border-radius:6px;
+    margin: 40rpx;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    .card-title{
+        text-align: center;
+        padding: 20rpx;
+        font-size:14px;
+        font-family:PingFang-SC-Medium;
+        font-weight:500;
+        color:rgba(51,51,51,1);
+    }
+  }
+  
+  
+  .header{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height:210px;
+    background: #f1dcde;
+  }
+  .user-function{
+    width:315px;
+    height:100px;
+    padding: 10px;
+    background:rgba(255,255,255,1);
+    box-shadow:1px 4px 9px 3px rgba(60,60,60,0.06);
+    border-radius:4px;
+    margin: 0 auto;
+  }
+  .user-left{
+    flex: 3;
+  }
+  .user-right {
+    flex: 7;
+  }
+  .user-info {
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    width: 80vw;
+    padding: 20px;
+  }
+  
+  
+  .cells {
+    margin-top: 58rpx;
+  }
+  .cell-item {
+    height: 64px;
+  }
+  
+
+  .payment {
+    width:630rpx;
+    padding:20rpx;
+  
+    .payment-header{
+  
+      .payment-title {
+        font-size:13px;
+        font-family:PingFang-SC-Regular;
+        font-weight:400;
+        color:rgba(155,155,155,1);
+        height: 60rpx;
+  
+        border-bottom: solid 1px #F2F2F2;  
+      }
+      image{
+        width: 44rpx;
+        height: 42rpx;
+      }
+      .select-cell-list {
+        .select-cell{
+          min-height: 120rpx;
+          line-height: 120rpx;
+          border-bottom: solid 1px #F2F2F2;  
+          box-sizing: border-box;
+          overflow: hidden;
+
+          .promotion-code{
+            float: left;
+            min-height: 120rpx;
+            width:300rpx;
+            padding-left: 20rpx;
+            color:#9B9B9B;
+            font-size:24rpx;
+            font-family:PingFang-SC-Regular;
+            font-weight:400;
+            color:rgba(155,155,155,1);
+          }
+          .use-button{
+            width:104rpx;
+            height:48rpx;
+            background:#666;
+            border-radius:4rpx;
+            opacity:.6;
+            font-size:12px;
+            font-family:PingFang-SC-Regular;
+            font-weight:400;
+            color:#fff;
+            line-height:48rpx;
+            text-align:center;
+            
+          }
+          .select-cell-header{
+            float: left;
+            width: 100rpx;
+            padding-left: 20rpx;
+  
+          }
+          .select-cell-title {
+            float: left;
+            height: 100%;
+            font-family:PingFang-SC-Medium;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+          }
+          .select-cell-content {
+            height: 100%;
+            padding-left: 40rpx;
+            float: left;
+            font-size:12px;
+            font-family:PingFang-SC-Regular;
+            font-weight:400;
+            color:rgba(155,155,155,1);
+            
+            .select-cell-content-up{
+              line-height: 60rpx;
+            }
+            .select-cell-content-down{
+              line-height: 60rpx;
+            }
+          }
+          .select-cell-button{
+            float: right;
+            line-height: 120rpx;
+            padding-right: 20rpx;
+          }
+        }
+      }
+    }
+    
+  }
+
+.btn {
+  width: 670rpx;
+  height: 80rpx;
+  margin: 60rpx auto 0 auto;
+  background: #e3acb4;
+  box-shadow: 0px 2px 8px 0px rgba(227,172,180,0.77);
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: PingFang-SC-Semibold;
+  font-weight: 600;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.topbar-date .van-picker__cancel, .van-picker__confirm {
+  color: #e3acb4 !important;
+}
+
+.van-tree-select__item--active {
+  color: #e3acb4 !important;
+}
+
+.van-tree-select__nitem--active {
+  &:after {
+    display: none;
+  }
+}
+
+.van-tree-select {
+  height: 606rpx !important;
+}

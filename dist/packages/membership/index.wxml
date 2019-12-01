@@ -1,0 +1,115 @@
+<!--index.wxml-->
+<wxs module="filters" src="././filter.wxs"></wxs>
+<view class="wrapper">
+  <view class="header">  
+    <view class="header-big-title">{{ titles[current] }}</view>
+    <view style="border: 2px solid #e3acb4; width: 240rpx; margin: 12rpx auto;" />
+    <view class="header-sub-title">{{ titles2[current] }}</view>
+    <swiper bindchange="bindChange" current="{{ current }}">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item width="100%;">
+          <image mode="aspectFit" src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- <view class="header-desc">
+    <text style="position: absolute; top: 0; left: 6rpx;">•</text>
+    <text style="position: absolute; top: 32rpx; left: 6rpx;">•</text>
+    <view>
+      购买储值卡即自动成为爱戴会员，享受爱戴会员福利。
+    </view>
+    <view >
+      储值额在一年内消费完，购买后一个月内可联系客服申请未消费款项。
+    </view>
+  </view> -->
+
+  <view class="header-big-title" style="margin-top: 80rpx;">会员福利</view>
+  <view style="border: 2px solid #e3acb4; width: 240rpx; margin: 12rpx auto;" />
+  <view class="header-sub-title">MEMBER BENIFITS</view>
+  <view class="tags">
+    <view class="tag-cell">
+      <view class="tag-avatar">
+        <image src='http://static.wx.qiaqiabox.com/slice/membership/n1.png' class="tag-avatar-img"/>
+      </view>
+      <view class="tag-right">
+        <view class="tag-right__line1">每月尝鲜</view>
+        <view class="tag-right__line2">新品到家试戴</view>
+      </view>
+    </view>
+    <view class="tag-cell">
+      <view class="tag-avatar">
+        <image src='http://static.wx.qiaqiabox.com/slice/membership/n2.png' class="tag-avatar-img"/>
+      </view>
+      <view class="tag-right">
+        <view class="tag-right__line1">先试后买</view>
+        <view class="tag-right__line2">寄退免费包邮</view>
+      </view>
+    </view>
+    <view class="tag-cell">
+      <view class="tag-avatar">
+        <image src='http://static.wx.qiaqiabox.com/slice/membership/n3.png' class="tag-avatar-img"/>
+      </view>
+      <view class="tag-right">
+        <view class="tag-right__line1">会员折扣</view>
+        <view class="tag-right__line2">专享低至6折</view>
+      </view>
+    </view>
+    <view class="tag-cell">
+      <view class="tag-avatar">
+        <image src='http://static.wx.qiaqiabox.com/slice/membership/n4.png' class="tag-avatar-img"/>
+      </view>
+      <view class="tag-right">
+        <view class="tag-right__line1">私人买手</view>
+        <view class="tag-right__line2">专业搭配建议</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="payment">  
+    <view class="payment-header">
+        <view class='payment-title'>选择支付方式</view>
+        <view class='select-cell-list'>
+          <view class="select-cell">
+            <view class="select-cell-header">
+              <image src='http://static.wx.qiaqiabox.com/slice/membership/wechat.png' />
+            </view>
+            <view class="select-cell-title">微信支付</view>
+            <view class="select-cell-button">
+              <image src='http://static.wx.qiaqiabox.com/slice/membership/seleceted.png' />
+            </view>
+          </view>
+          <view class="select-cell">
+            <view class="select-cell-header">
+              <image src='http://static.wx.qiaqiabox.com/slice/membership/seleceted.png' />
+            </view>
+            <view class="select-cell-title">折扣码</view>
+            <input class="promotion-code" placeholder="请输入折扣码" bindchange="bindCodeChange"/>
+            <view class="select-cell-button" style="padding-top:30rpx">
+              <view class="use-button" bindtap="applyCode" >使用</view>
+            </view>
+          </view>
+        </view>
+    </view>
+  </view> -->
+
+  <view style="height: 260rpx;"></view>
+  <view class="action-bar">
+    <view class="select-cell">
+      <view class="select-cell-header">
+        <image src='http://static.wx.qiaqiabox.com/slice/membership/seleceted.png' />
+      </view>
+      <view class="select-cell-title">折扣码</view>
+      <input class="promotion-code" placeholder="请输入折扣码" bindchange="bindCodeChange"/>
+      <view class="select-cell-button" style="padding-top:30rpx">
+        <view class="use-button" bindtap="applyCode" >使用</view>
+      </view>
+    </view>
+    <view class="pay-button" bindtap="payMember">
+      <view class="pay-button__left">需支付：￥{{filters.toFix(price)}}</view>
+      <view class="pay-button__right">立即支付</view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>

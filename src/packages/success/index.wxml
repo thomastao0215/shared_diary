@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">
+    <view class="success">
+        <view class="payment-icon">
+          <image src="http://static.wx.qiaqiabox.com/slice/Paymentsus/payment_icon.png" style="width:456rpx;height:366rpx;" />
+        </view>
+    </view>
+    <view class="des">
+      <view class="title">支付成功</view>
+      <!-- <view class="content"> 
+        <view>下次寄盒时间:</view>
+        <view style="color: #DA797C">2019-09-21</view>
+      </view> -->
+      <view class="more-feedback" bindtap="onClick">
+        <text wx:if="{{ !isNext }}">查看我的小盒</text>
+        <text wx:else>预约寄回</text>
+      </view>
+
+    </view>
+
+    <view class="success-a">
+      <button class="payment-ad" open-type="share">
+        <image src="http://static.wx.qiaqiabox.com/slice/Paymentsus/payment_Ad.png" style="width:634rpx;height:200rpx;" />
+      </button>
+    </view>
+  </view>
+</view>

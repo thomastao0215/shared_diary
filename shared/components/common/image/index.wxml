@@ -1,0 +1,34 @@
+<block wx:if="{{ showType === 'swiper' && imageList.length }}">
+  <view class="swiper-box">
+    <swiper
+      class="common-image-swiper"
+      style="height: {{ imageHeight + (needDesc ? 40 : 0) }}px; margin: 0 {{ pageMargin === pageMargin + '' ?  pageMargin : pageMargin + 'px' }}"
+      autoplay='{{ autoPlay }}' interval='3000' duration='1000' circular='true'
+      bindchange="swiperChange"
+    >
+      <block wx:for="{{ imageList }}" wx:key="index">
+        <swiper-item>
+          <image
+            style="height: {{ imageHeight }}px;"
+            src="{{ item.url }}"
+            class='image-item'
+            mode='aspectFill'
+            data-img-index="{{ index }}"
+            bind:tap="handleImageClick"
+          />
+          <view
+            wx:if="{{ needDesc }}"
+            class="image-desc"
+          >
+            {{ item.desc }}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view wx:if="{{ hasDots }}" class="dots"> 
+      <block wx:for="{{ imageList }}" wx:key="unique" > 
+        <view class="dot {{ index == swiperCurrent  ? 'active' : '' }}"></view> 
+      </block> 
+    </view>
+  </view>
+</block>

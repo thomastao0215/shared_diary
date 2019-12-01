@@ -1,0 +1,32 @@
+<view class="invite">
+  <view style="background-color: #fff; padding: 56px 0 1px 0;">
+    <view class="invite__title">
+      <view class="line">邀请好友</view>
+      <view class="line">成为「小分香」会员</view>
+    </view>
+    <image src="{{ ticketImage }}" mode="aspectFit" class="invite__ticket-image" />
+    <view class="invite__image-desc">
+      <view>
+        <text style="margin-left: 6px; margin-right: 15px;">•</text>
+        邀请好友注册「小分香」，送TA50元代金
+        <text style="margin-left: 30px;">劵；好友成为「小分香」会员，送你50元代金劵。</text>
+      </view>
+      <view >
+        <text style="margin-left: 6px; margin-right: 15px;">•</text>
+        邀请好友奖励可累计。
+      </view>
+    </view>
+    <button class="invite__btn" open-type="share">邀请好友</button>
+    <view class="invite__member">
+      <view class="left">已成为会员：{{ c1 }}个</view>
+      <view class="right">已邀请朋友：{{ c2 }}个</view>
+    </view>
+  </view>
+
+  <view class="invite__desc">
+    <view class="line1">分享规则明细：</view>
+    <view class="line2">1. 代金劵可在「小分香」订单中使用。</view>
+    <view class="line2">2. 代金劵有效期为6个月。</view>
+    <view class="line2">3. 最终解释权归「小分香」所属。</view>
+  </view>
+</view>

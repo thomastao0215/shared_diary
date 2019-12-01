@@ -1,0 +1,176 @@
+@import '../../style/color.scss';
+.commom {
+  max-height: 60rpx !important;
+}
+
+.line {
+  background-color: #ad0e11 !important;
+  width: 10rpx !important;
+  border-radius: 0 !important;
+}
+
+.active {
+  color: #ad0e11 !important;
+}
+
+.inactive {
+  background-color: #fff !important;
+  color: #7a7a7a !important;
+}
+
+.swiper {
+  width: 100%;
+  height: 417rpx;
+
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-top:10rpx;
+    
+    .swiper-item {
+      width: 100%;
+      height: 100%;
+
+
+      .slide-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rpx;
+      }
+    }
+  }
+}
+
+.action-bar-title {
+  display: inline-block;
+  line-height: 60px;
+  font-size: 14px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+  line-height: 20px;
+}
+
+.action-bar-price1 {
+  display: inline-block;
+  font-size: 15px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(196,129,139,1);
+  line-height: 60px;
+}
+
+.action-bar {
+  box-sizing: border-box;
+  padding: 0 140px 0 15px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  height: 60px;
+  background: #fff;
+  box-shadow: 0px -2px 12px 0px rgba(219, 219, 219, .5);
+
+  image {
+    width: 24px;
+    height: 24px;
+    margin-right: 18px;
+    margin-top: 18px;
+    float: left;
+  }
+
+  .buy-btn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: 500;
+    text-align: center;
+    height: 76rpx;
+    width: 210rpx;
+    line-height: 76rpx;
+    border-radius: 4px;
+    background: $main-color;
+    font-family: PingFangSC-Medium;
+    box-shadow: 1px 1px 6px 3px rgba(96, 66, 70, .08)
+  }
+
+  .price1 {
+    line-height: 60px;
+    color: #c4818b;
+    font-size: 30rpx;
+    float: right;
+  }
+
+  .price2 {
+    float: right;
+    margin-right: 10px;
+    color: #9b9b9b;
+    font-size: 24rpx;
+    text-decoration: line-through;
+    text-align: text-bottom;
+    line-height: 60px;
+  }
+}
+.product-list {
+  padding-bottom: 80px;
+}
+
+.action-bar-title {
+  display: inline-block;
+  line-height: 60px;
+  font-size: 14px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+  line-height: 20px;
+}
+
+.action-bar-price1 {
+  display: inline-block;
+  font-size: 15px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(196,129,139,1);
+  line-height: 60px;
+}
+
+.action-bar-price2 {
+  display: inline-block;
+  margin-left: 10px;
+  color: #9b9b9b;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  text-align: text-bottom;
+  line-height: 60px;
+}
+
+.coupon {
+  width: 600rpx;
+  background: #fff;
+  border-radius: 8px;
+  margin: 20rpx auto;
+  display: flex;
+  padding: 40rpx;
+  font-size: 24rpx;
+
+  .label {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    color: #000;
+  }
+
+  .label-text {
+    // margin: 0 auto;
+    margin-left: 15px;
+  }
+
+  .input-field {
+    float: right;
+    margin-left: 15px;
+    width: 80%;
+  }
+}

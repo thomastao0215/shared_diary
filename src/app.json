@@ -1,0 +1,103 @@
+{
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小分香",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-row": "vant-weapp/dist/row/index",
+    "van-col": "vant-weapp/dist/col/index",
+    "van-tag": "vant-weapp/dist/tag/index",
+    "van-tab": "vant-weapp/dist/tab/index",
+    "van-tabs": "vant-weapp/dist/tabs/index",
+    "van-rate": "vant-weapp/dist/rate/index",
+    "van-area": "vant-weapp/dist/area/index",
+    "van-card": "vant-weapp/dist/card/index",
+    "van-icon": "vant-weapp/dist/icon/index",
+    "van-cell": "vant-weapp/dist/cell/index",
+    "van-popup": "vant-weapp/dist/popup/index",
+    "van-field": "vant-weapp/dist/field/index",
+    "van-toast": "vant-weapp/dist/toast/index",
+    "van-panel": "vant-weapp/dist/panel/index",
+    "van-dialog": "vant-weapp/dist/dialog/index",
+    "van-button": "vant-weapp/dist/button/index",
+    "van-notify": "vant-weapp/dist/notify/index",
+    "van-slider": "vant-weapp/dist/slider/index",
+    "van-stepper": "vant-weapp/dist/stepper/index",
+    "van-loading": "vant-weapp/dist/loading/index",
+    "van-overlay": "vant-weapp/dist/overlay/index",
+    "van-cell-group": "vant-weapp/dist/cell-group/index",
+    "van-submit-bar": "vant-weapp/dist/submit-bar/index",
+    "van-action-sheet": "vant-weapp/dist/action-sheet/index",
+    "van-switch": "vant-weapp/dist/switch/index",
+    "van-search": "vant-weapp/dist/search/index",
+    "van-picker": "vant-weapp/dist/picker/index",
+    "van-collapse": "vant-weapp/dist/collapse/index",
+    "van-collapse-item": "vant-weapp/dist/collapse-item/index",
+    "van-datetime-picker": "vant-weapp/dist/datetime-picker/index",
+    "van-tree-select": "vant-weapp/dist/tree-select/index",
+    "van-goods-action": "vant-weapp/dist/goods-action/index",
+    "van-goods-action-icon": "vant-weapp/dist/goods-action-icon/index",
+    "van-goods-action-button": "vant-weapp/dist/goods-action-button/index"
+  },
+  "pages": [
+    "pages/entry/index",
+    "pages/store/index",
+    "pages/index/index",
+    "pages/my/index",
+    "pages/class/index",
+    "pages/cart/index"
+
+
+  ],
+  "subPackages": [
+    {
+      "root": "packages",
+      "name": "分包",
+      "pages": [
+        "address/list/index",
+        "address/edit/index",
+        "invite/index",
+        "product/index",
+        "membership/index",
+        "success/index",
+        "wallet/index",
+        "back/index"
+      ]
+    }
+  ],
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#606060",
+    "selectedColor": "#122442",
+    "backgroundColor": "#FCFCFC",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "icons/style_unselected.png",
+        "selectedIconPath": "icons/style_selected.png"
+      },
+      {
+        "pagePath": "pages/store/index",
+        "text": "商城",
+        "iconPath": "icons/box.png",
+        "selectedIconPath": "icons/box_s.png"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "购物车",
+        "iconPath": "icons/box.png",
+        "selectedIconPath": "icons/box_s.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "个人中心",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my_s.png"
+      }
+    ]
+  }
+}

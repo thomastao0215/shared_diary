@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="address-list">
+  <van-cell-group custom-class="list-group">
+    <van-cell
+      bind:click="onClickAddress"
+      wx:for="{{ userAddressList }}"
+      wx:key="{{ index }}"
+      data-address="{{ item }}"
+      custom-class="list-group__item"
+      center
+    >
+      <image src="{{ icon1 }}" style="width: 24px; height: 24px; margin-right: 18px;" slot="icon" />
+      <view class="title" slot="title">
+        <view class="title__line1">联系人： {{ item.name }}</view>
+        <view class="title__line2">{{ item.addressName }} {{ item.address }}</view>
+        <view class="title__line3">{{ item.phone }}</view>
+        <view class="action">
+          <van-icon name="delete" slot="right-icon" custom-class="icon" data-address="{{ item }}" bindtap="onDelete" />
+          <text data-address="{{ item }}" bindtap="onEdit">编辑</text>
+        </view>
+        <view wx:if="{{ item.isDefault }}" class="defalut-tag">默认</view>
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <van-cell title="新增地址" border="{{ false }}" bindtap="onCreate">
+    <image src="{{ icon2 }}" style="width: 24px; height: 24px; margin-right: 18px;" slot="icon" />
+  </van-cell>
+
+  <van-toast id="van-toast" />
+</view>

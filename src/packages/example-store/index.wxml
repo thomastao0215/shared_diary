@@ -1,0 +1,8 @@
+
+<view>
+  <view style="color: red;">
+    this is a store example !!
+  </view>
+  <component-a />
+  <component-b />
+</view>

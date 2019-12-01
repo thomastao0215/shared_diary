@@ -1,0 +1,54 @@
+.select-box {
+  position: relative;
+
+  &__content {
+    font-size: 12px;
+    position: relative;
+    background: white;
+
+    .text {
+      font-size: 12px;
+      overflow: hidden;
+      white-space: nowrap;
+      padding:0 20px 0 6px;
+      text-overflow: ellipsis;
+    }
+
+    .image {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      height: 100%;
+      transition: all .3s ease;
+    }
+  }
+
+  &__list {
+    z-index: 10;
+    right: -1px;
+    width: inherit;
+    overflow: auto;
+    max-height: 120px;
+    position: absolute;
+    background: white;
+
+    .list-item {
+      height: 30px;
+      line-height: 30px;
+      padding: 0 6px;
+      font-size: 12px;
+      text-align: left;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.sort-wrap{
+  height:90rpx;
+  background-color:#fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}

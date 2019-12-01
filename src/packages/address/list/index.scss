@@ -1,0 +1,73 @@
+@import '../../../style/color.scss';
+
+.address-list {
+  min-height: 100vh;
+  padding-top: 1px;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+
+  .list-group {
+    margin: 10px 0;
+
+    &__item {
+      position: relative;
+
+      .title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        padding-right: 48px;
+        word-wrap: break-word;
+
+        &__line1 {
+          margin-bottom: 6px;
+          color: rgba(74, 74, 74, 1);
+        }
+
+        &__line2 {
+          margin-bottom: 10px;
+          color: rgba(74, 74, 74, 1);
+        }
+
+        &__line3 {
+          margin-bottom: 5px;
+          color: rgba(155, 155, 155, 1);
+        }
+      }
+
+      .action {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+
+        text {
+          height: 17px;
+          font-size: 12px;
+          font-weight: 400;
+          color: rgba(155,155,155,1);
+          line-height: 17px;
+          margin-left: 10px;
+        }
+
+        .icon {
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      .defalut-tag {
+        position: absolute;
+        top: 40px;
+        right: 15px;
+        color: #fff;
+        width: 32px;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+        background: $main-color;
+        font-size: 11px;
+        font-weight: 400;
+      }
+    }
+  }
+}

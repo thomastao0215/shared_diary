@@ -1,0 +1,36 @@
+<view class="calendar">
+	<view class="tit">
+    <view class="pre" bindtap="gotoPreMonth">
+      <view class="arrow {{ ty > currentYear || (ty == currentYear && tm >= currentMonth) ? 'opy' : '' }}" />
+    </view>
+		<view class="current">
+      <text style="margin-right: 24rpx;">{{ currentMonth }}月</text>
+      <text>{{ currentYear }}年</text>
+    </view>
+		<view class="next" bindtap="gotoNextMonth">
+      <view class="arrow"></view>
+    </view>
+	</view>
+	<view class="content">
+		<view class="name">日</view>
+		<view class="name">一</view>
+		<view class="name">二</view>
+		<view class="name">三</view>
+		<view class="name">四</view>
+		<view class="name">五</view>
+		<view class="name">六</view>
+		<view 
+			wx:for="{{ allArr }}" 
+      wx:key="{{ index }}"
+      data-day="{{ item.date }}"
+      data-item="{{ item }}"
+      bindtap="onClickItem"
+      class="wrapper {{ ty > currentYear || (ty == currentYear && tm > currentMonth) || (ty == currentYear && tm == currentMonth && td > item.date) ? 'gray' : '' }} {{ y === currentYear && m === currentMonth && d === item.date ? 'active' : '' }}"
+    >
+      <view class="circle" wx:if="{{ y === currentYear && m === currentMonth && d === item.date ? 'active' : '' }}">
+        {{ item.date }}
+      </view>
+      <text wx:else class="text">{{ item.date }}</text>
+    </view>
+	</view>
+</view>

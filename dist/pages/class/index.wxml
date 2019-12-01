@@ -1,0 +1,22 @@
+<view style="height:100rpx">
+  <!-- 搜索栏 -->
+</view>
+<view style="height:{{categoryHeight}}px">
+  <l-tabs placement="left"
+          l-class-active="active  commom" 
+          l-class-inactive="inactive commom" 
+          l-class-header="header" 
+          l-class-line="line">
+    <l-tabpanel tab="美食" key="one" slot="one">
+      <!-- 插槽内容 -->
+      <scroll-view scroll-y style="height:{{categoryHeight}}px">
+      </scroll-view>
+    </l-tabpanel>
+    <l-tabpanel tab="品牌" key="two" slot="two">
+      <view class="tab-content">品牌</view>
+    </l-tabpanel>
+    <l-tabpanel tab="接口" key="three" slot="three">
+      <view class="tab-content">接口</view>
+    </l-tabpanel>
+  </l-tabs>
+</view>

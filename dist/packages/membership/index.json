@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "成为会员",
+  "usingComponents": {
+    "van-toast": "./../../_vant-weapp@0.5.23@vant-weapp/dist/toast/index"
+  }
+}

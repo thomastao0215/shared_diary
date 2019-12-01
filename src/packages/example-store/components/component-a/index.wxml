@@ -1,0 +1,9 @@
+<view class="component-a">
+  <view style="color: green;">component-a</view>
+  <view>name: {{ user.name }} - age: {{ user.age }}</view>
+
+  <view>num: {{ num }}</view>
+  <button bindtap="onTap">
+    num +1
+  </button>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "store example",
+  "usingComponents": {
+    "component-a": "./components/component-a/index",
+    "component-b": "./components/component-b/index"
+  }
+}

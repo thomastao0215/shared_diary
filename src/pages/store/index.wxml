@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+    <van-search
+    value="{{ keyWord }}"
+      placeholder="请输入搜索关键词"
+    bind:search="onSearch"
+          custom-class="sticky-tabs"
+    />
+    <van-tabs
+      sticky
+      border="{{ false }}"
+      swipe-threshold="5"
+      active="{{ active }}"
+      bind:change="bindTabChange"
+      color="#F5C8C2"
+      custom-class="sticky-tabs"
+    >
+      <van-tab
+        wx:for="{{ tabs }}"
+        wx:key="{{ index }}"
+        title="{{ item }}"
+      >
+              <view class="swiper">
+                <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" circular="true" duration="500">
+                  <block wx:for="{{banner}}" wx:key="*this">
+                    <swiper-item class="swiper-item">
+                      <image src="{{item.image_url}}" class="slide-image" />
+                    </swiper-item>
+                  </block>
+                </swiper>
+              </view>
+              <view class="list">
+                <view class="body">
+                  <block wx:for="{{products}}" wx:key="*this">
+                    <product-cell 
+                          product-id="{{item.id}}"
+                          title="{{item.brief_title}}"
+                          cover_image="{{item.cover_image}}"
+                          description="{{item.description}}"
+                          price="{{item.start_price}}"
+                    />
+                  </block>
+                </view>
+              </view>
+              <view wx:if="{{ bottom }}" class="load-more">
+                <van-loading wx:if="{{ bottom }}" color="#fff" />
+                <view class="load-more__tips">正在加载</view>
+              </view>
+      </van-tab>
+  </van-tabs>
+
+</view>

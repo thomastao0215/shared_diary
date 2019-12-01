@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<view class="address-edit">
+  <van-cell-group border="{{ false }}">
+    <van-field
+      value="{{ address.name }}"
+      label="联系人："
+      placeholder="请填写联系人姓名"
+      clearable
+      bind:input="onNameInput"
+    />
+
+    <van-field
+      value="{{ address.phone }}"
+      type="number"
+      label="手机号码："
+      placeholder="请填写联系人手机号码"
+      clearable
+      bind:input="onPhoneInput"
+    />
+
+    <van-field
+      value="{{ address.addressName }}"
+      label="所在地区："
+      placeholder="请选择所在地区"
+      is-link
+      disabled
+      bindtap="onClickSelectArea"
+    />
+
+    <van-field
+      value="{{ address.address }}"
+      label="详细地址："
+      placeholder="如道路、门牌号、小区、楼栋号等"
+      clearable
+      bind:input="onAddressInput"
+    />
+
+    <van-cell
+      title="设为默认地址："
+      border="{{ false }}"
+      center
+      disabled
+    >
+      <view slot="right-icon" class="default-btn {{ address.isDefault ? 'default-btn--active' : '' }}">
+        <view
+          class="default-btn__slider default-btn__slider{{ !address.isDefault ? '--left' : '--right' }}"
+          bindtap="onClickDefaultBtn"
+        />
+      </view>
+    </van-cell>
+  </van-cell-group>
+
+  <van-action-sheet show="{{ showSelectArea }}">
+    <van-area
+      area-list="{{ areaList }}"
+      bind:cancel="onAreaCancel"
+      bind:confirm="onAreaConfirm"
+    />
+  </van-action-sheet>
+
+  <view class="edit-btn" bindtap="onSave">保存</view>
+
+  <van-toast id="van-toast" />
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="card">
+    <view class="card-title">
+      预约上门取件
+    </view>
+    <view class="payment">  
+      <view class="payment-header">
+        <view class='select-cell-list'>
+          <view class="select-cell" bindtap="onSelectTime">
+            <view class="select-cell-title">取件时间:</view>
+            <view class="select-cell-content">{{ timeDesc }}</view>
+            <view class="select-cell-button">
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="select-cell" bindtap="navToAddress">
+            <view class="select-cell-title">取件地址:</view>
+            <view class="select-cell-content">
+              <view class="select-cell-content-up">{{addressInfo.name}} {{addressInfo.phone}}</view>
+              <view class="select-cell-content-down">{{addressInfo.address}}</view>
+            </view>
+            <view class="select-cell-button">
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view class="select-cell" >
+            <view class="select-cell-title">收件地址:</view>
+            <view class="select-cell-content">
+              <view class="select-cell-content-up">张小双 130000000000</view>
+              <view class="select-cell-content-down">浙江省杭州市江干区莫干山路222号</view>
+            </view>
+            <view class="select-cell-button">
+              
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="onClickConfirm">确认预约</view>
+
+  <van-action-sheet
+    overlay
+    close-on-click-overlay="{{ true }}"
+    show="{{ show }}"
+    bind:close="onClose"
+  >
+    <van-tree-select
+      items="{{ items }}"
+      main-active-index="{{ mainActiveIndex }}"
+      active-id="{{ activeId }}"
+      bind:click-nav="onClickNav"
+      bind:click-item="onClickItem"
+    />
+  </van-action-sheet>
+  <van-toast id="van-toast" />
+</view>

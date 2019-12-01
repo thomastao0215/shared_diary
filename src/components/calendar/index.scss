@@ -1,0 +1,134 @@
+.calendar {
+  width: 100%;
+
+  .tit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40rpx;
+    font-size: 12px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: #333;
+    line-height: 17px;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+
+    .current{
+      margin: 0 40rpx;
+    }
+
+    .pre {
+      width: 40rpx;
+      height: 40rpx;
+      position: relative;
+      left: 50rpx;
+  
+      .arrow{
+        width: 0;
+        height: 0;
+        top: 10rpx;
+        left: 2rpx;
+        border: 5px solid;
+        border-color: #e3acb4 transparent transparent transparent;
+        position: absolute;
+        transform: rotate(90deg);
+  
+        &::after {
+          content: '';
+          position: absolute;
+          top: -7px;
+          left: -5px;
+          border: 5px solid;
+          border-color: white transparent transparent transparent;
+        }
+      }
+
+      .opy {
+        opacity: .5;
+      }
+    }
+
+    .next {
+      width: 40rpx;
+      height: 40rpx;
+      position: relative;
+      right: 50rpx;
+  
+      .arrow{
+        width: 0;
+        height: 0;
+        top: 10rpx;
+        left: 16rpx;
+        border: 5px solid;
+        border-color: #e3acb4 transparent transparent transparent;
+        position: absolute;
+        transform: rotate(-90deg);
+  
+        &::after {
+          content: '';
+          position: absolute;
+          top: -7px;
+          left: -5px;
+          border: 5px solid;
+          border-color: white transparent transparent transparent;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30rpx;
+    height: 462rpx;
+    box-sizing: border-box;
+
+    .name {
+      width: 14.2%;
+      height: 50rpx;
+      text-align: center;
+      flex-shrink: 0;
+      margin: 8rpx 0;
+      font-size: 24rpx;
+      font-family: PingFangSC-Light;
+      font-weight: 300;
+      color:#333;
+      line-height: 50rpx;
+      z-index: 1;
+    }
+
+    .wrapper {
+      width: 14.2%;
+      height: 50rpx;
+      text-align: center;
+      flex-shrink: 0;
+      margin: 8rpx 0;
+      font-size: 24rpx;
+      font-family: PingFangSC-Light;
+      font-weight: 300;
+      color:#333;
+      line-height: 50rpx;
+      position: relative;
+
+      .circle {
+        background-color: #e3acb4;
+        border-radius: 40px;
+        position: absolute;
+        width: 48rpx;
+        height: 48rpx;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .gray {
+      color: #999;
+    }
+
+    .active {
+      color: #fff;
+    }
+  }
+}

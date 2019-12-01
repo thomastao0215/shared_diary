@@ -1,0 +1,35 @@
+<view class="example-wrap">
+  <view class="example-content">
+    <view class="example-content__text">
+      {{ text }}
+    </view>
+  </view>
+  <van-cell
+    title="单元格"
+    value="内容"
+  />
+  <van-button type="default">默认按钮</van-button>
+  <van-rate value="{{ 3 }}" />
+  <van-icon name="chat" info="99+" />
+  <van-popup
+    show="{{ show }}"
+    position="bottom"
+    overlay="{{ true }}"
+    bind:close="onClose"
+  >
+    内容
+    <van-icon name="chat" info="99+" />
+    <van-icon name="chat" info="99+" />
+    <van-icon name="chat" info="99+" />
+    <van-cell
+      title="单元格"
+      value="内容"
+    />
+    <van-rate value="{{ 3 }}" />
+    <van-rate value="{{ 3 }}" />
+    <van-rate value="{{ 3 }}" />
+  </van-popup>
+  <button bindtap="showPopup">
+    弹出 popup
+  </button>
+</view>

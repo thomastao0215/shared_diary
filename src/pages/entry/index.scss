@@ -1,0 +1,56 @@
+/**index.wxss**/
+@import '../../style/color.scss';
+.container {
+  padding: 120rpx 0;
+
+  .avatar {
+    width: 313rpx;
+    height: 313rpx;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .text {
+    padding-left: 30rpx;
+    font-size: 24px;
+    color: $main-color;
+    text-align: center;
+    margin: 40px 0 15px;
+  }
+
+  .role {
+    display: flex;
+    justify-content: space-between;
+
+    image {
+      width: 322rpx;
+      height: 322rpx;
+    }
+
+    &__text1 {
+      color: #888888;
+      text-align: center;
+    }
+
+    &__text2 {
+      right: -30rpx;
+      position: relative;
+      color: #122442;
+      text-align: center;
+    }
+  }
+  .edit-btn {
+    margin: 90rpx auto;
+    width: 600rpx;
+    height: 92rpx;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8rpx;
+    text-align: center;
+    line-height: 92rpx;
+    background: $main-color;
+    box-shadow: 1px 1px 6px 3px rgba(96, 66, 70, .08);
+  }
+  
+}

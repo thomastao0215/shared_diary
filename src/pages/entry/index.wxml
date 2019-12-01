@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view
+  wx:if="{{ inited }}"
+  class="container"
+>
+  <image
+    class="avatar"
+    src="{{ logo }}"
+  />
+  <view class="text">欢迎加入「小分香」美妆社区</view>
+  <view class="role">
+      <button class="edit-btn" open-type="getUserInfo" bindgetuserinfo="grant">授权登陆</button>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<view class="list-item" bindtap="navToDetail">
+  <image src="{{cover_image}}" class="item-image" />
+  <view class="title-container">
+    <view class="item-title">{{title}}</view>
+    <view class="item-subtitle">{{description}}</view>
+    <view class="item-price">¥{{price}}</view>
+  </view>
+ </view>

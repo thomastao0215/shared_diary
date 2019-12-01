@@ -1,0 +1,44 @@
+.list-item{
+    width: 350rpx;
+    background: #fff;
+    margin-bottom: 10rpx;
+    padding-bottom: 10rpx;
+    border-radius: 10rpx;
+    // box-shadow: 5rpx 5rpx 3rpx #b4b4b4;
+    margin: 10rpx auto;
+
+
+    .item-image{
+      display: block;
+      width: 302rpx;
+      height: 302rpx;
+      margin: 0 auto;        
+  }  
+    .title-container {
+      padding: 0rpx 48rpx;
+      .item-title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 98%;
+        margin-bottom: 5rpx;
+        font-size: 34rpx;
+    }      
+    .item-subtitle{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 98%;
+      margin-bottom: 5rpx;
+      font-size: 24rpx;
+      color: #999;
+
+    }             
+    .item-price{
+        color: #9c3232;
+        margin-bottom: 5rpx;
+    }                   
+    }
+
+
+}

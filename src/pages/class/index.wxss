@@ -1,0 +1,19 @@
+.commom {
+  max-height: 60rpx !important;
+}
+
+.line {
+  background-color: #ad0e11 !important;
+  width: 10rpx !important;
+  border-radius: 0 !important;
+}
+
+.active {
+  color: #ad0e11 !important;
+}
+
+.inactive {
+  background-color: #fff !important;
+  color: #7a7a7a !important;
+}
+

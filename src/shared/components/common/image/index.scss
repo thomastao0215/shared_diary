@@ -1,0 +1,47 @@
+.common-image-swiper {
+  display: block;
+  position: relative;
+  background: #f7f7f7;
+
+  .image-item {
+    width: 100%;
+  }
+
+  .image-desc {
+    top: -6px;
+    padding: 0 7px;
+    font-size: 15px;
+    position: relative;
+    line-height: 40px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+}
+
+.swiper-box{
+  position: relative;
+  width: 100%;
+}
+.dots{ 
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom: 20rpx; 
+  display: flex; 
+  justify-content: center; 
+} 
+.dots .dot{ 
+  margin: 0 8rpx; 
+  width: 12rpx; 
+  height: 12rpx; 
+  background-color: transparent; 
+  border-radius: 8rpx; 
+  transition: all .6s;
+  opacity: 0.4;
+  border: 1px solid #fff;
+} 
+.dots .dot.active{
+  opacity: 1;
+}
