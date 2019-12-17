@@ -10,11 +10,11 @@ Page({
   },
 
   onLoad() {
-    this.setData({ inited: true });
-    let userInfo = wx.BaaS.storage.get('userinfo');
-    if (userInfo) { // 授权
-      this.changeAndSwitchTab();
-    }
+    // let userInfo = wx.BaaS.storage.get('userinfo');
+    // if (!userInfo) { // 授权
+    //   this.setData({ inited: true });
+    //   this.changeAndSwitchTab();
+    // }
   },
 
   changeAndSwitchTab() {
@@ -23,33 +23,23 @@ Page({
     });
   },
 
-  handleClickSeeker() {
-    zx.get('user', 'me').then(res => {
-      console.log(res);
-      this.changeAndSwitchTab(2);
-    });
-  },
   grant(data) {
-    let handleResult = Promise.resolve();
-    let userInfo = wx.BaaS.storage.get('userinfo');
-    if (!userInfo) { // 授权
-      handleResult = zx.handleUserInfo(data);
-    }
-    handleResult
-      .then(() => zx.get('user', 'me'))
-      .then(res => {
-        wx.BaaS.storage.set('userinfo', res.data);
-        this.changeAndSwitchTab();
-      });
-  },
-
-  handleSelectRecruiter() {
-    zx.get('user', 'me').then(res => {
-      if (!res.data.recruiter) {
-        wx.navigateTo({ url: '/pages/login/index' });
-      } else {
-        this.changeAndSwitchTab(1);
+    console.log(data);
+    if (data.detail.userInfo) {
+      let handleResult = Promise.resolve();
+      let userInfo = wx.BaaS.storage.get('userinfo');
+      if (!userInfo) { // 授权
+        handleResult = zx.handleUserInfo(data);
       }
-    });
+      handleResult
+        .then(() => zx.get('user', 'me'))
+        .then(res => {
+          this.setData({ inited: true });
+          wx.BaaS.storage.set('userinfo', res.data);
+          this.changeAndSwitchTab();
+        });
+    } else {
+      this.setData({ inited: false });
+    }
   }
 });

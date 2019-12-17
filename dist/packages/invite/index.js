@@ -19,27 +19,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 Page({
-  onLoad() {
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_1__["request"])(utils_api__WEBPACK_IMPORTED_MODULE_1__["api"].info).then(res => {
-      const user = res.user;
-      this.user = user;
-      const ticketImage = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/invite/ticket.png');
-      this.setData({
-        ticketImage,
+  onLoad: function onLoad() {
+    var _this = this;
+
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_1__["request"])(utils_api__WEBPACK_IMPORTED_MODULE_1__["api"].info).then(function (res) {
+      var user = res.user;
+      _this.user = user;
+      var ticketImage = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/invite/ticket.png');
+
+      _this.setData({
+        ticketImage: ticketImage,
         c1: user.invited_subscribed_count,
         c2: user.invited_not_subscribed_count
       });
     });
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '小分香，分享每一份香!',
       path: '/pages/entry/index?from_uid=' + this.user.id + '&from_uid_time=' + utils_util__WEBPACK_IMPORTED_MODULE_2__["default"].formatTime(new Date()),
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ })

@@ -21,61 +21,48 @@ Page({
     inited: false,
     logo: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png'
   },
-
-  onLoad(query = {}) {
-    const {
-      isSelected
-    } = query;
-    this.setData({
-      inited: true
-    });
-    let userInfo = wx.BaaS.storage.get('userinfo');
-
-    if (userInfo) {
-      // 授权
-      this.changeAndSwitchTab();
-    }
+  onLoad: function onLoad() {// let userInfo = wx.BaaS.storage.get('userinfo');
+    // if (!userInfo) { // 授权
+    //   this.setData({ inited: true });
+    //   this.changeAndSwitchTab();
+    // }
   },
-
-  changeAndSwitchTab() {
+  changeAndSwitchTab: function changeAndSwitchTab() {
     wx.switchTab({
       url: '/pages/my/index'
     });
   },
+  grant: function grant(data) {
+    var _this = this;
 
-  handleClickSeeker() {
-    weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(res => {
-      this.changeAndSwitchTab(2);
-    });
-  },
+    console.log(data);
 
-  grant(data) {
-    let handleResult = Promise.resolve();
-    let userInfo = wx.BaaS.storage.get('userinfo');
+    if (data.detail.userInfo) {
+      var handleResult = Promise.resolve();
+      var userInfo = wx.BaaS.storage.get('userinfo');
 
-    if (!userInfo) {
-      // 授权
-      handleResult = weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].handleUserInfo(data);
-    }
-
-    handleResult.then(() => weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me')).then(res => {
-      wx.BaaS.storage.set('userinfo', res.data);
-      this.changeAndSwitchTab();
-    });
-  },
-
-  handleSelectRecruiter() {
-    weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(res => {
-      if (!res.data.recruiter) {
-        wx.navigateTo({
-          url: '/pages/login/index'
-        });
-      } else {
-        this.changeAndSwitchTab(1);
+      if (!userInfo) {
+        // 授权
+        handleResult = weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].handleUserInfo(data);
       }
-    });
-  }
 
+      handleResult.then(function () {
+        return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me');
+      }).then(function (res) {
+        _this.setData({
+          inited: true
+        });
+
+        wx.BaaS.storage.set('userinfo', res.data);
+
+        _this.changeAndSwitchTab();
+      });
+    } else {
+      this.setData({
+        inited: false
+      });
+    }
+  }
 });
 
 /***/ })

@@ -20,39 +20,45 @@ var r=n(81),o=n(82),i=n(83);function a(){return s.TYPED_ARRAY_SUPPORT?2147483647
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/color.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/color.js ***!
-  \*************************************************************************/
-/*! exports provided: RED, BLUE, GREEN, ORANGE */
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/color.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/color.js ***!
+  \*******************************************************************************/
+/*! exports provided: RED, BLUE, WHITE, GREEN, ORANGE, GRAY, GRAY_DARK */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RED", function() { return RED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BLUE", function() { return BLUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WHITE", function() { return WHITE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GREEN", function() { return GREEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ORANGE", function() { return ORANGE; });
-const RED = '#f44';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GRAY", function() { return GRAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GRAY_DARK", function() { return GRAY_DARK; });
+const RED = '#ee0a24';
 const BLUE = '#1989fa';
+const WHITE = '#fff';
 const GREEN = '#07c160';
 const ORANGE = '#ff976a';
+const GRAY = '#323233';
+const GRAY_DARK = '#969799';
 
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/component.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/component.js ***!
-  \*****************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/component.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/component.js ***!
+  \***********************************************************************************/
 /*! exports provided: VantComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VantComponent", function() { return VantComponent; });
-/* harmony import */ var _mixins_basic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/basic */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/basic.js");
-/* harmony import */ var _mixins_observer_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/observer/index */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/index.js");
+/* harmony import */ var _mixins_basic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/basic */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js");
+/* harmony import */ var _mixins_observer_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/observer/index */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js");
 
 
 function mapKeys(source, target, map) {
@@ -105,11 +111,11 @@ function VantComponent(vantOptions = {}) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/utils.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/utils.js ***!
-  \*************************************************************************/
-/*! exports provided: isDef, isObj, isNumber, range, nextTick, getSystemInfoSync */
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js ***!
+  \*******************************************************************************/
+/*! exports provided: isDef, isObj, isNumber, range, nextTick, getSystemInfoSync, addUnit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -120,6 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "range", function() { return range; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nextTick", function() { return nextTick; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSystemInfoSync", function() { return getSystemInfoSync; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addUnit", function() { return addUnit; });
 function isDef(value) {
     return value !== undefined && value !== null;
 }
@@ -128,7 +135,7 @@ function isObj(x) {
     return x !== null && (type === 'object' || type === 'function');
 }
 function isNumber(value) {
-    return /^\d+$/.test(value);
+    return /^\d+(\.\d+)?$/.test(value);
 }
 function range(num, min, max) {
     return Math.min(Math.max(num, min), max);
@@ -145,14 +152,21 @@ function getSystemInfoSync() {
     }
     return systemInfo;
 }
+function addUnit(value) {
+    if (!isDef(value)) {
+        return undefined;
+    }
+    value = String(value);
+    return isNumber(value) ? `${value}px` : value;
+}
 
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/basic.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/basic.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js ***!
+  \*******************************************************************************/
 /*! exports provided: basic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -185,10 +199,10 @@ const basic = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/button.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/button.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/button.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/button.js ***!
+  \********************************************************************************/
 /*! exports provided: button */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -217,10 +231,10 @@ const button = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/link.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/link.js ***!
-  \************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/link.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/link.js ***!
+  \******************************************************************************/
 /*! exports provided: link */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -248,59 +262,26 @@ const link = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/behavior.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/behavior.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js ***!
+  \*******************************************************************************************/
 /*! exports provided: behavior */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "behavior", function() { return behavior; });
-function setAsync(context, data) {
-    return new Promise(resolve => {
-        context.setData(data, resolve);
-    });
-}
 const behavior = Behavior({
-    created() {
-        if (!this.$options) {
-            return;
-        }
-        const cache = {};
-        const { computed } = this.$options();
-        const keys = Object.keys(computed);
-        this.calcComputed = () => {
-            const needUpdate = {};
-            keys.forEach(key => {
-                const value = computed[key].call(this);
-                if (cache[key] !== value) {
-                    cache[key] = value;
-                    needUpdate[key] = value;
-                }
-            });
-            return needUpdate;
-        };
-    },
-    attached() {
-        this.set();
-    },
     methods: {
-        // set data and set computed data
         set(data, callback) {
-            const stack = [];
-            if (data) {
-                stack.push(setAsync(this, data));
-            }
-            if (this.calcComputed) {
-                stack.push(setAsync(this, this.calcComputed()));
-            }
-            return Promise.all(stack).then(res => {
-                if (callback && typeof callback === 'function') {
-                    callback.call(this);
-                }
-                return res;
+            return new Promise(resolve => {
+                this.setData(data, () => {
+                    if (callback && typeof callback === 'function') {
+                        callback.call(this);
+                    }
+                    resolve();
+                });
             });
         }
     }
@@ -309,22 +290,20 @@ const behavior = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/index.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/index.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js ***!
+  \****************************************************************************************/
 /*! exports provided: observe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observe", function() { return observe; });
-/* harmony import */ var _behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./behavior */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/behavior.js");
-/* harmony import */ var _props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./props */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/props.js");
-
+/* harmony import */ var _behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./behavior */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js");
 
 function observe(vantOptions, options) {
-    const { watch, computed } = vantOptions;
+    const { watch } = vantOptions;
     options.behaviors.push(_behavior__WEBPACK_IMPORTED_MODULE_0__["behavior"]);
     if (watch) {
         const props = options.properties || {};
@@ -340,58 +319,15 @@ function observe(vantOptions, options) {
         });
         options.properties = props;
     }
-    if (computed) {
-        options.methods = options.methods || {};
-        options.methods.$options = () => vantOptions;
-        if (options.properties) {
-            Object(_props__WEBPACK_IMPORTED_MODULE_1__["observeProps"])(options.properties);
-        }
-    }
 }
 
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/props.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/observer/props.js ***!
-  \**********************************************************************************/
-/*! exports provided: observeProps */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observeProps", function() { return observeProps; });
-function observeProps(props) {
-    if (!props) {
-        return;
-    }
-    Object.keys(props).forEach(key => {
-        let prop = props[key];
-        if (prop === null || !('type' in prop)) {
-            prop = { type: prop };
-        }
-        let { observer } = prop;
-        prop.observer = function (...args) {
-            if (observer) {
-                if (typeof observer === 'string') {
-                    observer = this[observer];
-                }
-                observer.apply(this, args);
-            }
-            this.set();
-        };
-        props[key] = prop;
-    });
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/open-type.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/open-type.js ***!
-  \*****************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/open-type.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/open-type.js ***!
+  \***********************************************************************************/
 /*! exports provided: openType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -427,63 +363,10 @@ const openType = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/safe-area.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/safe-area.js ***!
-  \*****************************************************************************/
-/*! exports provided: safeArea */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "safeArea", function() { return safeArea; });
-let cache = null;
-function getSafeArea() {
-    return new Promise((resolve, reject) => {
-        if (cache != null) {
-            resolve(cache);
-        }
-        else {
-            wx.getSystemInfo({
-                success: ({ model, screenHeight, statusBarHeight }) => {
-                    const iphoneX = /iphone x/i.test(model);
-                    const iphoneNew = /iPhone11/i.test(model) && screenHeight === 812;
-                    cache = {
-                        isIPhoneX: iphoneX || iphoneNew,
-                        statusBarHeight
-                    };
-                    resolve(cache);
-                },
-                fail: reject
-            });
-        }
-    });
-}
-const safeArea = ({ safeAreaInsetBottom = true, safeAreaInsetTop = false } = {}) => Behavior({
-    properties: {
-        safeAreaInsetTop: {
-            type: Boolean,
-            value: safeAreaInsetTop
-        },
-        safeAreaInsetBottom: {
-            type: Boolean,
-            value: safeAreaInsetBottom
-        }
-    },
-    created() {
-        getSafeArea().then(({ isIPhoneX, statusBarHeight }) => {
-            this.set({ isIPhoneX, statusBarHeight });
-        });
-    }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/touch.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/touch.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/touch.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/touch.js ***!
+  \*******************************************************************************/
 /*! exports provided: touch */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -521,17 +404,17 @@ const touch = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/transition.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/mixins/transition.js ***!
-  \******************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/transition.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/transition.js ***!
+  \************************************************************************************/
 /*! exports provided: transition */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transition", function() { return transition; });
-/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/utils.js");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js");
 
 const getClassNames = (name) => ({
     enter: `van-${name}-enter van-${name}-enter-active enter-class enter-active-class`,
@@ -552,7 +435,7 @@ const transition = function (showDefaultValue) {
             },
             // @ts-ignore
             duration: {
-                type: [Number, Object],
+                type: null,
                 value: 300,
                 observer: 'observeDuration'
             },
@@ -573,23 +456,20 @@ const transition = function (showDefaultValue) {
         },
         methods: {
             observeShow(value) {
-                if (value) {
-                    this.enter();
-                }
-                else {
-                    this.leave();
-                }
+                value ? this.enter() : this.leave();
             },
             enter() {
                 const { duration, name } = this.data;
                 const classNames = getClassNames(name);
                 const currentDuration = Object(_common_utils__WEBPACK_IMPORTED_MODULE_0__["isObj"])(duration) ? duration.enter : duration;
                 this.status = 'enter';
+                this.$emit('before-enter');
                 Promise.resolve()
                     .then(nextTick)
                     .then(() => {
                     this.checkStatus('enter');
-                    this.set({
+                    this.$emit('enter');
+                    this.setData({
                         inited: true,
                         display: true,
                         classes: classNames.enter,
@@ -599,31 +479,38 @@ const transition = function (showDefaultValue) {
                     .then(nextTick)
                     .then(() => {
                     this.checkStatus('enter');
-                    this.set({
+                    this.transitionEnded = false;
+                    this.setData({
                         classes: classNames['enter-to']
                     });
                 })
                     .catch(() => { });
             },
             leave() {
+                if (!this.data.display) {
+                    return;
+                }
                 const { duration, name } = this.data;
                 const classNames = getClassNames(name);
                 const currentDuration = Object(_common_utils__WEBPACK_IMPORTED_MODULE_0__["isObj"])(duration) ? duration.leave : duration;
                 this.status = 'leave';
+                this.$emit('before-leave');
                 Promise.resolve()
                     .then(nextTick)
                     .then(() => {
                     this.checkStatus('leave');
-                    this.set({
+                    this.$emit('leave');
+                    this.setData({
                         classes: classNames.leave,
                         currentDuration
                     });
                 })
-                    .then(() => setTimeout(() => this.onTransitionEnd(), currentDuration))
                     .then(nextTick)
                     .then(() => {
                     this.checkStatus('leave');
-                    this.set({
+                    this.transitionEnded = false;
+                    setTimeout(() => this.onTransitionEnd(), currentDuration);
+                    this.setData({
                         classes: classNames['leave-to']
                     });
                 })
@@ -635,9 +522,14 @@ const transition = function (showDefaultValue) {
                 }
             },
             onTransitionEnd() {
-                if (!this.data.show) {
-                    this.set({ display: false });
-                    this.$emit('transitionEnd');
+                if (this.transitionEnded) {
+                    return;
+                }
+                this.transitionEnded = true;
+                this.$emit(`after-${this.status}`);
+                const { show, display } = this.data;
+                if (!show && display) {
+                    this.setData({ display: false });
                 }
             }
         }
@@ -647,10 +539,10 @@ const transition = function (showDefaultValue) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/picker/shared.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/picker/shared.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/picker/shared.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/picker/shared.js ***!
+  \********************************************************************************/
 /*! exports provided: pickerProps */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -682,16 +574,16 @@ const pickerProps = {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/toast/toast.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/toast/toast.js ***!
-  \************************************************************************/
+/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/common/utils.js");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js");
 
 const defaultOptions = {
     type: 'text',
@@ -699,7 +591,7 @@ const defaultOptions = {
     message: '',
     show: true,
     zIndex: 1000,
-    duration: 3000,
+    duration: 2000,
     position: 'middle',
     forbidClick: false,
     loadingType: 'circular',
@@ -715,7 +607,7 @@ function getContext() {
     return pages[pages.length - 1];
 }
 function Toast(toastOptions) {
-    const options = Object.assign({}, currentOptions, parseOptions(toastOptions));
+    const options = Object.assign(Object.assign({}, currentOptions), parseOptions(toastOptions));
     const context = options.context || getContext();
     const toast = context.selectComponent(options.selector);
     if (!toast) {
@@ -725,13 +617,13 @@ function Toast(toastOptions) {
     delete options.context;
     delete options.selector;
     toast.clear = () => {
-        toast.set({ show: false });
+        toast.setData({ show: false });
         if (options.onClose) {
             options.onClose();
         }
     };
     queue.push(toast);
-    toast.set(options);
+    toast.setData(options);
     clearTimeout(toast.timer);
     if (options.duration > 0) {
         toast.timer = setTimeout(() => {

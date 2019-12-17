@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
  // index.js
 // 获取应用实例
 
-const app = getApp();
+var app = getApp();
 Page({
   data: {
     motto: 'Hello World',
@@ -24,30 +24,29 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  onLoad: function onLoad(query) {
+    if (query === void 0) {
+      query = {};
+    }
 
-  onLoad(query = {}) {
-    const {
-      isNext,
-      orderId
-    } = query;
+    var _query = query,
+        isNext = _query.isNext,
+        orderId = _query.orderId;
     this.orderId = orderId;
     this.setData({
       isNext: !!isNext
     });
   },
-
-  bindShare() {},
-
-  onShareAppMessage() {
-    let user = wx.getStorageSync('user');
+  bindShare: function bindShare() {},
+  onShareAppMessage: function onShareAppMessage() {
+    var user = wx.getStorageSync('user');
     return {
       title: '爱戴小盒，快来看看吧!',
       path: '/pages/entry/index?from_uid=' + user.id + '&from_uid_time=' + utils_util__WEBPACK_IMPORTED_MODULE_0__["default"].formatTime(new Date()),
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   },
-
-  getUserInfo(e) {
+  getUserInfo: function getUserInfo(e) {
     console.log(e);
     app.globalData.userInfo = e.detail.userInfo;
     this.setData({
@@ -55,8 +54,7 @@ Page({
       hasUserInfo: true
     });
   },
-
-  onClick() {
+  onClick: function onClick() {
     if (this.data.isNext) {
       // 预约寄回
       wx.redirectTo({
@@ -69,7 +67,6 @@ Page({
       });
     }
   }
-
 });
 
 /***/ })

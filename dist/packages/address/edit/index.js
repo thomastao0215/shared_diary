@@ -12,18 +12,16 @@ Object.assign(require("././../../commonchunks.js").modules, require("././../../.
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./src/packages/address/edit/api.js");
-/* harmony import */ var shared_utils_map_keys__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! shared/utils/map-keys */ "./shared/utils/map-keys.js");
-/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/toast/toast.js");
-/* harmony import */ var _area__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./area */ "./src/packages/address/edit/area.js");
+/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api */ "./src/packages/address/edit/api.js");
+/* harmony import */ var _area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./area */ "./src/packages/address/edit/area.js");
 
 
 
-
-const app = getApp();
+var app = getApp();
 Page({
   data: {
-    areaList: _area__WEBPACK_IMPORTED_MODULE_3__["default"],
+    areaList: _area__WEBPACK_IMPORTED_MODULE_2__["default"],
     isDefault: false,
     showSelectArea: false,
     address: {
@@ -39,49 +37,45 @@ Page({
     },
     addressStr: ''
   },
+  onLoad: function onLoad(query) {
+    if (query === void 0) {
+      query = {};
+    }
 
-  onLoad(query = {}) {
     this.lock = false;
-    let {
-      address
-    } = query;
+    var _query = query,
+        address = _query.address;
 
     if (address) {
       address = JSON.parse(address);
       this.id = address.id;
       this.setData({
-        address
+        address: address
       });
     }
   },
-
-  onClickDefaultBtn() {
-    const isDefault = !this.data.address.isDefault ? 1 : 0;
+  onClickDefaultBtn: function onClickDefaultBtn() {
+    var isDefault = !this.data.address.isDefault ? 1 : 0;
     this.setData({
       'address.isDefault': isDefault
     });
   },
-
-  onClickSelectArea() {
+  onClickSelectArea: function onClickSelectArea() {
     this.setData({
       showSelectArea: true
     });
   },
-
-  onAreaCancel() {
+  onAreaCancel: function onAreaCancel() {
     this.setData({
       showSelectArea: false
     });
   },
-
-  onAreaConfirm(e) {
-    const {
-      values
-    } = e.detail;
-    const province = values[0].name;
-    const city = values[1].name;
-    const county = values[2].name;
-    const addressName = province + ' ' + city + ' ' + county;
+  onAreaConfirm: function onAreaConfirm(e) {
+    var values = e.detail.values;
+    var province = values[0].name;
+    var city = values[1].name;
+    var county = values[2].name;
+    var addressName = province + ' ' + city + ' ' + county;
     this.setData({
       showSelectArea: false,
       'address.province': province,
@@ -90,73 +84,69 @@ Page({
       'address.addressName': addressName
     });
   },
-
-  onNameInput(e) {
+  onNameInput: function onNameInput(e) {
     this.setData({
       'address.name': e.detail
     });
   },
-
-  onPhoneInput(e) {
+  onPhoneInput: function onPhoneInput(e) {
     this.setData({
       'address.phone': e.detail
     });
   },
-
-  onAddressInput(e) {
+  onAddressInput: function onAddressInput(e) {
     this.setData({
       'address.address': e.detail
     });
   },
+  onSave: function onSave() {
+    var _this = this;
 
-  onSave() {
     if (this.lock) {
       return;
     }
 
-    const {
-      address
-    } = this.data;
-    const keys = Object.keys(address);
+    var address = this.data.address;
+    var keys = Object.keys(address);
 
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
 
       if (key !== 'company' && key !== 'isDefault' && !address[key]) {
-        return Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"])('请完善信息');
+        return Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__["default"])('请完善信息');
       }
     }
 
     this.lock = true;
-    let handle = null;
+    var handle = null;
 
     if (!this.id) {
-      handle = Object(_api__WEBPACK_IMPORTED_MODULE_0__["createAddress"])(address);
+      handle = Object(_api__WEBPACK_IMPORTED_MODULE_1__["createAddress"])(address);
     } else {
-      handle = Object(_api__WEBPACK_IMPORTED_MODULE_0__["updateAddress"])(this.id, address);
+      handle = Object(_api__WEBPACK_IMPORTED_MODULE_1__["updateAddress"])(this.id, address);
     }
 
-    handle.then(() => {
-      Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"])('保存成功');
-      this.navigateBack();
-    }).catch(() => {
-      this.lock = false;
+    handle.then(function () {
+      Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__["default"])('保存成功');
+
+      _this.navigateBack();
+    }).catch(function () {
+      _this.lock = false;
     });
   },
-
-  navigateBack() {
+  navigateBack: function navigateBack() {
     app.globalData.refreshAddressList = true;
-    setTimeout(() => wx.navigateBack(), 1500);
+    setTimeout(function () {
+      return wx.navigateBack();
+    }, 1500);
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '爱戴小盒，快来看看吧!',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ })

@@ -13,10 +13,12 @@ Object.assign(require("././../commonchunks.js").modules, require("././../../comm
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/api */ "./src/utils/api.js");
-/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@0.5.23@vant-weapp/dist/toast/toast.js");
+/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const app = getApp();
+
+var app = getApp();
 Page({
   data: {
     imgUrls: [// 'http://static.wx.qiaqiabox.com/slice/membership/halfyear.png',
@@ -35,16 +37,14 @@ Page({
     }],
     current: 0
   },
-
-  onLoad() {// request(api.info)
+  onLoad: function onLoad() {// request(api.info)
     //   .then(res => {
     //     if (res.user.status === 2 || res.user.status === 4) {
     //       wx.switchTab({ url: '/pages/box/index' })
     //     }
     //   })
   },
-
-  onShow() {
+  onShow: function onShow() {
     if (app.globalData.isSetCoupon === true) {
       app.globalData.isSetCoupon = false;
       this.setData({
@@ -52,85 +52,77 @@ Page({
       });
     }
   },
-
-  bindChange(e) {
+  bindChange: function bindChange(e) {
     var current = e.detail.current;
     this.setData({
-      current,
+      current: current,
       type: this.data.cardType[current].type,
       price: this.data.cardType[current].price,
       originPrice: this.data.cardType[current].price
     });
   },
-
-  bindCodeChange(e) {
+  bindCodeChange: function bindCodeChange(e) {
     this.setData({
       code: e.detail.value
     });
   },
+  applyCode: function applyCode() {
+    var _this = this;
 
-  applyCode() {
     if (!this.data.code) {
       return;
     }
 
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({
-      id: '?code=' + this.data.code,
-      ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].get_coupon_for_subscribe
-    }, {
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({
+      id: '?code=' + this.data.code
+    }, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].get_coupon_for_subscribe), {
       subscription_type: this.data.type,
       code: this.data.code
-    }).then(res => {
+    }).then(function (res) {
       console.log(res.coupon_for_subscribe);
-      const {
-        originPrice
-      } = this.data;
-      this.setData({
+      var originPrice = _this.data.originPrice;
+
+      _this.setData({
         price: originPrice * res.coupon_for_subscribe.discount / 100
       });
-    }).catch(err => {
+    }).catch(function (err) {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message);
     });
   },
+  bindUseCode: function bindUseCode() {},
+  payMember: function payMember() {
+    var _this2 = this;
 
-  bindUseCode() {},
-
-  payMember() {
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].subscribe_pay
-    }, {
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].subscribe_pay), {
       subscription_type: this.data.type,
       code: this.data.code
-    }).then(res => {
-      let result = res.payArgs;
+    }).then(function (res) {
+      var result = res.payArgs;
       wx.requestPayment({
         timeStamp: result.timeStamp,
         nonceStr: result.nonceStr,
         package: result.package,
         signType: result.signType,
         paySign: result.paySign,
-
-        success(res) {
+        success: function success(res) {
           if (res) {
             wx.redirectTo({
               url: '/packages/success/index'
             });
           }
         },
-
-        fail() {
+        fail: function fail() {
           Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('微信支付失败');
         }
-
       });
-    }).catch(err => {
+    }).catch(function (err) {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message || err.msg || '????');
-      setTimeout(() => {
-        this.handleError(err);
+      setTimeout(function () {
+        _this2.handleError(err);
       }, 2000);
     });
   },
-
-  handleError(err) {
+  handleError: function handleError(err) {
     if (err.message === '请先填写问卷') {
       // ??????
       wx.switchTab({
@@ -142,15 +134,13 @@ Page({
       });
     }
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '爱戴小盒，快来看看吧!',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ })
