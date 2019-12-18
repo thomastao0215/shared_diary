@@ -1,5 +1,3 @@
-import zx from 'weapp-zx'
-
 Component({
   type: 'product-cell',
 
@@ -53,7 +51,7 @@ Component({
     navToDetail() {
       wx.navigateTo({
         url: '/packages/product/index?id=' + this.data.productId
-      })
+      });
     },
 
   }

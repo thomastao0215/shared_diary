@@ -1,10 +1,10 @@
 exports.ids = ["commons"];
 exports.modules = {
 
-/***/ "./node_modules/_minapp-sdk@2.9.0@minapp-sdk/lib/index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/_minapp-sdk@2.9.0@minapp-sdk/lib/index.js ***!
-  \****************************************************************/
+/***/ "./node_modules/minapp-sdk/lib/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/minapp-sdk/lib/index.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20,10 +20,10 @@ var r=n(81),o=n(82),i=n(83);function a(){return s.TYPED_ARRAY_SUPPORT?2147483647
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/color.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/color.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/common/color.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/common/color.js ***!
+  \******************************************************/
 /*! exports provided: RED, BLUE, WHITE, GREEN, ORANGE, GRAY, GRAY_DARK */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -47,18 +47,18 @@ const GRAY_DARK = '#969799';
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/component.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/component.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/common/component.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/common/component.js ***!
+  \**********************************************************/
 /*! exports provided: VantComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VantComponent", function() { return VantComponent; });
-/* harmony import */ var _mixins_basic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/basic */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js");
-/* harmony import */ var _mixins_observer_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/observer/index */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js");
+/* harmony import */ var _mixins_basic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/basic */ "./node_modules/vant-weapp/dist/mixins/basic.js");
+/* harmony import */ var _mixins_observer_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/observer/index */ "./node_modules/vant-weapp/dist/mixins/observer/index.js");
 
 
 function mapKeys(source, target, map) {
@@ -111,10 +111,10 @@ function VantComponent(vantOptions = {}) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/common/utils.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/common/utils.js ***!
+  \******************************************************/
 /*! exports provided: isDef, isObj, isNumber, range, nextTick, getSystemInfoSync, addUnit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -163,10 +163,10 @@ function addUnit(value) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/basic.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/basic.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/basic.js ***!
+  \******************************************************/
 /*! exports provided: basic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -199,10 +199,10 @@ const basic = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/button.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/button.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/button.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/button.js ***!
+  \*******************************************************/
 /*! exports provided: button */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -231,10 +231,10 @@ const button = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/link.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/link.js ***!
-  \******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/link.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/link.js ***!
+  \*****************************************************/
 /*! exports provided: link */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -262,10 +262,10 @@ const link = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/observer/behavior.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/observer/behavior.js ***!
+  \******************************************************************/
 /*! exports provided: behavior */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -290,17 +290,17 @@ const behavior = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/index.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/observer/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/observer/index.js ***!
+  \***************************************************************/
 /*! exports provided: observe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observe", function() { return observe; });
-/* harmony import */ var _behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./behavior */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/observer/behavior.js");
+/* harmony import */ var _behavior__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./behavior */ "./node_modules/vant-weapp/dist/mixins/observer/behavior.js");
 
 function observe(vantOptions, options) {
     const { watch } = vantOptions;
@@ -324,10 +324,10 @@ function observe(vantOptions, options) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/open-type.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/open-type.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/open-type.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/open-type.js ***!
+  \**********************************************************/
 /*! exports provided: openType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -363,10 +363,10 @@ const openType = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/touch.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/touch.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/touch.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/touch.js ***!
+  \******************************************************/
 /*! exports provided: touch */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -404,17 +404,17 @@ const touch = Behavior({
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/transition.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/mixins/transition.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/mixins/transition.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/mixins/transition.js ***!
+  \***********************************************************/
 /*! exports provided: transition */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transition", function() { return transition; });
-/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/vant-weapp/dist/common/utils.js");
 
 const getClassNames = (name) => ({
     enter: `van-${name}-enter van-${name}-enter-active enter-class enter-active-class`,
@@ -539,10 +539,10 @@ const transition = function (showDefaultValue) {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/picker/shared.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/picker/shared.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/picker/shared.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/picker/shared.js ***!
+  \*******************************************************/
 /*! exports provided: pickerProps */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -574,16 +574,16 @@ const pickerProps = {
 
 /***/ }),
 
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js ***!
-  \******************************************************************************/
+/***/ "./node_modules/vant-weapp/dist/toast/toast.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/vant-weapp/dist/toast/toast.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/utils */ "./node_modules/vant-weapp/dist/common/utils.js");
 
 const defaultOptions = {
     type: 'text',
@@ -654,20 +654,20 @@ Toast.resetDefaultOptions = () => {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js":
-/*!********************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js ***!
-  \********************************************************/
+/***/ "./node_modules/weapp-zx/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/weapp-zx/index.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _src_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/user */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/user/index.js");
-/* harmony import */ var _src_tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/tables */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/index.js");
-/* harmony import */ var _src_yun__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/yun */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/yun/index.js");
-/* harmony import */ var _src_file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/file */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/index.js");
-__webpack_require__(/*! minapp-sdk */ "./node_modules/_minapp-sdk@2.9.0@minapp-sdk/lib/index.js")
+/* harmony import */ var _src_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/user */ "./node_modules/weapp-zx/src/user/index.js");
+/* harmony import */ var _src_tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/tables */ "./node_modules/weapp-zx/src/tables/index.js");
+/* harmony import */ var _src_yun__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/yun */ "./node_modules/weapp-zx/src/yun/index.js");
+/* harmony import */ var _src_file__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/file */ "./node_modules/weapp-zx/src/file/index.js");
+__webpack_require__(/*! minapp-sdk */ "./node_modules/minapp-sdk/lib/index.js")
 
 
 
@@ -712,16 +712,16 @@ ZX.Query = wx.BaaS.Query
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/index.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/weapp-zx/src/file/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/weapp-zx/src/file/index.js ***!
+  \*************************************************/
 /*! exports provided: upload */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/upload.js");
+/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload */ "./node_modules/weapp-zx/src/file/upload.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "upload", function() { return _upload__WEBPACK_IMPORTED_MODULE_0__["upload"]; });
 
 
@@ -729,10 +729,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/upload.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/file/upload.js ***!
-  \******************************************************************/
+/***/ "./node_modules/weapp-zx/src/file/upload.js":
+/*!**************************************************!*\
+  !*** ./node_modules/weapp-zx/src/file/upload.js ***!
+  \**************************************************/
 /*! exports provided: upload */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -751,17 +751,17 @@ function upload(filePath, categoryName) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/c.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/c.js ***!
-  \***************************************************************/
+/***/ "./node_modules/weapp-zx/src/tables/c.js":
+/*!***********************************************!*\
+  !*** ./node_modules/weapp-zx/src/tables/c.js ***!
+  \***********************************************/
 /*! exports provided: create */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/weapp-zx/src/util/index.js");
 
 
 function handleError(err) {
@@ -821,10 +821,10 @@ function create(tableName, data, options = {}) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/g.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/g.js ***!
-  \***************************************************************/
+/***/ "./node_modules/weapp-zx/src/tables/g.js":
+/*!***********************************************!*\
+  !*** ./node_modules/weapp-zx/src/tables/g.js ***!
+  \***********************************************/
 /*! exports provided: get, getWithoutData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -832,8 +832,8 @@ function create(tableName, data, options = {}) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWithoutData", function() { return getWithoutData; });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js");
-/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/user/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/weapp-zx/src/util/index.js");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user */ "./node_modules/weapp-zx/src/user/index.js");
 
 
 
@@ -922,27 +922,27 @@ function getWithoutData(tableName, query) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/index.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/index.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/weapp-zx/src/tables/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/weapp-zx/src/tables/index.js ***!
+  \***************************************************/
 /*! exports provided: create, get, getWithoutData, update, find, count, getQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./c */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/c.js");
+/* harmony import */ var _c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./c */ "./node_modules/weapp-zx/src/tables/c.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "create", function() { return _c__WEBPACK_IMPORTED_MODULE_0__["create"]; });
 
-/* harmony import */ var _g__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./g */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/g.js");
+/* harmony import */ var _g__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./g */ "./node_modules/weapp-zx/src/tables/g.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "get", function() { return _g__WEBPACK_IMPORTED_MODULE_1__["get"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getWithoutData", function() { return _g__WEBPACK_IMPORTED_MODULE_1__["getWithoutData"]; });
 
-/* harmony import */ var _u__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./u */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/u.js");
+/* harmony import */ var _u__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./u */ "./node_modules/weapp-zx/src/tables/u.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "update", function() { return _u__WEBPACK_IMPORTED_MODULE_2__["update"]; });
 
-/* harmony import */ var _q__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./q */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/q.js");
+/* harmony import */ var _q__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./q */ "./node_modules/weapp-zx/src/tables/q.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "find", function() { return _q__WEBPACK_IMPORTED_MODULE_3__["find"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "count", function() { return _q__WEBPACK_IMPORTED_MODULE_3__["count"]; });
@@ -956,10 +956,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/q.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/q.js ***!
-  \***************************************************************/
+/***/ "./node_modules/weapp-zx/src/tables/q.js":
+/*!***********************************************!*\
+  !*** ./node_modules/weapp-zx/src/tables/q.js ***!
+  \***********************************************/
 /*! exports provided: find, count, getQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -968,7 +968,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "find", function() { return find; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count", function() { return count; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQuery", function() { return getQuery; });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/weapp-zx/src/util/index.js");
 
 
 function handleError(err) {
@@ -1098,18 +1098,18 @@ function getQuery() {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/u.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/u.js ***!
-  \***************************************************************/
+/***/ "./node_modules/weapp-zx/src/tables/u.js":
+/*!***********************************************!*\
+  !*** ./node_modules/weapp-zx/src/tables/u.js ***!
+  \***********************************************/
 /*! exports provided: update */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js");
-/* harmony import */ var _g__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./g */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/tables/g.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/weapp-zx/src/util/index.js");
+/* harmony import */ var _g__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./g */ "./node_modules/weapp-zx/src/tables/g.js");
 
 
 
@@ -1187,10 +1187,10 @@ function update(tableName, recordID, data) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/user/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/user/index.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/weapp-zx/src/user/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/weapp-zx/src/user/index.js ***!
+  \*************************************************/
 /*! exports provided: login, handleUserInfo, logout, id, user */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1263,10 +1263,10 @@ function user(option = '', data = {}) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/util/index.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/weapp-zx/src/util/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/weapp-zx/src/util/index.js ***!
+  \*************************************************/
 /*! exports provided: isArray */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1283,10 +1283,10 @@ function isArray(value) {
 
 /***/ }),
 
-/***/ "./node_modules/_weapp-zx@1.1.0@weapp-zx/src/yun/index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/_weapp-zx@1.1.0@weapp-zx/src/yun/index.js ***!
-  \****************************************************************/
+/***/ "./node_modules/weapp-zx/src/yun/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/weapp-zx/src/yun/index.js ***!
+  \************************************************/
 /*! exports provided: yun */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

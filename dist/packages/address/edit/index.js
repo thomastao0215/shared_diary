@@ -12,7 +12,7 @@ Object.assign(require("././../../commonchunks.js").modules, require("././../../.
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
+/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/vant-weapp/dist/toast/toast.js");
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api */ "./src/packages/address/edit/api.js");
 /* harmony import */ var _area__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./area */ "./src/packages/address/edit/area.js");
 

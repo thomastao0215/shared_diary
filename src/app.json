@@ -50,8 +50,6 @@
     "pages/my/index",
     "pages/class/index",
     "pages/cart/index"
-
-
   ],
   "subPackages": [
     {

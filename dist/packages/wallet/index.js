@@ -14,7 +14,7 @@ Object.assign(require("././../commonchunks.js").modules, require("././../../comm
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/api */ "./src/utils/api.js");
 /* harmony import */ var utils_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils/util */ "./src/utils/util.js");
-/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
+/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/vant-weapp/dist/toast/toast.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./src/packages/wallet/utils.js");
 
 

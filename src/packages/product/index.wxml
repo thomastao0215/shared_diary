@@ -1,4 +1,7 @@
 <view class="goods" >
+  <sku
+    show="{{show}}"
+  />
   <scroll-view>
   <view class="swiper">
       <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" duration="1000">

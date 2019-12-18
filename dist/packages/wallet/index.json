@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的钱包",
   "usingComponents": {
-    "van-field": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/field/index",
-    "van-toast": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/index"
+    "van-field": "./../../vant-weapp/dist/field/index",
+    "van-toast": "./../../vant-weapp/dist/toast/index"
   }
 }

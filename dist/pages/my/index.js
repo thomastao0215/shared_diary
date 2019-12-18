@@ -12,8 +12,8 @@ Object.assign(require("././../../commons.js").modules, {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
-/* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! weapp-zx */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js");
+/* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/vant-weapp/dist/toast/toast.js");
+/* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! weapp-zx */ "./node_modules/weapp-zx/index.js");
 
 
 Page({

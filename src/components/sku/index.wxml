@@ -1,0 +1,23 @@
+<van-popup
+  show="{{ show }}"
+  round
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onClose"
+  closeable
+  safe-area-inset-bottom
+>
+  <view class="body">
+    <view class="header"></view>
+    <block wx:for="{{tree}}" wx:key="*this">
+      <view class="sku-class">
+        <view class="sku-class-title">{{item.k}}</view>
+        <view class="sku-class-body">
+              <block wx:for="{{item.value}}" wx:key="*this">
+                
+              </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</van-popup>
