@@ -76,12 +76,9 @@ Page({
       url: '/packages/address/list/index'
     });
   },
-
-  onShareAppMessage() {
-    return {
-      title: '爱戴小盒，快来看看吧!',
-      path: '/pages/entry/index',
-      imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
-    };
-  }
+  navToOrders() {
+    wx.navigateTo({
+      url: '/packages/orders/index'
+    });
+  },
 });

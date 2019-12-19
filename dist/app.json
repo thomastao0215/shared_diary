@@ -19,7 +19,9 @@
         "membership/index",
         "success/index",
         "wallet/index",
-        "back/index"
+        "back/index",
+        "order/index",
+        "orders/index"
       ]
     }
   ],

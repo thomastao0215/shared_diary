@@ -3,10 +3,10 @@
   "usingComponents": {
     "swiper-image": "././../../components/common/image/index",
     "product-cell": "././../../components/product-cell/index",
-    "van-search": "./../../vant-weapp/dist/search/index",
-    "van-tabs": "./../../vant-weapp/dist/tabs/index",
-    "van-tab": "./../../vant-weapp/dist/tab/index",
-    "van-loading": "./../../vant-weapp/dist/loading/index"
+    "van-search": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/search/index",
+    "van-tabs": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/tabs/index",
+    "van-tab": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/tab/index",
+    "van-loading": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/loading/index"
   },
   "enablePullDownRefresh": true
 }

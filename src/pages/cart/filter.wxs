@@ -1,0 +1,22 @@
+var filters = {
+  toFix(value) {
+    console.log(value)
+    if (value < 0) {
+      return '0.00'
+    }
+    return value.toFixed(2) // 此处2为保留两位小数，保留几位小数，这里写几
+  },
+  isAllBack(productList) {
+    let result = true
+    productList.forEach(item => {
+      if (item.isSelected) {
+        result = false
+      }
+    })
+    return result
+  }
+}
+module.exports = {
+  toFix: filters.toFix,
+  isAllBack: filters.isAllBack
+}

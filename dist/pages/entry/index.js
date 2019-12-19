@@ -12,7 +12,7 @@ Object.assign(require("././../../commons.js").modules, {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! weapp-zx */ "./node_modules/weapp-zx/index.js");
+/* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! weapp-zx */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js");
  // import { getUserRole, changeUserRole } from 'utils/role'
 // 获取应用实例
 

@@ -26,6 +26,7 @@ Page({
     priority: 100,
     sold_count: 100,
     brief_title: '',
+    showModal: false,
     brand: {
       brand_name: '',
       brand_origin: '',
@@ -39,22 +40,22 @@ Page({
     }, {
       img_url: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png'
     }],
-    show: true,
+    show: false,
     recommandation: [{
       img_url: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png',
       title: '香水',
       price: 100
     }, {
-      img_url: 'http://yanxuan.nosdn.127.net/e6feb5f4a0989d212bce068d4907657d.jpg',
-      title: '日式软沙发',
+      img_url: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png',
+      title: '香水',
       price: 100
     }, {
-      img_url: 'http://yanxuan.nosdn.127.net/e6feb5f4a0989d212bce068d4907657d.jpg',
-      title: '日式软沙发',
+      img_url: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png',
+      title: '香水',
       price: 100
     }, {
-      img_url: 'http://yanxuan.nosdn.127.net/e6feb5f4a0989d212bce068d4907657d.jpg',
-      title: '日式软沙发',
+      img_url: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png',
+      title: '香水',
       price: 100
     }]
   },
@@ -84,9 +85,16 @@ Page({
         images: data.images,
         brief_title: data.brief_title,
         brand: data.brand,
-        info_images: data.info_images
+        show: false,
+        info_images: data.info_images,
+        sku_group: data.sku_group
       });
 
+      Object(_api__WEBPACK_IMPORTED_MODULE_0__["fetchSku"])(data.id).then(function (res) {
+        _this.setData({
+          sku_list: res.data.objects
+        });
+      });
       wx.hideLoading();
     });
   },
@@ -96,10 +104,84 @@ Page({
       show: show
     });
   },
+  onClickBuy: function onClickBuy() {
+    if (this.data.sku_list) {
+      this.setData({
+        operation: '立即购买',
+        show: true
+      });
+    }
+  },
+  onClickCart: function onClickCart() {
+    if (this.data.sku_list) {
+      this.setData({
+        operation: '加入购物车',
+        show: true
+      });
+    }
+  },
   showPopup: function showPopup() {
     this.setData({
       show: true
     });
+  },
+  showSheet: function showSheet(value) {
+    this.setData({
+      'sheet.show': value
+    });
+  },
+  showShareImageModal: function showShareImageModal() {
+    this.setData({
+      showModal: true
+    });
+  },
+  closeActionSheet: function closeActionSheet() {
+    this.setData({
+      'sheet.show': false
+    });
+    this.triggerEvent('finished');
+  },
+  closeShareImageModal: function closeShareImageModal() {
+    this.setData({
+      showModal: false
+    });
+  },
+  handleActionClick: function handleActionClick(e) {
+    if (e.detail.openType === 'share') return;
+    wx.showLoading({
+      title: '正在生成'
+    });
+    this.setData({
+      showCanvas: true
+    }, this.draw.bind(this));
+  },
+  draw: function draw() {
+    var _this2 = this;
+
+    this.loadShopInfo().then(this.loadShareSettings.bind(this)).then(this.loadFeatureImage.bind(this)).then(this.drawQrCode.bind(this)).then(this.createPosterTempPath.bind(this)).then(function (src) {
+      _this2.setData({
+        src: src,
+        showModal: true,
+        showCanvas: false
+      }, function () {
+        _this2.triggerEvent('finished');
+      });
+    }).catch(function () {
+      _this2.setData({
+        showCanvas: false
+      });
+
+      _this2.closeShareImageModal();
+
+      _this2.closeActionSheet();
+    });
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: '我发现了一个好东西',
+      path: '/pages/entry/index',
+      imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
+    };
   }
 });
 

@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+    <van-search
+      value="{{ keyWord }}"
+        placeholder="请输入搜索关键词"
+      bind:search="onSearch"
+    />
+       <van-tabs
+    border="{{ false }}"
+    swipe-threshold="5"
+    active="{{ active }}"
+    bind:change="handleTabClick"
+    color="#F5C8C2"
+  >
+    <van-tab
+      wx:for="{{ tabs }}"
+      wx:key="{{ index }}"
+      title="{{ item }}"
+    >
+      <view class="brick-layout">
+        <block wx:for="{{articles}}" wx:key="*this">
+          <view class="card">
+            <view class="card-image-container">
+              <image src="{{item.image_url}}" class="card-image" />
+            </view>
+          </view>
+        </block>
+      </view>
+      <van-loading wx:if="{{ loading }}"/>
+    </van-tab>
+  </van-tabs>
+
+</view>

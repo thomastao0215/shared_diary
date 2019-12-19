@@ -1,6 +1,40 @@
 <view class="goods" >
+
+<!-- 分享遮罩层 -->
+<van-popup
+  show="{{ showModal }}"
+  custom-class="share-image__popup"
+>
+  <view class="share-image__container">
+    <view class="share-image__close-btn" bindtap="closeShareImageModal" />
+    <image
+      src="{{ src }}"
+      class="share-image--preview"
+    />
+    <!-- <view class="share-image__info">保存图片后，可分享到朋友圈</view> -->
+    <van-button custom-class="share-image__btn" type="danger" bind:click="clickSaveImage">保存图片</van-button>
+  </view>
+</van-popup>
+
+
+<van-action-sheet
+  show="{{ sheet.show }}"
+  actions="{{ sheet.actions }}"
+  cancel-text="{{ sheet.cancelText }}"
+  safe-area-inset-bottom="{{ pageType !== 'homepage' }}"
+  close-on-click-overlay="{{ sheet.closeOnClickOverlay }}"
+  bind:close="closeActionSheet"
+  bind:cancel="closeActionSheet"
+  bind:select="handleActionClick" >
+</van-action-sheet>
   <sku
     show="{{show}}"
+    skuGroup="{{sku_group}}"
+    productId="{{product_id}}"
+    defaultImage="{{cover_image}}"
+    skuList="{{sku_list}}"
+    operation="{{operation}}"
+    
   />
   <scroll-view>
   <view class="swiper">
@@ -14,23 +48,25 @@
   </view>
   <view class="goods-info-container">
     <view class="goods-info-inner">
+
+      <view class="goods-info-title">
+        <view class="goods-info-tag">自营</view>
+        <view class="title">{{title}}</view>
+      </view>
       <view class="goods-info-price">
         <view class="goods-info-now-price">¥199</view>
         <view class="goods-info-orig-price">¥599</view>
         <view class="goods-info-tag detail">包邮</view>
         <view class="goods-info-tag detail">包税</view>
+        <view class="goods-info-now-price sold">已售15000件</view>
       </view>
-      <view class="goods-info-title">
-        <view class="goods-info-tag">自营</view>
-        <view class="title">{{title}}</view>
-        </view>
       <view class="goods-info-subtitle">{{description}}</view>
     </view>
   </view>
-  <view class="goods-handle-type" bindtap="showPopup">
+  <!-- <view class="goods-handle-type" bindtap="showPopup">
     <view class="title">请选择规格数量</view>
     <view class="arrow"></view>
-  </view>
+  </view> -->
   <view class="detail">
     <block wx:for="{{info_images}}" wx:key="*this">
       <view class="detail-item">
@@ -94,18 +130,35 @@
       </view>
 
   </scroll-view>
+  <van-goods-action>
+  <van-goods-action-icon
+    icon="service-o"
+    text="客服"
+    bind:click="onClickIcon"
+  />
+  <van-goods-action-icon
+    icon="cart-o"
+    text="购物车"
+    bind:click="onClickIcon"
+  />
+  <van-goods-action-icon
+    icon="star-o"
+    text="收藏"
+    bind:click="showShareImageModal"
+  />
 
-  <view class="action-bar">
-    <view class="action-bar-title">总计：</view>
-    <view class="action-bar-price1">¥{{ filters.toFix(price) }}</view>
-    <view class="action-bar-price2">¥{{ filters.toFix(totalOriginPrice) }}</view>
-    <view
-      class="buy-btn"
-      bindtap="onClickBuy"
-    >
-      立即购买
-    </view>
-  </view>
+  <van-goods-action-button
+    text="加入购物车"
+    type="warning"
+    bind:click="onClickCart"
+    color="#F5C8C2"
+  />
+  <van-goods-action-button
+    text="立即购买"
+    bind:click="onClickBuy"
+  />
+</van-goods-action>
+
 
 
 </view>

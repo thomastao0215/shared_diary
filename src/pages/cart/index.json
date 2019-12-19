@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "小分香",
-  "usingComponents": {
-    "swiper-image": "shared/components/common/image/index"
-  }
+  "component": true
 }

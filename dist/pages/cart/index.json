@@ -1,7 +1,6 @@
 {
-  "navigationBarTitleText": "小分香",
+  "component": true,
   "usingComponents": {
-    "swiper-image": "././../../components/common/image/index",
-    "van-toast": "./../../vant-weapp/dist/toast/index"
+    "van-stepper": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/stepper/index"
   }
 }

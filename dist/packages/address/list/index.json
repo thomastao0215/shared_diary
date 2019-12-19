@@ -1,9 +1,9 @@
 {
   "navigationBarTitleText": "管理地址",
   "usingComponents": {
-    "van-cell-group": "./../../../vant-weapp/dist/cell-group/index",
-    "van-cell": "./../../../vant-weapp/dist/cell/index",
-    "van-icon": "./../../../vant-weapp/dist/icon/index",
-    "van-toast": "./../../../vant-weapp/dist/toast/index"
+    "van-cell-group": "./../../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/cell-group/index",
+    "van-cell": "./../../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/cell/index",
+    "van-icon": "./../../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/icon/index",
+    "van-toast": "./../../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/index"
   }
 }

@@ -1,9 +1,9 @@
 {
   "navigationBarTitleText": "预约寄回",
   "usingComponents": {
-    "van-icon": "./../../vant-weapp/dist/icon/index",
-    "van-action-sheet": "./../../vant-weapp/dist/action-sheet/index",
-    "van-tree-select": "./../../vant-weapp/dist/tree-select/index",
-    "van-toast": "./../../vant-weapp/dist/toast/index"
+    "van-icon": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/icon/index",
+    "van-action-sheet": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/action-sheet/index",
+    "van-tree-select": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/tree-select/index",
+    "van-toast": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/index"
   }
 }
