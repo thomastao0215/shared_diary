@@ -1,19 +1,40 @@
 export function fetchData(parameters = {}) {
-  var tableName = 'news';
-  var { pageSize, pageNo, tagName } = parameters;
+  var tableName = 'order';
+  var {
+    limit, offset, userId, status
+  } = parameters;
   // 实例化查询对象
   const query = new wx.BaaS.Query();
 
   // 设置查询条件（比较、字符串包含、组合等）
-  query.compare('weight', '>', 0);
-  query.compare('tag_name', '=', tagName);
+  query.compare('user_id', '=', userId);
+  if (status) {
+    query.compare('status', '=', status);
+  }
+
 
   // 应用查询对象
-  const News = new wx.BaaS.TableObject(tableName);
-  return News
+  const Orders = new wx.BaaS.TableObject(tableName);
+  return Orders
     .setQuery(query)
-    .limit(pageSize)
-    .offset(pageNo)
+    .limit(limit)
+    .offset(offset)
+    .find();
+}
+
+export function getOrderProdcuts(parameters = {}) {
+  var tableName = 'order_item';
+  var { orderId } = parameters;
+  // 实例化查询对象
+  const query = new wx.BaaS.Query();
+
+  // 设置查询条件（比较、字符串包含、组合等）
+  query.compare('order_id', '=', orderId);
+
+  // 应用查询对象
+  const OrderItems = new wx.BaaS.TableObject(tableName);
+  return OrderItems
+    .setQuery(query)
     .find();
 }
 

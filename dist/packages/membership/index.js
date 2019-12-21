@@ -1,7 +1,7 @@
 /******/ var webpackRequire = require("././../../webpack-require");
 /******/ webpackRequire(
 "./src/packages/membership/index.js",
-Object.assign(require("././../commonchunks.js").modules, require("././../../commons.js").modules, {
+Object.assign(require("././../../commons.js").modules, {
 
 /***/ "./src/packages/membership/index.js":
 /*!******************************************!*\

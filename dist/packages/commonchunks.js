@@ -4299,12 +4299,13 @@ function getItems() {
 /*!************************************!*\
   !*** ./src/packages/orders/api.js ***!
   \************************************/
-/*! exports provided: fetchData, getSwipers, getTags, getPageInfo */
+/*! exports provided: fetchData, getOrderProdcuts, getSwipers, getTags, getPageInfo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchData", function() { return fetchData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOrderProdcuts", function() { return getOrderProdcuts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSwipers", function() { return getSwipers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTags", function() { return getTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPageInfo", function() { return getPageInfo; });
@@ -4313,19 +4314,40 @@ function fetchData(parameters) {
     parameters = {};
   }
 
-  var tableName = 'news';
+  var tableName = 'order';
   var _parameters = parameters,
-      pageSize = _parameters.pageSize,
-      pageNo = _parameters.pageNo,
-      tagName = _parameters.tagName; // 实例化查询对象
+      limit = _parameters.limit,
+      offset = _parameters.offset,
+      userId = _parameters.userId,
+      status = _parameters.status; // 实例化查询对象
 
   var query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
 
-  query.compare('weight', '>', 0);
-  query.compare('tag_name', '=', tagName); // 应用查询对象
+  query.compare('user_id', '=', userId);
 
-  var News = new wx.BaaS.TableObject(tableName);
-  return News.setQuery(query).limit(pageSize).offset(pageNo).find();
+  if (status) {
+    query.compare('status', '=', status);
+  } // 应用查询对象
+
+
+  var Orders = new wx.BaaS.TableObject(tableName);
+  return Orders.setQuery(query).limit(limit).offset(offset).find();
+}
+function getOrderProdcuts(parameters) {
+  if (parameters === void 0) {
+    parameters = {};
+  }
+
+  var tableName = 'order_item';
+  var _parameters2 = parameters,
+      orderId = _parameters2.orderId; // 实例化查询对象
+
+  var query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
+
+  query.compare('order_id', '=', orderId); // 应用查询对象
+
+  var OrderItems = new wx.BaaS.TableObject(tableName);
+  return OrderItems.setQuery(query).find();
 }
 /**
  * 获取轮播图配置

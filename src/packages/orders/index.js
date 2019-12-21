@@ -1,29 +1,25 @@
 import { fetchData } from './api';
 
+
 Page({
   data: {
     tabs: [
       '全部订单',
       '待付款',
       '待发货',
+      '待收货',
       '待评价',
     ],
-    articles: [
+    orders: [
     ],
-    banner: [
-      {
-        image_url: 'https://yanxuan.nosdn.127.net/31da695c84cabd0eaff054265da29e5c.jpg?imageView&quality=75&thumbnail=750x0'
-      },
-      {
-        image_url: 'https://yanxuan.nosdn.127.net/baea18aa59217cabd190b19fc1cf1617.jpg?imageView&quality=75&thumbnail=750x0'
-      },
-      {
-        image_url: 'https://yanxuan.nosdn.127.net/d5683f01e132851229be21c52d808b62.jpg?imageView&quality=75&thumbnail=750x0'
-      },
-      {
-        image_url: 'https://yanxuan.nosdn.127.net/af7d906e174cb160ab5a979310aa223d.jpg?imageView&quality=75&thumbnail=750x0'
-      }
-    ]
+    tabs_id: [
+      '全部订单',
+      '待付款',
+      '待发货',
+      '待收货',
+      '待评价',
+    ],
+    stauts: 0
 
   },
   onSearch(e) {
@@ -42,14 +38,72 @@ Page({
       wx.hideLoading();
     });
   },
-  cardSwiper(e) {
-    this.setData({
-      cardCur: e.detail.current
+  init() {
+    if (this.data.userId) {
+      this.fetching = false;
+      this.finished = false;
+      this.query = {
+        limit: 10,
+        offset: 0,
+        userId: this.data.userId,
+      };
+      if (this.data.stauts != 0) {
+        this.query.stauts = this.data.stauts;
+      }
+
+      this.fetchOrders('fetch');
+    }
+  },
+  fetchOrders(type = 'fetch') {
+    if (type === 'fetch') {
+      this.query.offset = 0;
+      this.finished = false;
+    }
+    this.fetching = true;
+    type === 'fetch' && wx.showLoading({ title: '加载中...' });
+    fetchData(this.query).then(res => {
+      let data = res.data.objects || [];
+      if (data.length < this.query.limit) {
+        this.finished = true;
+      } else {
+        this.query.offset += this.query.limit;
+      }
+      const { orders } = this.data;
+      const newOrders = type === 'fetch' ? [...data] : [...orders, ...data];
+      this.fetching = false;
+      this.setData({ orders: newOrders });
+      type === 'fetch' && wx.hideLoading();
     });
   },
-  onLoad() {
-
-
+  bindTabChange(e) {
+    var current = e.detail.index;
+    this.setData({
+      status: this.data.tabs[current]
+    });
+    wx.showLoading({
+      title: '加载中'
+    });
+    this.query.offset = 0;
+    this.finished = false;
+    if (this.data.status !== '全部订单') {
+      this.query.status = this.data.status;
+    }
+    fetchData(this.query).then(res => {
+      this.setData({
+        orders: res.data.objects
+      });
+      wx.hideLoading();
+    });
+  },
+  onPullDownRefresh() {
+    this.init();
+    wx.stopPullDownRefresh();
+  },
+  onLoad(e) {
+    this.setData({
+      userId: Number(e.userId)
+    });
+    this.init();
   },
 
 });

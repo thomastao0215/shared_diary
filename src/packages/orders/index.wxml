@@ -4,7 +4,7 @@
     border="{{ false }}"
     swipe-threshold="5"
     active="{{ active }}"
-    bind:change="handleTabClick"
+    bind:change="bindTabChange"
     color="#F5C8C2"
     >
     <van-tab
@@ -13,12 +13,15 @@
       title="{{ item }}"
     >
       <view class="brick-layout">
-        <block wx:for="{{articles}}" wx:key="*this">
-          <view class="card">
-            <view class="card-image-container">
-              <image src="{{item.image_url}}" class="card-image" />
-            </view>
-          </view>
+        <block wx:for="{{orders}}" wx:key="*this">
+          <order-cell 
+            orderId="{{item._id}}"
+            status="{{item.status}}"
+            totalCost="{{item.total_cost}}"
+            productList="{{item.product_list_preview}}"
+            time="{{item.created_at}}"
+            style="margin: 0 100rpx;"
+          />
         </block>
       </view>
       <van-loading wx:if="{{ loading }}"/>
