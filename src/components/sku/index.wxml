@@ -45,7 +45,7 @@
       <van-stepper value="{{ 1 }}" bind:change="onCountChange" />
     </view>
   </view>
-  <view class="sku-operation-button">
+  <view class="sku-operation-button" bind:tap="onOperation">
     <span>{{operation}}</span>
     <span class="tip">可获得{{credit}}积分</span>
   </view>

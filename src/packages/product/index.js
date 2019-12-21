@@ -111,9 +111,6 @@ Page({
       });
     }
   },
-  showPopup() {
-    this.setData({ show: true });
-  },
   showSheet(value) {
     this.setData({
       'sheet.show': value

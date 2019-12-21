@@ -17,13 +17,12 @@ __webpack_require__.r(__webpack_exports__);
 var clientID = '99fe8993f749105e6a6b';
 weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].init(clientID);
 App({
-  onLaunch: function onLaunch() {
-    var _this = this;
-
-    weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].login().then(function (res) {
-      console.log('user:login', res);
-      _this.globalData.userId = res.id;
-    });
+  onLaunch: function onLaunch() {// zx.login()
+    //   .then(res => {
+    //     console.log('user:login', res);
+    //     this.globalData.userId = res.id;
+    //     wx.BaaS.storage.set('userinfo', res);
+    //   });
   },
   globalData: {
     userId: null,

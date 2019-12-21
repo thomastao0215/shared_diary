@@ -50,10 +50,9 @@ Page({
   },
   onLoad: function onLoad() {
     // 获取 user 信息
-    var userInfo = wx.BaaS.storage.get('userinfo');
-    weapp_zx__WEBPACK_IMPORTED_MODULE_1__["default"].get('user', 'me').then(function (res) {
-      console.log(res);
-    });
+    var userInfo = wx.BaaS.storage.get('userinfo'); // zx.get('user', 'me').then(res => {
+    //   console.log(res);
+    // });
 
     if (userInfo) {
       this.setData({
@@ -89,7 +88,7 @@ Page({
   },
   navToOrders: function navToOrders() {
     wx.navigateTo({
-      url: '/packages/orders/index'
+      url: '/packages/orders/index?userId=' + this.data.userInfo.id
     });
   }
 });

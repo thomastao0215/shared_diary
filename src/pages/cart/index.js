@@ -1,10 +1,10 @@
-import { getImageUrl } from 'utils/image'
-import { api, request } from 'utils/api'
-import Toast from 'vant-weapp/dist/toast/toast'
-import Dialog from 'vant-weapp/dist/dialog/dialog'
-import Config from 'utils/config'
+import { getImageUrl } from 'utils/image';
+import { api, request } from 'utils/api';
+import Toast from 'vant-weapp/dist/toast/toast';
+import Dialog from 'vant-weapp/dist/dialog/dialog';
+import Config from 'utils/config';
 
-const app = getApp()
+const app = getApp();
 
 Component({
   properties: {
@@ -45,13 +45,13 @@ Component({
         },
       ],
       observer(value) {
-        let selectAll = true
+        let selectAll = true;
         value.forEach(item => {
           if (!item.isSelected) {
-            selectAll = false
+            selectAll = false;
           }
-        })
-        this.setData({ selectAll })
+        });
+        this.setData({ selectAll });
       }
     },
     orderProductList: {
@@ -85,60 +85,60 @@ Component({
 
   methods: {
     selectOne(e) {
-      const index = e.currentTarget.dataset.index
-      this.index = index // 记录当前点击的商品
+      const index = e.currentTarget.dataset.index;
+      this.index = index; // 记录当前点击的商品
       if (this.data.productList[index].isSelected) {
-        this.setData({ show: true })
-        this.remark = ''
-        this.setData({ selectedReasons: [false, false, false, false] })
+        this.setData({ show: true });
+        this.remark = '';
+        this.setData({ selectedReasons: [false, false, false, false] });
       } else {
-        this.triggerEvent('select-one', { index })
+        this.triggerEvent('select-one', { index });
       }
     },
 
     toggleActionSheet() {
-      this.setData({ show: false })
+      this.setData({ show: false });
     },
 
     onSelectAll() {
       if (!this.data.selectAll) {
-        this.triggerEvent('select-all')
+        this.triggerEvent('select-all');
       }
-      this.setData({ selectAll: !this.data.selectAll })
+      this.setData({ selectAll: !this.data.selectAll });
     },
 
     reasonInput(e) {
-      this.remark = e.detail.value
+      this.remark = e.detail.value;
     },
 
     toggleReason(e) {
-      const { index } = e.currentTarget.dataset
-      const { selectedReasons } = this.data
-      selectedReasons[index] = !selectedReasons[index]
-      this.setData({ selectedReasons })
+      const { index } = e.currentTarget.dataset;
+      const { selectedReasons } = this.data;
+      selectedReasons[index] = !selectedReasons[index];
+      this.setData({ selectedReasons });
     },
 
     confirmBack() {
-      const { selectedReasons, reasons } = this.data
-      let reason = ''
+      const { selectedReasons, reasons } = this.data;
+      let reason = '';
       selectedReasons.forEach((i, index) => {
         if (i) {
-          reason = !reason ? reasons[index] : `${reason};${reasons[index]}`
+          reason = !reason ? reasons[index] : `${reason};${reasons[index]}`;
         }
-      })
-      this.setData({ show: false, selectAll: false })
-      this.triggerEvent('confirm-back', { index: this.index, reason, remark: this.remark })
+      });
+      this.setData({ show: false, selectAll: false });
+      this.triggerEvent('confirm-back', { index: this.index, reason, remark: this.remark });
     },
 
     onClickBuy() {
       const {
         productList, orderProductList, totalPrice, totalOriginPrice, orderId
-      } = this.data
+      } = this.data;
       const orderInfo = {
         productList, orderProductList, totalPrice, totalOriginPrice, orderId
-      }
-      app.globalData.orderInfo = orderInfo
-      wx.navigateTo({ url: '/packages/order/index' })
+      };
+      app.globalData.orderInfo = orderInfo;
+      wx.navigateTo({ url: '/packages/order/index' });
     },
 
     onClickAllBack() {
@@ -152,14 +152,14 @@ Component({
           })
             .then(() => {
               if (getCurrentPages().length != 0) {
-                getCurrentPages()[getCurrentPages().length - 1].onShow()
+                getCurrentPages()[getCurrentPages().length - 1].onShow();
               }
             })
             .catch(() => {
-              Toast('请求失败')
-            })
+              Toast('请求失败');
+            });
         })
-        .catch(() => {})
+        .catch(() => {});
     }
   },
-})
+});

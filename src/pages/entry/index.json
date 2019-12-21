@@ -1,3 +1,7 @@
 {
-  
+    "usingComponents": {
+      "l-tabs": "lin-ui/dist/tabs/index",
+      "l-tabpanel": "lin-ui/dist/tabpanel/index",
+      "l-icon": "lin-ui/dist/icon/index"
+    }
 }

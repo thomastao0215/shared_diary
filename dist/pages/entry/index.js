@@ -21,11 +21,17 @@ Page({
     inited: false,
     logo: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png'
   },
-  onLoad: function onLoad() {// let userInfo = wx.BaaS.storage.get('userinfo');
-    // if (!userInfo) { // 授权
-    //   this.setData({ inited: true });
-    //   this.changeAndSwitchTab();
-    // }
+  onLoad: function onLoad() {
+    var userInfo = wx.BaaS.storage.get('userinfo');
+    console.log(userInfo);
+
+    if (userInfo) {
+      // 授权
+      this.setData({
+        inited: true
+      });
+      this.changeAndSwitchTab();
+    }
   },
   changeAndSwitchTab: function changeAndSwitchTab() {
     wx.switchTab({
@@ -34,8 +40,6 @@ Page({
   },
   grant: function grant(data) {
     var _this = this;
-
-    console.log(data);
 
     if (data.detail.userInfo) {
       var handleResult = Promise.resolve();
@@ -46,14 +50,13 @@ Page({
         handleResult = weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].handleUserInfo(data);
       }
 
-      handleResult.then(function () {
-        return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me');
-      }).then(function (res) {
+      handleResult.then(function (user) {
         _this.setData({
           inited: true
         });
 
-        wx.BaaS.storage.set('userinfo', res.data);
+        console.log(user);
+        wx.BaaS.storage.set('userinfo', user);
 
         _this.changeAndSwitchTab();
       });

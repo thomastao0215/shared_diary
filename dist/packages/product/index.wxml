@@ -4,6 +4,7 @@
 <van-popup
   show="{{ showModal }}"
   custom-class="share-image__popup"
+  
 >
   <view class="share-image__container">
     <view class="share-image__close-btn" bindtap="closeShareImageModal" />

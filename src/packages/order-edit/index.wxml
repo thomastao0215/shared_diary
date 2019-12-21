@@ -1,10 +1,28 @@
-<wxs module="filters" src="./filter.wxs" />
-<view class="product-list">
-  <view class="coupon">
-    <view class="label" style="position: relative; top: 3px;">地址</view>
-    <input bindinput="bindReplaceInput" placeholder="请填写想要留言的内容" class="input-field" />
+<view class="end product-list">
+  <view class="sub-title">{{ AddressTitle }}</view>
+  <view wx:if="{{ addressId }}" bindtap="onClickAddress" class="address">
+    <view class="address__header">
+      <image src="http://static.wx.qiaqiabox.com/slice/questions/address.svg" />
+      <view class="text">收件地址:</view>
+    </view>
+    <view class="address__content">
+      <view class="line" style="margin-bottom: 10rpx;">
+        <text style="margin-right: 16rpx;">{{ addressInfo.name }}</text>
+        {{ addressInfo.phone }}
+      </view>
+      <view class="line">{{ addressInfo.address }}</view>
+      <van-icon name="arrow" custom-class="icon" />
+    </view>
   </view>
-  <view
+  <view wx:else bindtap="onClickAddress" class="address-no">
+    <image src="http://static.wx.qiaqiabox.com/slice/questions/addressbig.svg" />
+    <view class="content">
+      <view class="line1">添加新地址</view>
+      <view class="line2">请填写您的收件地址</view>
+    </view>
+  </view>
+
+      <view
     wx:for="{{ productList }}"
     wx:key
     data-index="{{ index }}"
@@ -53,17 +71,6 @@
     <input bindinput="bindReplaceInput" placeholder="请填写想要留言的内容" class="input-field" />
   </view>
 
-  <view class="action-bar">
-    <view class="action-bar-title">总计：</view>
-    <view class="action-bar-price1">¥{{ filters.toFix(price) }}</view>
-    <view class="action-bar-price2">¥{{ filters.toFix(totalOriginPrice) }}</view>
-    <view
-      class="buy-btn"
-      bindtap="onClickBuy"
-    >
-      立即购买
-    </view>
-  </view>
-
+  <view class="btn" bindtap="onClickSubmit">提交</view>
   <van-toast id="van-toast" />
 </view>

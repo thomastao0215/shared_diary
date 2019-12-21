@@ -10,11 +10,12 @@ Page({
   },
 
   onLoad() {
-    // let userInfo = wx.BaaS.storage.get('userinfo');
-    // if (!userInfo) { // 授权
-    //   this.setData({ inited: true });
-    //   this.changeAndSwitchTab();
-    // }
+    let userInfo = wx.BaaS.storage.get('userinfo');
+    console.log(userInfo);
+    if (userInfo) { // 授权
+      this.setData({ inited: true });
+      this.changeAndSwitchTab();
+    }
   },
 
   changeAndSwitchTab() {
@@ -24,7 +25,6 @@ Page({
   },
 
   grant(data) {
-    console.log(data);
     if (data.detail.userInfo) {
       let handleResult = Promise.resolve();
       let userInfo = wx.BaaS.storage.get('userinfo');
@@ -32,10 +32,10 @@ Page({
         handleResult = zx.handleUserInfo(data);
       }
       handleResult
-        .then(() => zx.get('user', 'me'))
-        .then(res => {
+        .then(user => {
           this.setData({ inited: true });
-          wx.BaaS.storage.set('userinfo', res.data);
+          console.log(user);
+          wx.BaaS.storage.set('userinfo', user);
           this.changeAndSwitchTab();
         });
     } else {

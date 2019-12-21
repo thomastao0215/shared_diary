@@ -120,11 +120,6 @@ Page({
       });
     }
   },
-  showPopup: function showPopup() {
-    this.setData({
-      show: true
-    });
-  },
   showSheet: function showSheet(value) {
     this.setData({
       'sheet.show': value

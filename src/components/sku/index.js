@@ -99,6 +99,13 @@ Component({
       this.setData({
         count: e.detail
       });
+    },
+    onOperation() {
+      if (this.data.operation == '立即购买') {
+        wx.navigateTo({
+          url: '/packages/order-edit/index'
+        });
+      }
     }
 
   }

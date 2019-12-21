@@ -65,6 +65,7 @@
         "wallet/index",
         "back/index",
         "order/index",
+        "order-edit/index",
         "orders/index"
       ]
     }

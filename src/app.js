@@ -5,11 +5,12 @@ zx.init(clientID);
 
 App({
   onLaunch() {
-    zx.login()
-      .then(res => {
-        console.log('user:login', res);
-        this.globalData.userId = res.id;
-      });
+    // zx.login()
+    //   .then(res => {
+    //     console.log('user:login', res);
+    //     this.globalData.userId = res.id;
+    //     wx.BaaS.storage.set('userinfo', res);
+    //   });
   },
   globalData: {
     userId: null,
