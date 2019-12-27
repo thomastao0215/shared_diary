@@ -1783,12 +1783,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
 /* harmony import */ var vant_weapp_dist_dialog_dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vant-weapp/dist/dialog/dialog */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/dialog/dialog.js");
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
 
 
-const app = getApp();
+
+var app = getApp();
 Component({
   properties: {
     productList: {
@@ -1822,19 +1824,17 @@ Component({
         qiaqia_price: 10,
         retail_price: 20
       }],
-
-      observer(value) {
-        let selectAll = true;
-        value.forEach(item => {
+      observer: function observer(value) {
+        var selectAll = true;
+        value.forEach(function (item) {
           if (!item.isSelected) {
             selectAll = false;
           }
         });
         this.setData({
-          selectAll
+          selectAll: selectAll
         });
       }
-
     },
     orderProductList: {
       type: Array,
@@ -1864,8 +1864,8 @@ Component({
     assetsUrl: utils_config__WEBPACK_IMPORTED_MODULE_4__["default"].assetsUrl
   },
   methods: {
-    selectOne(e) {
-      const index = e.currentTarget.dataset.index;
+    selectOne: function selectOne(e) {
+      var index = e.currentTarget.dataset.index;
       this.index = index; // 记录当前点击的商品
 
       if (this.data.productList[index].isSelected) {
@@ -1878,18 +1878,16 @@ Component({
         });
       } else {
         this.triggerEvent('select-one', {
-          index
+          index: index
         });
       }
     },
-
-    toggleActionSheet() {
+    toggleActionSheet: function toggleActionSheet() {
       this.setData({
         show: false
       });
     },
-
-    onSelectAll() {
+    onSelectAll: function onSelectAll() {
       if (!this.data.selectAll) {
         this.triggerEvent('select-all');
       }
@@ -1898,33 +1896,25 @@ Component({
         selectAll: !this.data.selectAll
       });
     },
-
-    reasonInput(e) {
+    reasonInput: function reasonInput(e) {
       this.remark = e.detail.value;
     },
-
-    toggleReason(e) {
-      const {
-        index
-      } = e.currentTarget.dataset;
-      const {
-        selectedReasons
-      } = this.data;
+    toggleReason: function toggleReason(e) {
+      var index = e.currentTarget.dataset.index;
+      var selectedReasons = this.data.selectedReasons;
       selectedReasons[index] = !selectedReasons[index];
       this.setData({
-        selectedReasons
+        selectedReasons: selectedReasons
       });
     },
-
-    confirmBack() {
-      const {
-        selectedReasons,
-        reasons
-      } = this.data;
-      let reason = '';
-      selectedReasons.forEach((i, index) => {
+    confirmBack: function confirmBack() {
+      var _this$data = this.data,
+          selectedReasons = _this$data.selectedReasons,
+          reasons = _this$data.reasons;
+      var reason = '';
+      selectedReasons.forEach(function (i, index) {
         if (i) {
-          reason = !reason ? reasons[index] : `${reason};${reasons[index]}`;
+          reason = !reason ? reasons[index] : reason + ";" + reasons[index];
         }
       });
       this.setData({
@@ -1933,48 +1923,46 @@ Component({
       });
       this.triggerEvent('confirm-back', {
         index: this.index,
-        reason,
+        reason: reason,
         remark: this.remark
       });
     },
-
-    onClickBuy() {
-      const {
-        productList,
-        orderProductList,
-        totalPrice,
-        totalOriginPrice,
-        orderId
-      } = this.data;
-      const orderInfo = {
-        productList,
-        orderProductList,
-        totalPrice,
-        totalOriginPrice,
-        orderId
+    onClickBuy: function onClickBuy() {
+      var _this$data2 = this.data,
+          productList = _this$data2.productList,
+          orderProductList = _this$data2.orderProductList,
+          totalPrice = _this$data2.totalPrice,
+          totalOriginPrice = _this$data2.totalOriginPrice,
+          orderId = _this$data2.orderId;
+      var orderInfo = {
+        productList: productList,
+        orderProductList: orderProductList,
+        totalPrice: totalPrice,
+        totalOriginPrice: totalOriginPrice,
+        orderId: orderId
       };
       app.globalData.orderInfo = orderInfo;
       wx.navigateTo({
         url: '/packages/order/index'
       });
     },
+    onClickAllBack: function onClickAllBack() {
+      var _this = this;
 
-    onClickAllBack() {
       vant_weapp_dist_dialog_dialog__WEBPACK_IMPORTED_MODULE_3__["default"].confirm({
         message: '确定全部寄回吗？'
-      }).then(() => {
-        Object(utils_api__WEBPACK_IMPORTED_MODULE_1__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_1__["api"].pay_nothing,
-          id: this.data.orderId
-        }).then(() => {
+      }).then(function () {
+        Object(utils_api__WEBPACK_IMPORTED_MODULE_1__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_1__["api"].pay_nothing, {
+          id: _this.data.orderId
+        })).then(function () {
           if (getCurrentPages().length != 0) {
             getCurrentPages()[getCurrentPages().length - 1].onShow();
           }
-        }).catch(() => {
+        }).catch(function () {
           Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"])('请求失败');
         });
-      }).catch(() => {});
+      }).catch(function () {});
     }
-
   }
 });
 
@@ -1994,141 +1982,147 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! underscore */ "./node_modules/_underscore@1.8.3@underscore/underscore.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(underscore__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
-const api = {
+
+var BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
+var api = {
   "on_login": {
     desc: "用户登录",
-    url: `${BASE_URL}v1/user/on_login/`,
+    url: BASE_URL + "v1/user/on_login/",
     method: "post"
   },
   "info": {
     desc: "用户信息",
-    url: `${BASE_URL}v1/user/info/`,
+    url: BASE_URL + "v1/user/info/",
     method: "get"
   },
   "survey_info": {
     desc: "加载提交过了的问卷",
-    url: `${BASE_URL}v1/user/survey/info/`,
+    url: BASE_URL + "v1/user/survey/info/",
     method: "get"
   },
   "survey_submit": {
     desc: "提交问卷",
-    url: `${BASE_URL}v1/user/survey/submit/`,
+    url: BASE_URL + "v1/user/survey/submit/",
     method: "post"
   },
   "get_coupon_for_subscribe": {
     desc: "购买会员时输入打折码",
-    url: `${BASE_URL}v1/user/coupon_for_subscribe/get`,
+    url: BASE_URL + "v1/user/coupon_for_subscribe/get",
     method: "get"
   },
   "subscribe_pay": {
     desc: "支付会员",
-    url: `${BASE_URL}v1/user/subscribe/pay/`,
+    url: BASE_URL + "v1/user/subscribe/pay/",
     method: "post"
   },
   "post_arrived": {
     desc: "确认收货",
-    url: `${BASE_URL}v1/user/post_arrived/`,
+    url: BASE_URL + "v1/user/post_arrived/",
     method: "post"
   },
   "order_box": {
     desc: "获取盒子信息",
-    url: `${BASE_URL}v1/user/order/box/`,
+    url: BASE_URL + "v1/user/order/box/",
     method: "get"
   },
   "pre_post_back": {
     // /api/v1/user/order/pre_post_back/:order_id
     desc: "预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back/`,
+    url: BASE_URL + "v1/user/order/pre_post_back/",
     method: "post"
   },
   "pre_post_back_cancel": {
     desc: "取消预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/pre_post_back_cancel/",
     method: "post"
   },
   "order_update": {
     // /api/v1/user/order/update/:order_id
     desc: "修改盒子信息",
-    url: `${BASE_URL}v1/user/order/update/`,
+    url: BASE_URL + "v1/user/order/update/",
     method: "post"
   },
   "order_post_back": {
     // /user/order/post_back/:order_id/:product_id/
     desc: "寄回某产品",
-    url: `${BASE_URL}v1/user/order/post_back/`,
+    url: BASE_URL + "v1/user/order/post_back/",
     method: "post"
   },
   "order_post_back_cancel": {
     // /user/order/post_back_cancel/:order_id/:product_id/
     desc: "取消寄回",
-    url: `${BASE_URL}v1/user/order/post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/post_back_cancel/",
     method: "post"
   },
   "order_pay": {
     desc: "支付盒子订单",
-    url: `${BASE_URL}v1/user/order/pay/`,
+    url: BASE_URL + "v1/user/order/pay/",
     method: "post"
   },
   "order_feedback": {
     desc: "订单结束后反馈信息",
-    url: `${BASE_URL}v1/user/order/feedback/:order_id/`,
+    url: BASE_URL + "v1/user/order/feedback/:order_id/",
     method: "post"
   },
   "coupon_list": {
     desc: "优惠券列表（我的钱包）",
-    url: `${BASE_URL}v1/user/coupon/list/`,
+    url: BASE_URL + "v1/user/coupon/list/",
     method: "get"
   },
   "coupon_exchange": {
     desc: "优惠码兑换成券",
-    url: `${BASE_URL}v1/user/coupon/exchange/`,
+    url: BASE_URL + "v1/user/coupon/exchange/",
     method: "post"
   },
   "address_list": {
     desc: "用户收件地址列表",
-    url: `${BASE_URL}v1/user/address/list/`,
+    url: BASE_URL + "v1/user/address/list/",
     method: "get"
   },
   "address_delete": {
     desc: "用户收件地址删除",
-    url: `${BASE_URL}v1/user/address/delete/`,
+    url: BASE_URL + "v1/user/address/delete/",
     method: "post"
   },
   "address_create": {
     desc: "用户新增收件地址",
-    url: `${BASE_URL}v1/user/address/create/`,
+    url: BASE_URL + "v1/user/address/create/",
     method: "post"
   },
   "address_update": {
     desc: "用户编辑收件地址",
-    url: `${BASE_URL}v1/user/address/update/`,
+    url: BASE_URL + "v1/user/address/update/",
     method: "post"
   },
   "phone_send_sm": {
     desc: "用户发送手机验证码",
-    url: `${BASE_URL}v1/user/phone/send_sm/`,
+    url: BASE_URL + "v1/user/phone/send_sm/",
     method: "post"
   },
   "phone_bind": {
     desc: "用户绑定手机",
-    url: `${BASE_URL}v1/user/phone/bind/`,
+    url: BASE_URL + "v1/user/phone/bind/",
     method: "post"
   },
   "phone_unbind": {
     desc: "用户解绑手机",
-    url: `${BASE_URL}v1/user/phone/unbind/`,
+    url: BASE_URL + "v1/user/phone/unbind/",
     method: "post"
   },
   "pay_nothing": {
     desc: "支付盒子空订单",
-    url: `${BASE_URL}v1/user/order/pay_nothing/`,
+    url: BASE_URL + "v1/user/order/pay_nothing/",
     method: "post"
   }
 };
-function request(options, data = {}) {
+function request(options, data) {
+  if (data === void 0) {
+    data = {};
+  }
+
   options = underscore__WEBPACK_IMPORTED_MODULE_1___default.a.clone(options);
 
   if (options.id !== undefined) {
@@ -2136,41 +2130,38 @@ function request(options, data = {}) {
     options.url += String(options.id);
     delete options.id;
   } else if (options.ids !== undefined) {
-    options.ids.forEach(item => {
+    options.ids.forEach(function (item) {
       options.url += String(item) + '/';
     });
     delete options.ids;
   }
 
   console.log(options);
-  return new Promise((resolve, reject) => {
-    const header = {
+  return new Promise(function (resolve, reject) {
+    var header = {
       'content-type': 'application/json'
     };
-    const token = wx.getStorageSync('token');
+    var token = wx.getStorageSync('token');
 
     if (token) {
       header['Auth-Token'] = token;
     }
 
-    wx.request({
-      header,
-      ...options,
-      data,
-
-      success(res) {
+    wx.request(_extends({
+      header: header
+    }, options, {
+      data: data,
+      success: function success(res) {
         if (res.data.status !== 200) {
           reject(res.data.error);
         }
 
         resolve(res.data.data);
       },
-
-      fail(err) {
+      fail: function fail(err) {
         reject(err);
       }
-
-    });
+    }));
   });
 }
 
@@ -2227,9 +2218,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getImageUrl", function() { return getImageUrl; });
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 
-const {
-  uploadUrl
-} = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"];
+var uploadUrl = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].uploadUrl;
 /**
  * 获取远程图片地址
  * 如，const icon1 = getImageUrl('slice/location/icon_location.png')
@@ -2237,7 +2226,7 @@ const {
  */
 
 function getImageUrl(path) {
-  return `${uploadUrl}${path}`;
+  return "" + uploadUrl + path;
 }
 
 /***/ })

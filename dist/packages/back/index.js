@@ -1705,10 +1705,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/api */ "./src/utils/api.js");
 /* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/packages/back/utils.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
-const app = getApp();
+
+var app = getApp();
 Page({
   data: {
     show: false,
@@ -1720,71 +1722,72 @@ Page({
     weekStr: '',
     addressId: ''
   },
+  onLoad: function onLoad(query) {
+    if (query === void 0) {
+      query = {};
+    }
 
-  onLoad(query = {}) {
-    const {
-      id,
-      time = '',
-      address = ''
-    } = query;
+    var _query = query,
+        id = _query.id,
+        _query$time = _query.time,
+        time = _query$time === void 0 ? '' : _query$time,
+        _query$address = _query.address,
+        address = _query$address === void 0 ? '' : _query$address;
     this.id = id;
     this.lock = false;
     this.edit = !!time;
 
     if (this.edit) {
-      const d = new Date(time);
-      const addr = JSON.parse(address);
-      const weekStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getWeekStr"])(0, d);
-      const timeStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getTimeStr"])(d);
-      const dateStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getDateStr"])(0, d);
-      const addressId = addr.id;
-      const timeDesc = dateStr + ' ' + weekStr + ' ' + timeStr;
-      const addressInfo = {};
+      var d = new Date(time);
+      var addr = JSON.parse(address);
+      var weekStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getWeekStr"])(0, d);
+      var timeStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getTimeStr"])(d);
+      var dateStr = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getDateStr"])(0, d);
+      var addressId = addr.id;
+      var timeDesc = dateStr + ' ' + weekStr + ' ' + timeStr;
+      var addressInfo = {};
       addressInfo.name = addr.name;
       addressInfo.phone = addr.phone;
       addressInfo.address = addr.address_name + ' ' + addr.address;
       this.setData({
-        weekStr,
-        timeStr,
-        dateStr,
-        addressId,
-        timeDesc,
-        addressInfo
+        weekStr: weekStr,
+        timeStr: timeStr,
+        dateStr: dateStr,
+        addressId: addressId,
+        timeDesc: timeDesc,
+        addressInfo: addressInfo
       });
     }
   },
-
-  onShow() {
+  onShow: function onShow() {
     this.setData({
       items: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getItems"])()
     });
 
     if (app.globalData.isSetAddress === true) {
-      const addressId = app.globalData.addressId;
-      const addressInfo = app.globalData.addressInfo;
+      var addressId = app.globalData.addressId;
+      var addressInfo = app.globalData.addressInfo;
       this.setData({
-        addressId,
-        addressInfo
+        addressId: addressId,
+        addressInfo: addressInfo
       });
       app.globalData.isSetAddress = false;
     }
   },
-
-  onSelectTime() {
+  onSelectTime: function onSelectTime() {
     this.setData({
       show: true
     });
   },
-
-  checkTime() {
-    const day = Number(this.data.dateStr.split('-').join(''));
-    const time = Number(this.data.timeStr.split(':')[0]);
+  checkTime: function checkTime() {
+    var day = Number(this.data.dateStr.split('-').join(''));
+    var time = Number(this.data.timeStr.split(':')[0]);
 
     if (!Object(_utils__WEBPACK_IMPORTED_MODULE_2__["checkSelectTime"])(day, time)) {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('请重新选择时间');
-      const items = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getItems"])();
+      var items = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getItems"])();
       this.setData({
-        items,
+        items: items,
         timeDesc: '',
         dateStr: '',
         timeStr: '',
@@ -1797,45 +1800,41 @@ Page({
 
     return true;
   },
-
-  onClose() {
+  onClose: function onClose() {
     this.setData({
       show: false
     });
     this.checkTime();
   },
-
-  onClickNav(e) {
+  onClickNav: function onClickNav(e) {
     this.setData({
       mainActiveIndex: e.detail.index
     });
   },
-
-  onClickItem(e) {
-    const {
-      id: activeId,
-      dateStr,
-      timeStr,
-      weekStr
-    } = e.detail;
+  onClickItem: function onClickItem(e) {
+    var _e$detail = e.detail,
+        activeId = _e$detail.id,
+        dateStr = _e$detail.dateStr,
+        timeStr = _e$detail.timeStr,
+        weekStr = _e$detail.weekStr;
     this.setData({
-      activeId,
-      dateStr,
-      timeStr,
-      weekStr,
-      timeDesc: `${dateStr} ${weekStr} ${timeStr}`
+      activeId: activeId,
+      dateStr: dateStr,
+      timeStr: timeStr,
+      weekStr: weekStr,
+      timeDesc: dateStr + " " + weekStr + " " + timeStr
     });
   },
+  onClickConfirm: function onClickConfirm() {
+    var _this = this;
 
-  onClickConfirm() {
     if (this.lock) return;
     if (!this.checkTime()) return;
-    const {
-      timeDesc,
-      addressId,
-      dateStr,
-      timeStr
-    } = this.data;
+    var _this$data = this.data,
+        timeDesc = _this$data.timeDesc,
+        addressId = _this$data.addressId,
+        dateStr = _this$data.dateStr,
+        timeStr = _this$data.timeStr;
 
     if (!timeDesc) {
       return Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('请选择取件时间');
@@ -1845,64 +1844,61 @@ Page({
       return Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('请选择取件地址');
     }
 
-    const tt = timeStr.split('-')[0];
-    const time = `${dateStr} ${tt}:00`;
+    var tt = timeStr.split('-')[0];
+    var time = dateStr + " " + tt + ":00";
     this.lock = true;
     vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"].loading('预约中...');
 
     if (this.edit) {
-      return Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back_cancel,
+      return Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back_cancel, {
         id: this.id
-      }).then(() => {
-        return Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back,
-          id: this.id
-        }, {
-          recomanded_post_back_address_id: this.data.addressId,
+      })).then(function () {
+        return Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back, {
+          id: _this.id
+        }), {
+          recomanded_post_back_address_id: _this.data.addressId,
           recomanded_post_back_time: time
         });
-      }).then(() => {
+      }).then(function () {
         Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('预约成功');
-        setTimeout(() => {
-          this.lock = false;
+        setTimeout(function () {
+          _this.lock = false;
           wx.navigateBack();
         }, 1500);
-      }).catch(err => {
-        this.lock = false;
+      }).catch(function (err) {
+        _this.lock = false;
         Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message || err.msg || err || '预约失败');
       });
     }
 
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back,
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].pre_post_back, {
       id: this.id
-    }, {
+    }), {
       recomanded_post_back_address_id: this.data.addressId,
       recomanded_post_back_time: time
-    }).then(() => {
+    }).then(function () {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('预约成功');
-      setTimeout(() => {
-        this.lock = false;
+      setTimeout(function () {
+        _this.lock = false;
         wx.navigateBack();
       }, 1500);
-    }).catch(err => {
-      this.lock = false;
+    }).catch(function (err) {
+      _this.lock = false;
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message || err.msg || err || '预约失败');
     });
   },
-
-  navToAddress() {
+  navToAddress: function navToAddress() {
     wx.navigateTo({
       url: '/packages/address/list/index?select=1'
     });
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '爱戴小盒，快来看看吧!',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ }),
@@ -1921,141 +1917,147 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! underscore */ "./node_modules/_underscore@1.8.3@underscore/underscore.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(underscore__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
-const api = {
+
+var BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
+var api = {
   "on_login": {
     desc: "用户登录",
-    url: `${BASE_URL}v1/user/on_login/`,
+    url: BASE_URL + "v1/user/on_login/",
     method: "post"
   },
   "info": {
     desc: "用户信息",
-    url: `${BASE_URL}v1/user/info/`,
+    url: BASE_URL + "v1/user/info/",
     method: "get"
   },
   "survey_info": {
     desc: "加载提交过了的问卷",
-    url: `${BASE_URL}v1/user/survey/info/`,
+    url: BASE_URL + "v1/user/survey/info/",
     method: "get"
   },
   "survey_submit": {
     desc: "提交问卷",
-    url: `${BASE_URL}v1/user/survey/submit/`,
+    url: BASE_URL + "v1/user/survey/submit/",
     method: "post"
   },
   "get_coupon_for_subscribe": {
     desc: "购买会员时输入打折码",
-    url: `${BASE_URL}v1/user/coupon_for_subscribe/get`,
+    url: BASE_URL + "v1/user/coupon_for_subscribe/get",
     method: "get"
   },
   "subscribe_pay": {
     desc: "支付会员",
-    url: `${BASE_URL}v1/user/subscribe/pay/`,
+    url: BASE_URL + "v1/user/subscribe/pay/",
     method: "post"
   },
   "post_arrived": {
     desc: "确认收货",
-    url: `${BASE_URL}v1/user/post_arrived/`,
+    url: BASE_URL + "v1/user/post_arrived/",
     method: "post"
   },
   "order_box": {
     desc: "获取盒子信息",
-    url: `${BASE_URL}v1/user/order/box/`,
+    url: BASE_URL + "v1/user/order/box/",
     method: "get"
   },
   "pre_post_back": {
     // /api/v1/user/order/pre_post_back/:order_id
     desc: "预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back/`,
+    url: BASE_URL + "v1/user/order/pre_post_back/",
     method: "post"
   },
   "pre_post_back_cancel": {
     desc: "取消预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/pre_post_back_cancel/",
     method: "post"
   },
   "order_update": {
     // /api/v1/user/order/update/:order_id
     desc: "修改盒子信息",
-    url: `${BASE_URL}v1/user/order/update/`,
+    url: BASE_URL + "v1/user/order/update/",
     method: "post"
   },
   "order_post_back": {
     // /user/order/post_back/:order_id/:product_id/
     desc: "寄回某产品",
-    url: `${BASE_URL}v1/user/order/post_back/`,
+    url: BASE_URL + "v1/user/order/post_back/",
     method: "post"
   },
   "order_post_back_cancel": {
     // /user/order/post_back_cancel/:order_id/:product_id/
     desc: "取消寄回",
-    url: `${BASE_URL}v1/user/order/post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/post_back_cancel/",
     method: "post"
   },
   "order_pay": {
     desc: "支付盒子订单",
-    url: `${BASE_URL}v1/user/order/pay/`,
+    url: BASE_URL + "v1/user/order/pay/",
     method: "post"
   },
   "order_feedback": {
     desc: "订单结束后反馈信息",
-    url: `${BASE_URL}v1/user/order/feedback/:order_id/`,
+    url: BASE_URL + "v1/user/order/feedback/:order_id/",
     method: "post"
   },
   "coupon_list": {
     desc: "优惠券列表（我的钱包）",
-    url: `${BASE_URL}v1/user/coupon/list/`,
+    url: BASE_URL + "v1/user/coupon/list/",
     method: "get"
   },
   "coupon_exchange": {
     desc: "优惠码兑换成券",
-    url: `${BASE_URL}v1/user/coupon/exchange/`,
+    url: BASE_URL + "v1/user/coupon/exchange/",
     method: "post"
   },
   "address_list": {
     desc: "用户收件地址列表",
-    url: `${BASE_URL}v1/user/address/list/`,
+    url: BASE_URL + "v1/user/address/list/",
     method: "get"
   },
   "address_delete": {
     desc: "用户收件地址删除",
-    url: `${BASE_URL}v1/user/address/delete/`,
+    url: BASE_URL + "v1/user/address/delete/",
     method: "post"
   },
   "address_create": {
     desc: "用户新增收件地址",
-    url: `${BASE_URL}v1/user/address/create/`,
+    url: BASE_URL + "v1/user/address/create/",
     method: "post"
   },
   "address_update": {
     desc: "用户编辑收件地址",
-    url: `${BASE_URL}v1/user/address/update/`,
+    url: BASE_URL + "v1/user/address/update/",
     method: "post"
   },
   "phone_send_sm": {
     desc: "用户发送手机验证码",
-    url: `${BASE_URL}v1/user/phone/send_sm/`,
+    url: BASE_URL + "v1/user/phone/send_sm/",
     method: "post"
   },
   "phone_bind": {
     desc: "用户绑定手机",
-    url: `${BASE_URL}v1/user/phone/bind/`,
+    url: BASE_URL + "v1/user/phone/bind/",
     method: "post"
   },
   "phone_unbind": {
     desc: "用户解绑手机",
-    url: `${BASE_URL}v1/user/phone/unbind/`,
+    url: BASE_URL + "v1/user/phone/unbind/",
     method: "post"
   },
   "pay_nothing": {
     desc: "支付盒子空订单",
-    url: `${BASE_URL}v1/user/order/pay_nothing/`,
+    url: BASE_URL + "v1/user/order/pay_nothing/",
     method: "post"
   }
 };
-function request(options, data = {}) {
+function request(options, data) {
+  if (data === void 0) {
+    data = {};
+  }
+
   options = underscore__WEBPACK_IMPORTED_MODULE_1___default.a.clone(options);
 
   if (options.id !== undefined) {
@@ -2063,41 +2065,38 @@ function request(options, data = {}) {
     options.url += String(options.id);
     delete options.id;
   } else if (options.ids !== undefined) {
-    options.ids.forEach(item => {
+    options.ids.forEach(function (item) {
       options.url += String(item) + '/';
     });
     delete options.ids;
   }
 
   console.log(options);
-  return new Promise((resolve, reject) => {
-    const header = {
+  return new Promise(function (resolve, reject) {
+    var header = {
       'content-type': 'application/json'
     };
-    const token = wx.getStorageSync('token');
+    var token = wx.getStorageSync('token');
 
     if (token) {
       header['Auth-Token'] = token;
     }
 
-    wx.request({
-      header,
-      ...options,
-      data,
-
-      success(res) {
+    wx.request(_extends({
+      header: header
+    }, options, {
+      data: data,
+      success: function success(res) {
         if (res.data.status !== 200) {
           reject(res.data.error);
         }
 
         resolve(res.data.data);
       },
-
-      fail(err) {
+      fail: function fail(err) {
         reject(err);
       }
-
-    });
+    }));
   });
 }
 

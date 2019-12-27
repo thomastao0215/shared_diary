@@ -818,20 +818,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const app = getApp();
+var app = getApp();
 Page({
   data: {
     icon1: '',
     icon2: '',
     userAddressList: []
   },
+  onLoad: function onLoad(query) {
+    if (query === void 0) {
+      query = {};
+    }
 
-  onLoad(query = {}) {
-    const icon1 = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/location/icon_location.png');
-    const icon2 = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/location/icon_newlocation.png');
+    var icon1 = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/location/icon_location.png');
+    var icon2 = Object(utils_image__WEBPACK_IMPORTED_MODULE_0__["getImageUrl"])('slice/location/icon_newlocation.png');
     this.setData({
-      icon1,
-      icon2
+      icon1: icon1,
+      icon2: icon2
     });
     this.init();
 
@@ -839,23 +842,26 @@ Page({
       this.select = true;
     }
   },
-
-  onShow() {
+  onShow: function onShow() {
     if (app.globalData.refreshAddressList) {
       this.init();
       app.globalData.refreshAddressList = false;
     }
   },
-
-  init() {
+  init: function init() {
     this.limit = 20;
     this.offset = 0;
     this.fetching = false;
     this.finished = false;
     this.fetchAddress('fetch');
   },
+  fetchAddress: function fetchAddress(type) {
+    var _this = this;
 
-  fetchAddress(type = 'fetch') {
+    if (type === void 0) {
+      type = 'fetch';
+    }
+
     if (type === 'fetch') {
       this.offset = 0;
       this.finished = false;
@@ -868,85 +874,74 @@ Page({
     Object(_api__WEBPACK_IMPORTED_MODULE_3__["fetchData"])({
       limit: this.limit,
       offset: this.offset
-    }).then(res => {
-      let data = res.data.objects || [];
+    }).then(function (res) {
+      var data = res.data.objects || [];
 
-      if (data.length < this.limit) {
-        this.finished = true;
+      if (data.length < _this.limit) {
+        _this.finished = true;
       } else {
-        this.offset += this.limit;
+        _this.offset += _this.limit;
       }
 
-      const {
-        address
-      } = this.data;
-      const userAddressList = type === 'fetch' ? [...data] : [...address, ...data];
-      this.fetching = false;
-      this.setData({
-        userAddressList
+      var address = _this.data.address;
+      var userAddressList = type === 'fetch' ? [].concat(data) : [].concat(address, data);
+      _this.fetching = false;
+
+      _this.setData({
+        userAddressList: userAddressList
       });
+
       type === 'fetch' && wx.hideLoading();
     });
   },
-
-  onEdit(e) {
-    const {
-      address
-    } = e.target.dataset;
+  onEdit: function onEdit(e) {
+    var address = e.target.dataset.address;
     wx.navigateTo({
       url: '/packages/address/edit/index?address=' + JSON.stringify(address)
     });
   },
+  onDelete: function onDelete(e) {
+    var _this2 = this;
 
-  onDelete(e) {
-    const {
-      address
-    } = e.target.dataset;
-    const {
-      id
-    } = address;
+    var address = e.target.dataset.address;
+    var id = address.id;
     weapp_zx__WEBPACK_IMPORTED_MODULE_1__["default"].update('address', id, {
       is_delete: 1
-    }).then(() => {
+    }).then(function () {
       vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"].success({
         message: '删除成功'
       });
-      this.init();
-    }).catch(err => {
+
+      _this2.init();
+    }).catch(function (err) {
       vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"].fail({
         message: err.message || err.msg || '删除'
       });
     });
   },
-
-  onCreate() {
+  onCreate: function onCreate() {
     wx.navigateTo({
       url: '/packages/address/edit/index'
     });
   },
-
-  onClickAddress(e) {
+  onClickAddress: function onClickAddress(e) {
     if (!this.select) {
       return;
     }
 
-    const {
-      address
-    } = e.target.dataset;
-    const {
-      province,
-      city,
-      county,
-      address: addr,
-      phone,
-      name,
-      id
-    } = address;
-    const addressStr = province + city + county + addr;
-    const addressId = id;
-    const addressInfo = {
-      name,
-      phone,
+    var address = e.target.dataset.address;
+    var province = address.province,
+        city = address.city,
+        county = address.county,
+        addr = address.address,
+        phone = address.phone,
+        name = address.name,
+        id = address.id;
+    var addressStr = province + city + county + addr;
+    var addressId = id;
+    var addressInfo = {
+      name: name,
+      phone: phone,
       address: addressStr
     };
     app.globalData.isSetAddress = true;
@@ -954,15 +949,13 @@ Page({
     app.globalData.addressInfo = addressInfo;
     wx.navigateBack();
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '??????????!',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ }),
@@ -1018,9 +1011,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getImageUrl", function() { return getImageUrl; });
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 
-const {
-  uploadUrl
-} = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"];
+var uploadUrl = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].uploadUrl;
 /**
  * 获取远程图片地址
  * 如，const icon1 = getImageUrl('slice/location/icon_location.png')
@@ -1028,7 +1019,7 @@ const {
  */
 
 function getImageUrl(path) {
-  return `${uploadUrl}${path}`;
+  return "" + uploadUrl + path;
 }
 
 /***/ })

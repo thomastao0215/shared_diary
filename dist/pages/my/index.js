@@ -156,85 +156,71 @@ Page({
     default_avatarUrl: 'https://cloud-minapp-25663.cloud.ifanrusercontent.com/1hEl1dExlftTcM6M.jpg',
     joinDate: 0
   },
-
   // 事件处理函数
-  switchToBox() {
+  switchToBox: function switchToBox() {
     wx.switchTab({
       url: '../box/index'
     });
   },
-
-  Subs() {
+  Subs: function Subs() {
     wx.setClipboardData({
       data: 'public_account',
-
-      success() {
+      success: function success() {
         wx.getClipboardData({
-          success() {
+          success: function success() {
             wx.hideToast({
-              complete() {
+              complete: function complete() {
                 Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_0__["default"])('公众号已复制，前往微信顶部搜索框粘贴搜索');
               }
-
             });
           }
-
         });
       }
-
     });
   },
-
-  onLoad() {
+  onLoad: function onLoad() {
     // 获取 user 信息
-    let userInfo = wx.BaaS.storage.get('userinfo'); // zx.get('user', 'me').then(res => {
+    var userInfo = wx.BaaS.storage.get('userinfo'); // zx.get('user', 'me').then(res => {
     //   console.log(res);
     // });
 
     if (userInfo) {
       this.setData({
-        userInfo,
+        userInfo: userInfo,
         hasUserInfo: true
       });
     }
   },
-
-  navToWallet() {
+  navToWallet: function navToWallet() {
     wx.navigateTo({
       url: '/packages/wallet/index'
     });
   },
-
-  getPhoneNumber(e) {
+  getPhoneNumber: function getPhoneNumber(e) {
     console.log(e.detail.errMsg);
     console.log(e.detail.iv);
     console.log(e.detail.encryptedData);
   },
-
-  navToBox() {
+  navToBox: function navToBox() {
     wx.switchTab({
       url: '/pages/box/index'
     });
   },
-
-  navToInvite() {
+  navToInvite: function navToInvite() {
     wx.navigateTo({
       url: '/packages/invite/index'
     });
   },
-
-  navToAddress() {
+  navToAddress: function navToAddress() {
     wx.navigateTo({
       url: '/packages/address/list/index'
     });
   },
-
-  navToOrders() {
+  navToOrders: function navToOrders() {
     wx.navigateTo({
       url: '/packages/orders/index?userId=' + this.data.userInfo.id
     });
   }
-
 });
 
 /***/ })

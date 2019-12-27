@@ -725,20 +725,23 @@ Page({
       price: 100
     }]
   },
+  onLoad: function onLoad(query) {
+    var _this = this;
 
-  onLoad(query = {}) {
-    const {
-      productId
-    } = query;
+    if (query === void 0) {
+      query = {};
+    }
+
+    var _query = query,
+        productId = _query.productId;
     wx.showLoading({
       title: '加载中'
     });
-    Object(_api__WEBPACK_IMPORTED_MODULE_0__["fetchData"])(productId).then(res => {
-      const {
-        data
-      } = res;
+    Object(_api__WEBPACK_IMPORTED_MODULE_0__["fetchData"])(productId).then(function (res) {
+      var data = res.data;
       console.log(data);
-      this.setData({
+
+      _this.setData({
         product_id: data.id,
         title: data.title,
         description: data.description,
@@ -752,23 +755,22 @@ Page({
         info_images: data.info_images,
         sku_group: data.sku_group
       });
-      Object(_api__WEBPACK_IMPORTED_MODULE_0__["fetchSku"])(data.id).then(res => {
-        this.setData({
+
+      Object(_api__WEBPACK_IMPORTED_MODULE_0__["fetchSku"])(data.id).then(function (res) {
+        _this.setData({
           sku_list: res.data.objects
         });
       });
       wx.hideLoading();
     });
   },
-
-  onClose() {
+  onClose: function onClose() {
     var show = !this.data.show;
     this.setData({
-      show
+      show: show
     });
   },
-
-  onClickBuy() {
+  onClickBuy: function onClickBuy() {
     if (this.data.sku_list) {
       this.setData({
         operation: '立即购买',
@@ -776,8 +778,7 @@ Page({
       });
     }
   },
-
-  onClickCart() {
+  onClickCart: function onClickCart() {
     if (this.data.sku_list) {
       this.setData({
         operation: '加入购物车',
@@ -785,33 +786,28 @@ Page({
       });
     }
   },
-
-  showSheet(value) {
+  showSheet: function showSheet(value) {
     this.setData({
       'sheet.show': value
     });
   },
-
-  showShareImageModal() {
+  showShareImageModal: function showShareImageModal() {
     this.setData({
       showModal: true
     });
   },
-
-  closeActionSheet() {
+  closeActionSheet: function closeActionSheet() {
     this.setData({
       'sheet.show': false
     });
     this.triggerEvent('finished');
   },
-
-  closeShareImageModal() {
+  closeShareImageModal: function closeShareImageModal() {
     this.setData({
       showModal: false
     });
   },
-
-  handleActionClick(e) {
+  handleActionClick: function handleActionClick(e) {
     if (e.detail.openType === 'share') return;
     wx.showLoading({
       title: '正在生成'
@@ -820,33 +816,34 @@ Page({
       showCanvas: true
     }, this.draw.bind(this));
   },
+  draw: function draw() {
+    var _this2 = this;
 
-  draw() {
-    this.loadShopInfo().then(this.loadShareSettings.bind(this)).then(this.loadFeatureImage.bind(this)).then(this.drawQrCode.bind(this)).then(this.createPosterTempPath.bind(this)).then(src => {
-      this.setData({
-        src,
+    this.loadShopInfo().then(this.loadShareSettings.bind(this)).then(this.loadFeatureImage.bind(this)).then(this.drawQrCode.bind(this)).then(this.createPosterTempPath.bind(this)).then(function (src) {
+      _this2.setData({
+        src: src,
         showModal: true,
         showCanvas: false
-      }, () => {
-        this.triggerEvent('finished');
+      }, function () {
+        _this2.triggerEvent('finished');
       });
-    }).catch(() => {
-      this.setData({
+    }).catch(function () {
+      _this2.setData({
         showCanvas: false
       });
-      this.closeShareImageModal();
-      this.closeActionSheet();
+
+      _this2.closeShareImageModal();
+
+      _this2.closeActionSheet();
     });
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '我发现了一个好东西',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ })

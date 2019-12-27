@@ -42,8 +42,7 @@ Component({
       value: ''
     }
   },
-
-  attached() {// console.log(this.data.seekerStatus)
+  attached: function attached() {// console.log(this.data.seekerStatus)
     // const { companyId } = this.data
     // if (companyId) {
     //   zx.get('companies', companyId)
@@ -56,14 +55,12 @@ Component({
     //     })
     // }
   },
-
   methods: {
-    navToDetail() {
+    navToDetail: function navToDetail() {
       wx.navigateTo({
         url: '/packages/product/index?productId=' + this.data.productId
       });
     }
-
   }
 });
 

@@ -47,19 +47,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAddress", function() { return createAddress; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAddress", function() { return updateAddress; });
 /* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! weapp-zx */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 function getAddressInfo(id) {
   return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('address', id);
 }
 function createAddress(data) {
-  return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(res => {
-    const {
-      id
-    } = res.data;
-    return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].create('address', { ...data,
+  return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(function (res) {
+    var id = res.data.id;
+    return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].create('address', _extends({}, data, {
       user_id: id,
       is_delete: false
-    });
+    }));
   });
 }
 function updateAddress(id, data) {
@@ -4134,19 +4134,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchData", function() { return fetchData; });
 /* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! weapp-zx */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js");
 
-function fetchData(options = {}) {
-  const {
-    limit,
-    offset
-  } = options;
-  return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(res => {
-    const {
-      id
-    } = res.data;
+function fetchData(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var _options = options,
+      limit = _options.limit,
+      offset = _options.offset;
+  return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('user', 'me').then(function (res) {
+    var id = res.data.id;
     return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].find('address', {
-      limit,
-      offset,
-      fn: query => {
+      limit: limit,
+      offset: offset,
+      fn: function fn(query) {
         query.compare('user_id', '=', id);
         query.compare('is_delete', '!=', true);
       }
@@ -4170,7 +4171,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTimeStr", function() { return getTimeStr; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkSelectTime", function() { return checkSelectTime; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItems", function() { return getItems; });
-function getDateStr(AddDayCount, dd = null) {
+function getDateStr(AddDayCount, dd) {
+  if (dd === void 0) {
+    dd = null;
+  }
+
   dd = dd || new Date();
   dd.setDate(dd.getDate() + AddDayCount); // 获取AddDayCount天后的日期
 
@@ -4183,23 +4188,27 @@ function getDateStr(AddDayCount, dd = null) {
   d = d > 9 ? '' + d : '0' + d;
   return y + '-' + m + '-' + d;
 }
-function getWeekStr(AddDayCount, dd = null) {
+function getWeekStr(AddDayCount, dd) {
+  if (dd === void 0) {
+    dd = null;
+  }
+
   dd = dd || new Date();
-  const s = '日一二三四五六'.charAt(dd.getDay() + AddDayCount);
-  return `星期${s}`;
+  var s = '日一二三四五六'.charAt(dd.getDay() + AddDayCount);
+  return "\u661F\u671F" + s;
 }
 function getTimeStr(dd) {
-  let h = dd.getHours();
-  let hh = h + 2;
+  var h = dd.getHours();
+  var hh = h + 2;
   h = h > 9 ? '' + h : '0' + h;
   hh = hh > 9 ? '' + hh : '0' + hh;
   return h + ':00-' + hh + ':00';
 }
 
 function checkTime() {
-  const now = new Date();
-  const h = now.getHours();
-  const m = now.getMinutes();
+  var now = new Date();
+  var h = now.getHours();
+  var m = now.getMinutes();
 
   if (h > 16 || h === 16 && m > 30) {
     return false;
@@ -4219,10 +4228,10 @@ function checkTime() {
 }
 
 function checkSelectTime(day, sh) {
-  const now = new Date();
-  const h = now.getHours();
-  const m = now.getMinutes();
-  const s = Number(getDateStr(0).split('-').join(''));
+  var now = new Date();
+  var h = now.getHours();
+  var m = now.getMinutes();
+  var s = Number(getDateStr(0).split('-').join(''));
 
   if (day > s) {
     return true;
@@ -4243,18 +4252,18 @@ function checkSelectTime(day, sh) {
   return true;
 }
 function getItems() {
-  const items = [];
-  let id = 0;
-  const minHours = 8;
-  const maxHours = 18;
-  ['今天', '明天', '后天'].forEach((text, index) => {
-    const dateStr = getDateStr(index);
-    const weekStr = getWeekStr(index);
-    const children = [];
-    let startHours = minHours;
+  var items = [];
+  var id = 0;
+  var minHours = 8;
+  var maxHours = 18;
+  ['今天', '明天', '后天'].forEach(function (text, index) {
+    var dateStr = getDateStr(index);
+    var weekStr = getWeekStr(index);
+    var children = [];
+    var startHours = minHours;
 
     if (text === '今天') {
-      const checkResult = checkTime();
+      var checkResult = checkTime();
 
       if (!checkResult) {
         return;
@@ -4263,22 +4272,22 @@ function getItems() {
       startHours = checkResult;
     }
 
-    for (let i = startHours; i + 2 <= maxHours; i += 2) {
-      const ii = i + 2;
-      const is = i > 9 ? '' + i : '0' + i;
-      const iis = ii > 9 ? '' + ii : '0' + ii;
+    for (var i = startHours; i + 2 <= maxHours; i += 2) {
+      var ii = i + 2;
+      var is = i > 9 ? '' + i : '0' + i;
+      var iis = ii > 9 ? '' + ii : '0' + ii;
       children.push({
-        text: `${i}:00-${ii}:00`,
+        text: i + ":00-" + ii + ":00",
         id: id++,
-        dateStr,
-        weekStr,
-        timeStr: `${is}:00-${iis}:00`
+        dateStr: dateStr,
+        weekStr: weekStr,
+        timeStr: is + ":00-" + iis + ":00"
       });
     }
 
     items.push({
-      text,
-      children
+      text: text,
+      children: children
     });
   });
   return items;
@@ -4300,16 +4309,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSwipers", function() { return getSwipers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTags", function() { return getTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPageInfo", function() { return getPageInfo; });
-function fetchData(parameters = {}) {
-  var tableName = 'order';
-  var {
-    limit,
-    offset,
-    userId,
-    status
-  } = parameters; // 实例化查询对象
+function fetchData(parameters) {
+  if (parameters === void 0) {
+    parameters = {};
+  }
 
-  const query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
+  var tableName = 'order';
+  var _parameters = parameters,
+      limit = _parameters.limit,
+      offset = _parameters.offset,
+      userId = _parameters.userId,
+      status = _parameters.status; // 实例化查询对象
+
+  var query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
 
   query.compare('user_id', '=', userId);
 
@@ -4318,20 +4330,23 @@ function fetchData(parameters = {}) {
   } // 应用查询对象
 
 
-  const Orders = new wx.BaaS.TableObject(tableName);
+  var Orders = new wx.BaaS.TableObject(tableName);
   return Orders.setQuery(query).limit(limit).offset(offset).find();
 }
-function getOrderProdcuts(parameters = {}) {
-  var tableName = 'order_item';
-  var {
-    orderId
-  } = parameters; // 实例化查询对象
+function getOrderProdcuts(parameters) {
+  if (parameters === void 0) {
+    parameters = {};
+  }
 
-  const query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
+  var tableName = 'order_item';
+  var _parameters2 = parameters,
+      orderId = _parameters2.orderId; // 实例化查询对象
+
+  var query = new wx.BaaS.Query(); // 设置查询条件（比较、字符串包含、组合等）
 
   query.compare('order_id', '=', orderId); // 应用查询对象
 
-  const OrderItems = new wx.BaaS.TableObject(tableName);
+  var OrderItems = new wx.BaaS.TableObject(tableName);
   return OrderItems.setQuery(query).find();
 }
 /**
@@ -4339,22 +4354,22 @@ function getOrderProdcuts(parameters = {}) {
  */
 
 function getSwipers() {
-  const tableName = 'swiper';
-  const query = new wx.BaaS.Query();
+  var tableName = 'swiper';
+  var query = new wx.BaaS.Query();
   query.compare('weight', '>', 0);
-  const swiper = new wx.BaaS.TableObject(tableName);
+  var swiper = new wx.BaaS.TableObject(tableName);
   return swiper.setQuery(query).orderBy('-weight').find();
 }
 function getTags() {
-  const tableName = 'tag';
-  const query = new wx.BaaS.Query();
+  var tableName = 'tag';
+  var query = new wx.BaaS.Query();
   query.compare('weight', '>', 0);
-  const Tags = new wx.BaaS.TableObject(tableName);
+  var Tags = new wx.BaaS.TableObject(tableName);
   return Tags.setQuery(query).orderBy('-weight').find();
 }
 function getPageInfo() {
-  const tableName = 'page';
-  const Page = new wx.BaaS.TableObject(tableName);
+  var tableName = 'page';
+  var Page = new wx.BaaS.TableObject(tableName);
   return Page.find();
 }
 
@@ -4376,7 +4391,7 @@ __webpack_require__.r(__webpack_exports__);
 function fetchData(id) {
   return weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].get('product', id, {
     expand: ['brand']
-  }).then(res => {
+  }).then(function (res) {
     return res;
   });
 }
@@ -4398,26 +4413,30 @@ function fetchSku(id) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterFetchData", function() { return filterFetchData; });
-const filterFetchData = (couponList = []) => couponList.map(coupon => {
-  const {
-    type,
-    discount,
-    amount,
-    create_time: createTime,
-    expired_time: expiredTime,
-    id
-  } = coupon;
-  const title = type === 1 ? '爱戴小盒·专享折扣' : '爱戴小盒·礼金券';
-  const valueContent = type === 1 ? discount : amount;
-  const timeScope = createTime.slice(0, 10).replace(/-/g, '/') + '-' + expiredTime.slice(0, 10).replace(/-/g, '/');
-  return {
-    id,
-    title,
-    timeScope,
-    valueContent,
-    valueType: type
-  };
-});
+var filterFetchData = function filterFetchData(couponList) {
+  if (couponList === void 0) {
+    couponList = [];
+  }
+
+  return couponList.map(function (coupon) {
+    var type = coupon.type,
+        discount = coupon.discount,
+        amount = coupon.amount,
+        createTime = coupon.create_time,
+        expiredTime = coupon.expired_time,
+        id = coupon.id;
+    var title = type === 1 ? '爱戴小盒·专享折扣' : '爱戴小盒·礼金券';
+    var valueContent = type === 1 ? discount : amount;
+    var timeScope = createTime.slice(0, 10).replace(/-/g, '/') + '-' + expiredTime.slice(0, 10).replace(/-/g, '/');
+    return {
+      id: id,
+      title: title,
+      timeScope: timeScope,
+      valueContent: valueContent,
+      valueType: type
+    };
+  });
+};
 
 /***/ }),
 
@@ -4456,10 +4475,10 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
       nativeKeys = Object.keys,
       nativeCreate = Object.create; // Naked function reference for surrogate-prototype-swapping.
 
-  var Ctor = function () {}; // Create a safe reference to the Underscore object for use below.
+  var Ctor = function Ctor() {}; // Create a safe reference to the Underscore object for use below.
 
 
-  var _ = function (obj) {
+  var _ = function _(obj) {
     if (obj instanceof _) return obj;
     if (!(this instanceof _)) return new _(obj);
     this._wrapped = obj;
@@ -4485,7 +4504,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   // of the passed-in callback, to be repeatedly applied in other Underscore
   // functions.
 
-  var optimizeCb = function (func, context, argCount) {
+  var optimizeCb = function optimizeCb(func, context, argCount) {
     if (context === void 0) return func;
 
     switch (argCount) {
@@ -4517,7 +4536,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   // element in a collection, returning the desired result — either `identity`,
   // an arbitrary callback, a property matcher, or a property accessor.
 
-  var cb = function (value, context, argCount) {
+  var cb = function cb(value, context, argCount) {
     if (_.iteratee !== builtinIteratee) return _.iteratee(value, context);
     if (value == null) return _.identity;
     if (_.isFunction(value)) return optimizeCb(value, context, argCount);
@@ -4528,13 +4547,13 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   // This abstraction hides the internal-only argCount argument.
 
 
-  _.iteratee = builtinIteratee = function (value, context) {
+  _.iteratee = builtinIteratee = function builtinIteratee(value, context) {
     return cb(value, context, Infinity);
   }; // Similar to ES6's rest param (http://ariya.ofilabs.com/2013/03/es6-and-rest-parameter.html)
   // This accumulates the arguments passed into an array, after a given index.
 
 
-  var restArgs = function (func, startIndex) {
+  var restArgs = function restArgs(func, startIndex) {
     startIndex = startIndex == null ? func.length - 1 : +startIndex;
     return function () {
       var length = Math.max(arguments.length - startIndex, 0),
@@ -4568,7 +4587,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // An internal function for creating a new object that inherits from another.
 
 
-  var baseCreate = function (prototype) {
+  var baseCreate = function baseCreate(prototype) {
     if (!_.isObject(prototype)) return {};
     if (nativeCreate) return nativeCreate(prototype);
     Ctor.prototype = prototype;
@@ -4577,13 +4596,13 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     return result;
   };
 
-  var shallowProperty = function (key) {
+  var shallowProperty = function shallowProperty(key) {
     return function (obj) {
       return obj == null ? void 0 : obj[key];
     };
   };
 
-  var deepGet = function (obj, path) {
+  var deepGet = function deepGet(obj, path) {
     var length = path.length;
 
     for (var i = 0; i < length; i++) {
@@ -4601,7 +4620,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
   var getLength = shallowProperty('length');
 
-  var isArrayLike = function (collection) {
+  var isArrayLike = function isArrayLike(collection) {
     var length = getLength(collection);
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
   }; // Collection Functions
@@ -4647,10 +4666,10 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Create a reducing function iterating left or right.
 
 
-  var createReduce = function (dir) {
+  var createReduce = function createReduce(dir) {
     // Wrap code that reassigns argument variables in a separate function than
     // the one that accesses `arguments.length` to avoid a perf hit. (#1991)
-    var reducer = function (obj, iteratee, memo, initial) {
+    var reducer = function reducer(obj, iteratee, memo, initial) {
       var keys = !isArrayLike(obj) && _.keys(obj),
           length = (keys || obj).length,
           index = dir > 0 ? 0 : length - 1;
@@ -4908,7 +4927,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // An internal function used for aggregate "group by" operations.
 
 
-  var group = function (behavior, partition) {
+  var group = function group(behavior, partition) {
     return function (obj, iteratee, context) {
       var result = partition ? [[], []] : {};
       iteratee = cb(iteratee, context);
@@ -5003,7 +5022,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Internal implementation of a recursive `flatten` function.
 
 
-  var flatten = function (input, shallow, strict, output) {
+  var flatten = function flatten(input, shallow, strict, output) {
     output = output || [];
     var idx = output.length;
 
@@ -5016,7 +5035,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
           var j = 0,
               len = value.length;
 
-          while (j < len) output[idx++] = value[j++];
+          while (j < len) {
+            output[idx++] = value[j++];
+          }
         } else {
           flatten(value, shallow, strict, output);
           idx = output.length;
@@ -5140,7 +5161,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Generator function to create the findIndex and findLastIndex functions.
 
 
-  var createPredicateIndexFinder = function (dir) {
+  var createPredicateIndexFinder = function createPredicateIndexFinder(dir) {
     return function (array, predicate, context) {
       predicate = cb(predicate, context);
       var length = getLength(array);
@@ -5174,7 +5195,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Generator function to create the indexOf and lastIndexOf functions.
 
 
-  var createIndexFinder = function (dir, predicateFind, sortedIndex) {
+  var createIndexFinder = function createIndexFinder(dir, predicateFind, sortedIndex) {
     return function (array, item, idx) {
       var i = 0,
           length = getLength(array);
@@ -5251,7 +5272,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   // or a normal function with the provided arguments.
 
 
-  var executeBound = function (sourceFunc, boundFunc, context, callingContext, args) {
+  var executeBound = function executeBound(sourceFunc, boundFunc, context, callingContext, args) {
     if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
     var self = baseCreate(sourceFunc.prototype);
     var result = sourceFunc.apply(self, args);
@@ -5276,7 +5297,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   _.partial = restArgs(function (func, boundArgs) {
     var placeholder = _.partial.placeholder;
 
-    var bound = function () {
+    var bound = function bound() {
       var position = 0,
           length = boundArgs.length;
       var args = Array(length);
@@ -5285,7 +5306,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
         args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
       }
 
-      while (position < arguments.length) args.push(arguments[position++]);
+      while (position < arguments.length) {
+        args.push(arguments[position++]);
+      }
 
       return executeBound(func, bound, this, this, args);
     };
@@ -5308,7 +5331,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }); // Memoize an expensive function by storing its results.
 
   _.memoize = function (func, hasher) {
-    var memoize = function (key) {
+    var memoize = function memoize(key) {
       var cache = memoize.cache;
       var address = '' + (hasher ? hasher.apply(this, arguments) : key);
       if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
@@ -5339,14 +5362,14 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     var previous = 0;
     if (!options) options = {};
 
-    var later = function () {
+    var later = function later() {
       previous = options.leading === false ? 0 : _.now();
       timeout = null;
       result = func.apply(context, args);
       if (!timeout) context = args = null;
     };
 
-    var throttled = function () {
+    var throttled = function throttled() {
       var now = _.now();
 
       if (!previous && options.leading === false) previous = now;
@@ -5386,7 +5409,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   _.debounce = function (func, wait, immediate) {
     var timeout, result;
 
-    var later = function (context, args) {
+    var later = function later(context, args) {
       timeout = null;
       if (args) result = func.apply(context, args);
     };
@@ -5436,7 +5459,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
       var i = start;
       var result = args[start].apply(this, arguments);
 
-      while (i--) result = args[i].call(this, result);
+      while (i--) {
+        result = args[i].call(this, result);
+      }
 
       return result;
     };
@@ -5476,7 +5501,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }.propertyIsEnumerable('toString');
   var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString', 'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
 
-  var collectNonEnumProps = function (obj, keys) {
+  var collectNonEnumProps = function collectNonEnumProps(obj, keys) {
     var nonEnumIdx = nonEnumerableProps.length;
     var constructor = obj.constructor;
     var proto = _.isFunction(constructor) && constructor.prototype || ObjProto; // Constructor is a special case.
@@ -5500,7 +5525,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     if (nativeKeys) return nativeKeys(obj);
     var keys = [];
 
-    for (var key in obj) if (_.has(obj, key)) keys.push(key); // Ahem, IE < 9.
+    for (var key in obj) {
+      if (_.has(obj, key)) keys.push(key);
+    } // Ahem, IE < 9.
 
 
     if (hasEnumBug) collectNonEnumProps(obj, keys);
@@ -5512,7 +5539,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     if (!_.isObject(obj)) return [];
     var keys = [];
 
-    for (var key in obj) keys.push(key); // Ahem, IE < 9.
+    for (var key in obj) {
+      keys.push(key);
+    } // Ahem, IE < 9.
 
 
     if (hasEnumBug) collectNonEnumProps(obj, keys);
@@ -5591,7 +5620,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // An internal function for creating assigner functions.
 
 
-  var createAssigner = function (keysFunc, defaults) {
+  var createAssigner = function createAssigner(keysFunc, defaults) {
     return function (obj) {
       var length = arguments.length;
       if (defaults) obj = Object(obj);
@@ -5631,7 +5660,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Internal pick helper function to determine if `obj` has key `key`.
 
 
-  var keyInObj = function (value, key, obj) {
+  var keyInObj = function keyInObj(value, key, obj) {
     return key in obj;
   }; // Return a copy of the object only containing the whitelisted properties.
 
@@ -5669,7 +5698,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     } else {
       keys = _.map(flatten(keys, false, false), String);
 
-      iteratee = function (value, key) {
+      iteratee = function iteratee(value, key) {
         return !_.contains(keys, key);
       };
     }
@@ -5720,7 +5749,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
 
   var eq, deepEq;
 
-  eq = function (a, b, aStack, bStack) {
+  eq = function eq(a, b, aStack, bStack) {
     // Identical objects are equal. `0 === -0`, but they aren't identical.
     // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
     if (a === b) return a !== 0 || 1 / a === 1 / b; // `null` or `undefined` only equal to itself (strict comparison).
@@ -5735,7 +5764,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   }; // Internal recursive comparison function for `isEqual`.
 
 
-  deepEq = function (a, b, aStack, bStack) {
+  deepEq = function deepEq(a, b, aStack, bStack) {
     // Unwrap any wrapped objects.
     if (a instanceof _) a = a._wrapped;
     if (b instanceof _) b = b._wrapped; // Compare `[[Class]]` names.
@@ -5992,7 +6021,9 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     var accum = Array(Math.max(0, n));
     iteratee = optimizeCb(iteratee, context, 1);
 
-    for (var i = 0; i < n; i++) accum[i] = iteratee(i);
+    for (var i = 0; i < n; i++) {
+      accum[i] = iteratee(i);
+    }
 
     return accum;
   }; // Return a random integer between min and max (inclusive).
@@ -6025,8 +6056,8 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   var unescapeMap = _.invert(escapeMap); // Functions for escaping and unescaping strings to/from HTML interpolation.
 
 
-  var createEscaper = function (map) {
-    var escaper = function (match) {
+  var createEscaper = function createEscaper(map) {
+    var escaper = function escaper(match) {
       return map[match];
     }; // Regexes for identifying a key that needs to be escaped.
 
@@ -6094,12 +6125,12 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
     '\\': '\\',
     '\r': 'r',
     '\n': 'n',
-    '\u2028': 'u2028',
-    '\u2029': 'u2029'
+    "\u2028": 'u2028',
+    "\u2029": 'u2029'
   };
   var escapeRegExp = /\\|'|\r|\n|\u2028|\u2029/g;
 
-  var escapeChar = function (match) {
+  var escapeChar = function escapeChar(match) {
     return '\\' + escapes[match];
   }; // JavaScript micro-templating, similar to John Resig's implementation.
   // Underscore templating handles arbitrary delimiters, preserves whitespace,
@@ -6143,7 +6174,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
       throw e;
     }
 
-    var template = function (data) {
+    var template = function template(data) {
       return render.call(this, data, _);
     }; // Provide the compiled source as a convenience for precompilation.
 
@@ -6167,7 +6198,7 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
   // Helper function to continue chaining intermediate results.
 
 
-  var chainResult = function (instance, obj) {
+  var chainResult = function chainResult(instance, obj) {
     return instance._chain ? _(obj).chain() : obj;
   }; // Add your own custom functions to the Underscore object.
 
@@ -6250,22 +6281,22 @@ const filterFetchData = (couponList = []) => couponList.map(coupon => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const _ = __webpack_require__(/*! ./underscore */ "./src/utils/underscore.js");
+var _ = __webpack_require__(/*! ./underscore */ "./src/utils/underscore.js");
 
-const V = __webpack_require__(/*! ./v.js */ "./src/utils/v.js");
+var V = __webpack_require__(/*! ./v.js */ "./src/utils/v.js");
 
-const formatNumber = n => {
+var formatNumber = function formatNumber(n) {
   n = n.toString();
   return n[1] ? n : '0' + n;
 };
 
-const formatTime = date => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
+var formatTime = function formatTime(date) {
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':');
 };
 
@@ -6351,14 +6382,18 @@ function getPxByRpx(rpx, windowWidth) {
  */
 
 
-let drawText = (ctx, text, x, y, maxWidth, lineHeight, defaultLines = 1, forceLine) => {
+var drawText = function drawText(ctx, text, x, y, maxWidth, lineHeight, defaultLines, forceLine) {
+  if (defaultLines === void 0) {
+    defaultLines = 1;
+  }
+
   var lineWidth = 0;
   var lineCount = 1;
   var initHeight = y; //绘制字体距离canvas顶部初始的高度
 
   var lastSubStrIndex = 0; //每次开始截取的字符串的索引
 
-  for (let i = 0; i < text.length; i++) {
+  for (var i = 0; i < text.length; i++) {
     lineWidth += ctx.measureText(text[i]).width;
 
     if (lineWidth > maxWidth) {
@@ -6398,7 +6433,11 @@ function setData(context, data) {
   context.setData(_data);
 }
 
-function toFixedFloat(f, n = 2) {
+function toFixedFloat(f, n) {
+  if (n === void 0) {
+    n = 2;
+  }
+
   return parseFloat(parseFloat(f).toFixed(n));
 }
 
@@ -6460,7 +6499,9 @@ function showModal(content, yFunc, title, showCancel, nFunc, cancelText) {
   wx.showModal({
     title: title || '提示',
     content: content,
-    success: res => res.confirm ? yFunc && yFunc() : nFunc && nFunc(),
+    success: function success(res) {
+      return res.confirm ? yFunc && yFunc() : nFunc && nFunc();
+    },
     showCancel: showCancel,
     cancelText: cancelText || '取消'
   });
@@ -6469,13 +6510,13 @@ function showModal(content, yFunc, title, showCancel, nFunc, cancelText) {
 function getOptions(options) {
   //scene=k1:v1;k2:v2;
   if (options.scene) {
-    let scene = decodeURIComponent(options.scene); // 官方要求一定要先decodeURIComponent才能正常使用scene
+    var scene = decodeURIComponent(options.scene); // 官方要求一定要先decodeURIComponent才能正常使用scene
 
     scene = scene.split(';');
-    let obj = {};
+    var obj = {};
 
-    for (let i = 0; i < scene.length; i++) {
-      let item = scene[i].split(':');
+    for (var i = 0; i < scene.length; i++) {
+      var item = scene[i].split(':');
       obj[item[0]] = item[1];
     } // 将options.id 替换为scene中提取的id 以保证后续业务不受影响
 
@@ -6495,13 +6536,15 @@ function getOptions(options) {
 }
 
 function toQueryString(obj) {
-  return _.map(obj, (v, k) => `${k}=${v}`).join('&');
+  return _.map(obj, function (v, k) {
+    return k + "=" + v;
+  }).join('&');
 }
 
 function encodeOptions(obj) {
-  let q = encodeURIComponent(JSON.stringify(obj));
+  var q = encodeURIComponent(JSON.stringify(obj));
   return {
-    q
+    q: q
   };
 }
 
@@ -6510,54 +6553,56 @@ function isLastInArray(index, arr) {
 }
 
 function downloadImage(url) {
-  return new Promise((resolve, reject) => wx.downloadFile({
-    url: url,
-
-    //仅为示例，并非真实的资源
-    success(res) {
-      // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-      if (res.statusCode === 200) return resolve(res.tempFilePath);
-      return reject(res);
-    },
-
-    fail: reject
-  }));
+  return new Promise(function (resolve, reject) {
+    return wx.downloadFile({
+      url: url,
+      //仅为示例，并非真实的资源
+      success: function success(res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) return resolve(res.tempFilePath);
+        return reject(res);
+      },
+      fail: reject
+    });
+  });
 }
 
 function downloadAllImage(urls) {
-  return Promise.all(_.map(urls, url => downloadImage(url)));
+  return Promise.all(_.map(urls, function (url) {
+    return downloadImage(url);
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  formatNumber,
-  formatTime,
-  isValidateCellphoneNumber,
-  findObjectFromArrayByProp,
-  findIndexInArrayByProp,
-  calLength,
-  setData,
-  isIphoneX,
-  isHighScreen,
-  getPositiveIndex,
-  getTextLength,
-  getScreenHeight,
-  toFixedFloat,
-  tipSystemException,
-  tipNetworkException,
-  showModal,
-  success,
-  warning,
-  showLoading,
-  hideLoading,
-  encodeOptions,
-  toQueryString,
-  getOptions,
-  isLastInArray,
-  getPx,
-  getPxByRpx,
-  drawText,
-  downloadImage,
-  downloadAllImage
+  formatNumber: formatNumber,
+  formatTime: formatTime,
+  isValidateCellphoneNumber: isValidateCellphoneNumber,
+  findObjectFromArrayByProp: findObjectFromArrayByProp,
+  findIndexInArrayByProp: findIndexInArrayByProp,
+  calLength: calLength,
+  setData: setData,
+  isIphoneX: isIphoneX,
+  isHighScreen: isHighScreen,
+  getPositiveIndex: getPositiveIndex,
+  getTextLength: getTextLength,
+  getScreenHeight: getScreenHeight,
+  toFixedFloat: toFixedFloat,
+  tipSystemException: tipSystemException,
+  tipNetworkException: tipNetworkException,
+  showModal: showModal,
+  success: success,
+  warning: warning,
+  showLoading: showLoading,
+  hideLoading: hideLoading,
+  encodeOptions: encodeOptions,
+  toQueryString: toQueryString,
+  getOptions: getOptions,
+  isLastInArray: isLastInArray,
+  getPx: getPx,
+  getPxByRpx: getPxByRpx,
+  drawText: drawText,
+  downloadImage: downloadImage,
+  downloadAllImage: downloadAllImage
 });
 
 /***/ }),

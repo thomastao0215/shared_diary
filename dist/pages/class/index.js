@@ -11,7 +11,7 @@
 /***/ (function(module, exports) {
 
 // 获取应用实例
-const app = getApp();
+var app = getApp();
 Page({
   data: {
     motto: 'Hello World',
@@ -19,24 +19,23 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-
   // 事件处理函数
-  bindViewTap() {
+  bindViewTap: function bindViewTap() {
     wx.navigateTo({
       url: '/packages/example-base/index'
     });
   },
+  onLoad: function onLoad() {
+    var _this = this;
 
-  onLoad() {
-    const windowHeight = wx.getSystemInfoSync().windowHeight;
-    wx.createSelectorQuery().select('.ipt-container').boundingClientRect(e => {
-      this.setData({
+    var windowHeight = wx.getSystemInfoSync().windowHeight;
+    wx.createSelectorQuery().select('.ipt-container').boundingClientRect(function (e) {
+      _this.setData({
         categoryHeight: windowHeight - e.height
       });
     }).exec();
   },
-
-  getUserInfo(e) {
+  getUserInfo: function getUserInfo(e) {
     console.log(e);
     app.globalData.userInfo = e.detail.userInfo;
     this.setData({
@@ -44,7 +43,6 @@ Page({
       hasUserInfo: true
     });
   }
-
 });
 
 /***/ })

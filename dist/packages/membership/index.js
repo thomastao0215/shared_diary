@@ -1704,9 +1704,11 @@ Toast.resetDefaultOptions = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/api */ "./src/utils/api.js");
 /* harmony import */ var vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vant-weapp/dist/toast/toast */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/toast/toast.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const app = getApp();
+
+var app = getApp();
 Page({
   data: {
     imgUrls: [// 'http://static.wx.qiaqiabox.com/slice/membership/halfyear.png',
@@ -1725,16 +1727,14 @@ Page({
     }],
     current: 0
   },
-
-  onLoad() {// request(api.info)
+  onLoad: function onLoad() {// request(api.info)
     //   .then(res => {
     //     if (res.user.status === 2 || res.user.status === 4) {
     //       wx.switchTab({ url: '/pages/box/index' })
     //     }
     //   })
   },
-
-  onShow() {
+  onShow: function onShow() {
     if (app.globalData.isSetCoupon === true) {
       app.globalData.isSetCoupon = false;
       this.setData({
@@ -1742,85 +1742,77 @@ Page({
       });
     }
   },
-
-  bindChange(e) {
+  bindChange: function bindChange(e) {
     var current = e.detail.current;
     this.setData({
-      current,
+      current: current,
       type: this.data.cardType[current].type,
       price: this.data.cardType[current].price,
       originPrice: this.data.cardType[current].price
     });
   },
-
-  bindCodeChange(e) {
+  bindCodeChange: function bindCodeChange(e) {
     this.setData({
       code: e.detail.value
     });
   },
+  applyCode: function applyCode() {
+    var _this = this;
 
-  applyCode() {
     if (!this.data.code) {
       return;
     }
 
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({
-      id: '?code=' + this.data.code,
-      ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].get_coupon_for_subscribe
-    }, {
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({
+      id: '?code=' + this.data.code
+    }, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].get_coupon_for_subscribe), {
       subscription_type: this.data.type,
       code: this.data.code
-    }).then(res => {
+    }).then(function (res) {
       console.log(res.coupon_for_subscribe);
-      const {
-        originPrice
-      } = this.data;
-      this.setData({
+      var originPrice = _this.data.originPrice;
+
+      _this.setData({
         price: originPrice * res.coupon_for_subscribe.discount / 100
       });
-    }).catch(err => {
+    }).catch(function (err) {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message);
     });
   },
+  bindUseCode: function bindUseCode() {},
+  payMember: function payMember() {
+    var _this2 = this;
 
-  bindUseCode() {},
-
-  payMember() {
-    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])({ ...utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].subscribe_pay
-    }, {
+    Object(utils_api__WEBPACK_IMPORTED_MODULE_0__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_0__["api"].subscribe_pay), {
       subscription_type: this.data.type,
       code: this.data.code
-    }).then(res => {
-      let result = res.payArgs;
+    }).then(function (res) {
+      var result = res.payArgs;
       wx.requestPayment({
         timeStamp: result.timeStamp,
         nonceStr: result.nonceStr,
         package: result.package,
         signType: result.signType,
         paySign: result.paySign,
-
-        success(res) {
+        success: function success(res) {
           if (res) {
             wx.redirectTo({
               url: '/packages/success/index'
             });
           }
         },
-
-        fail() {
+        fail: function fail() {
           Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])('微信支付失败');
         }
-
       });
-    }).catch(err => {
+    }).catch(function (err) {
       Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_1__["default"])(err.message || err.msg || '????');
-      setTimeout(() => {
-        this.handleError(err);
+      setTimeout(function () {
+        _this2.handleError(err);
       }, 2000);
     });
   },
-
-  handleError(err) {
+  handleError: function handleError(err) {
     if (err.message === '请先填写问卷') {
       // ??????
       wx.switchTab({
@@ -1832,15 +1824,13 @@ Page({
       });
     }
   },
-
-  onShareAppMessage() {
+  onShareAppMessage: function onShareAppMessage() {
     return {
       title: '爱戴小盒，快来看看吧!',
       path: '/pages/entry/index',
       imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
     };
   }
-
 });
 
 /***/ }),
@@ -1859,141 +1849,147 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! underscore */ "./node_modules/_underscore@1.8.3@underscore/underscore.js");
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(underscore__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
-const api = {
+
+var BASE_URL = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl;
+var api = {
   "on_login": {
     desc: "用户登录",
-    url: `${BASE_URL}v1/user/on_login/`,
+    url: BASE_URL + "v1/user/on_login/",
     method: "post"
   },
   "info": {
     desc: "用户信息",
-    url: `${BASE_URL}v1/user/info/`,
+    url: BASE_URL + "v1/user/info/",
     method: "get"
   },
   "survey_info": {
     desc: "加载提交过了的问卷",
-    url: `${BASE_URL}v1/user/survey/info/`,
+    url: BASE_URL + "v1/user/survey/info/",
     method: "get"
   },
   "survey_submit": {
     desc: "提交问卷",
-    url: `${BASE_URL}v1/user/survey/submit/`,
+    url: BASE_URL + "v1/user/survey/submit/",
     method: "post"
   },
   "get_coupon_for_subscribe": {
     desc: "购买会员时输入打折码",
-    url: `${BASE_URL}v1/user/coupon_for_subscribe/get`,
+    url: BASE_URL + "v1/user/coupon_for_subscribe/get",
     method: "get"
   },
   "subscribe_pay": {
     desc: "支付会员",
-    url: `${BASE_URL}v1/user/subscribe/pay/`,
+    url: BASE_URL + "v1/user/subscribe/pay/",
     method: "post"
   },
   "post_arrived": {
     desc: "确认收货",
-    url: `${BASE_URL}v1/user/post_arrived/`,
+    url: BASE_URL + "v1/user/post_arrived/",
     method: "post"
   },
   "order_box": {
     desc: "获取盒子信息",
-    url: `${BASE_URL}v1/user/order/box/`,
+    url: BASE_URL + "v1/user/order/box/",
     method: "get"
   },
   "pre_post_back": {
     // /api/v1/user/order/pre_post_back/:order_id
     desc: "预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back/`,
+    url: BASE_URL + "v1/user/order/pre_post_back/",
     method: "post"
   },
   "pre_post_back_cancel": {
     desc: "取消预约寄回某产品",
-    url: `${BASE_URL}v1/user/order/pre_post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/pre_post_back_cancel/",
     method: "post"
   },
   "order_update": {
     // /api/v1/user/order/update/:order_id
     desc: "修改盒子信息",
-    url: `${BASE_URL}v1/user/order/update/`,
+    url: BASE_URL + "v1/user/order/update/",
     method: "post"
   },
   "order_post_back": {
     // /user/order/post_back/:order_id/:product_id/
     desc: "寄回某产品",
-    url: `${BASE_URL}v1/user/order/post_back/`,
+    url: BASE_URL + "v1/user/order/post_back/",
     method: "post"
   },
   "order_post_back_cancel": {
     // /user/order/post_back_cancel/:order_id/:product_id/
     desc: "取消寄回",
-    url: `${BASE_URL}v1/user/order/post_back_cancel/`,
+    url: BASE_URL + "v1/user/order/post_back_cancel/",
     method: "post"
   },
   "order_pay": {
     desc: "支付盒子订单",
-    url: `${BASE_URL}v1/user/order/pay/`,
+    url: BASE_URL + "v1/user/order/pay/",
     method: "post"
   },
   "order_feedback": {
     desc: "订单结束后反馈信息",
-    url: `${BASE_URL}v1/user/order/feedback/:order_id/`,
+    url: BASE_URL + "v1/user/order/feedback/:order_id/",
     method: "post"
   },
   "coupon_list": {
     desc: "优惠券列表（我的钱包）",
-    url: `${BASE_URL}v1/user/coupon/list/`,
+    url: BASE_URL + "v1/user/coupon/list/",
     method: "get"
   },
   "coupon_exchange": {
     desc: "优惠码兑换成券",
-    url: `${BASE_URL}v1/user/coupon/exchange/`,
+    url: BASE_URL + "v1/user/coupon/exchange/",
     method: "post"
   },
   "address_list": {
     desc: "用户收件地址列表",
-    url: `${BASE_URL}v1/user/address/list/`,
+    url: BASE_URL + "v1/user/address/list/",
     method: "get"
   },
   "address_delete": {
     desc: "用户收件地址删除",
-    url: `${BASE_URL}v1/user/address/delete/`,
+    url: BASE_URL + "v1/user/address/delete/",
     method: "post"
   },
   "address_create": {
     desc: "用户新增收件地址",
-    url: `${BASE_URL}v1/user/address/create/`,
+    url: BASE_URL + "v1/user/address/create/",
     method: "post"
   },
   "address_update": {
     desc: "用户编辑收件地址",
-    url: `${BASE_URL}v1/user/address/update/`,
+    url: BASE_URL + "v1/user/address/update/",
     method: "post"
   },
   "phone_send_sm": {
     desc: "用户发送手机验证码",
-    url: `${BASE_URL}v1/user/phone/send_sm/`,
+    url: BASE_URL + "v1/user/phone/send_sm/",
     method: "post"
   },
   "phone_bind": {
     desc: "用户绑定手机",
-    url: `${BASE_URL}v1/user/phone/bind/`,
+    url: BASE_URL + "v1/user/phone/bind/",
     method: "post"
   },
   "phone_unbind": {
     desc: "用户解绑手机",
-    url: `${BASE_URL}v1/user/phone/unbind/`,
+    url: BASE_URL + "v1/user/phone/unbind/",
     method: "post"
   },
   "pay_nothing": {
     desc: "支付盒子空订单",
-    url: `${BASE_URL}v1/user/order/pay_nothing/`,
+    url: BASE_URL + "v1/user/order/pay_nothing/",
     method: "post"
   }
 };
-function request(options, data = {}) {
+function request(options, data) {
+  if (data === void 0) {
+    data = {};
+  }
+
   options = underscore__WEBPACK_IMPORTED_MODULE_1___default.a.clone(options);
 
   if (options.id !== undefined) {
@@ -2001,41 +1997,38 @@ function request(options, data = {}) {
     options.url += String(options.id);
     delete options.id;
   } else if (options.ids !== undefined) {
-    options.ids.forEach(item => {
+    options.ids.forEach(function (item) {
       options.url += String(item) + '/';
     });
     delete options.ids;
   }
 
   console.log(options);
-  return new Promise((resolve, reject) => {
-    const header = {
+  return new Promise(function (resolve, reject) {
+    var header = {
       'content-type': 'application/json'
     };
-    const token = wx.getStorageSync('token');
+    var token = wx.getStorageSync('token');
 
     if (token) {
       header['Auth-Token'] = token;
     }
 
-    wx.request({
-      header,
-      ...options,
-      data,
-
-      success(res) {
+    wx.request(_extends({
+      header: header
+    }, options, {
+      data: data,
+      success: function success(res) {
         if (res.data.status !== 200) {
           reject(res.data.error);
         }
 
         resolve(res.data.data);
       },
-
-      fail(err) {
+      fail: function fail(err) {
         reject(err);
       }
-
-    });
+    }));
   });
 }
 

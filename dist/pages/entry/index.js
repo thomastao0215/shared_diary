@@ -687,9 +687,8 @@ Page({
     inited: false,
     logo: 'https://cloud-minapp-30262.cloud.ifanrusercontent.com/logo.png'
   },
-
-  onLoad() {
-    let userInfo = wx.BaaS.storage.get('userinfo');
+  onLoad: function onLoad() {
+    var userInfo = wx.BaaS.storage.get('userinfo');
     console.log(userInfo);
 
     if (userInfo) {
@@ -700,30 +699,32 @@ Page({
       this.changeAndSwitchTab();
     }
   },
-
-  changeAndSwitchTab() {
+  changeAndSwitchTab: function changeAndSwitchTab() {
     wx.switchTab({
       url: '/pages/my/index'
     });
   },
+  grant: function grant(data) {
+    var _this = this;
 
-  grant(data) {
     if (data.detail.userInfo) {
-      let handleResult = Promise.resolve();
-      let userInfo = wx.BaaS.storage.get('userinfo');
+      var handleResult = Promise.resolve();
+      var userInfo = wx.BaaS.storage.get('userinfo');
 
       if (!userInfo) {
         // 授权
         handleResult = weapp_zx__WEBPACK_IMPORTED_MODULE_0__["default"].handleUserInfo(data);
       }
 
-      handleResult.then(user => {
-        this.setData({
+      handleResult.then(function (user) {
+        _this.setData({
           inited: true
         });
+
         console.log(user);
         wx.BaaS.storage.set('userinfo', user);
-        this.changeAndSwitchTab();
+
+        _this.changeAndSwitchTab();
       });
     } else {
       this.setData({
@@ -731,7 +732,6 @@ Page({
       });
     }
   }
-
 });
 
 /***/ })
