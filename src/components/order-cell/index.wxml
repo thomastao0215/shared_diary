@@ -1,0 +1,22 @@
+<van-panel title="订单时间:{{item.time}}"  status="{{status}}" use-footer-slot class="order-cell">
+    <view class="product-list">
+      <block wx:for="{{productList}}">
+      <van-card
+        num="{{item.count}}"
+        price="{{item.price}}"
+        desc="{{item.species}}"
+        title="{{item.title}}"
+        thumb="{{ item.image }}"
+      />
+      </block> 
+    </view>
+    <view slot="footer">
+      <van-cell>总价：¥{{totalCost}}</van-cell>
+      <van-button size="small" type="danger" class="right" bind:tap="pay" wx:if="{{status == '待付款'}}" >付款</van-button>
+      <van-button size="small" type="danger" class="right" bind:tap="confirm" wx:elif="{{status == '待收货'}}">确认收货</van-button>
+      <van-button size="small" type="danger" class="right" bind:tap="opertaion" wx:elif="{{status == '待评价'}}">评价</van-button>
+      <van-button size="small" class="right">取消</van-button>
+    </view>
+</van-panel>
+
+

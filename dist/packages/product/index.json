@@ -1,3 +1,11 @@
 {
-    
+  "usingComponents": {
+    "sku": "././../../components/sku/index",
+    "van-popup": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/popup/index",
+    "van-button": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/button/index",
+    "van-action-sheet": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/action-sheet/index",
+    "van-goods-action": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/goods-action/index",
+    "van-goods-action-icon": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/goods-action-icon/index",
+    "van-goods-action-button": "./../../_vant-weapp@1.0.0-beta.4@vant-weapp/dist/goods-action-button/index"
+  }
 }

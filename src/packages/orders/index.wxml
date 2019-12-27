@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+    <van-tabs
+    border="{{ false }}"
+    swipe-threshold="5"
+    active="{{ active }}"
+    bind:change="bindTabChange"
+    color="#F5C8C2"
+    >
+    <van-tab
+      wx:for="{{ tabs }}"
+      wx:key="{{ index }}"
+      title="{{ item }}"
+    >
+      <view class="brick-layout">
+        <block wx:for="{{orders}}" wx:key="*this">
+          <order-cell 
+            orderId="{{item._id}}"
+            status="{{item.status}}"
+            totalCost="{{item.total_cost}}"
+            productList="{{item.product_list_preview}}"
+            time="{{item.created_at}}"
+            style="margin: 0 100rpx;"
+          />
+        </block>
+      </view>
+      <van-loading wx:if="{{ loading }}"/>
+    </van-tab>
+  </van-tabs>
+
+</view>

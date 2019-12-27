@@ -19,7 +19,10 @@
         "membership/index",
         "success/index",
         "wallet/index",
-        "back/index"
+        "back/index",
+        "order/index",
+        "order-edit/index",
+        "orders/index"
       ]
     }
   ],

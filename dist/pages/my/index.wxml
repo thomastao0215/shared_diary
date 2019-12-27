@@ -32,7 +32,7 @@
           <view class="function-cell-up">
             <image bindtap="switchToBox" class="function-button" src="http://static.wx.qiaqiabox.com/slice/Frontpage/icon_mybox.png" mode="cover"></image>
           </view>
-          <view class="function-cell-down">我的小盒</view>
+          <view class="function-cell-down">小分香会员</view>
         </view>
         <view class="function-cell" bindtap="navToInvite">
           <view class="function-cell-up">
@@ -44,6 +44,7 @@
     </view>
 
     <van-cell-group custom-class="cells" border="{{ false }}">
+      <van-cell title="我的订单" custom-class="cell-item" bind:click="navToOrders" is-link center />
       <van-cell title="管理地址" custom-class="cell-item" bind:click="navToAddress" is-link center />
       <van-cell title="关注公众号" custom-class="cell-item" bind:click="Subs" border="{{ false }}" is-link center />
       <van-cell title="联系客服" custom-class="cell-item" border="{{ false }}" is-link center>

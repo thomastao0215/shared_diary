@@ -1,0 +1,76 @@
+<view class="end product-list">
+  <view class="sub-title">{{ AddressTitle }}</view>
+  <view wx:if="{{ addressId }}" bindtap="onClickAddress" class="address">
+    <view class="address__header">
+      <image src="http://static.wx.qiaqiabox.com/slice/questions/address.svg" />
+      <view class="text">收件地址:</view>
+    </view>
+    <view class="address__content">
+      <view class="line" style="margin-bottom: 10rpx;">
+        <text style="margin-right: 16rpx;">{{ addressInfo.name }}</text>
+        {{ addressInfo.phone }}
+      </view>
+      <view class="line">{{ addressInfo.address }}</view>
+      <van-icon name="arrow" custom-class="icon" />
+    </view>
+  </view>
+  <view wx:else bindtap="onClickAddress" class="address-no">
+    <image src="http://static.wx.qiaqiabox.com/slice/questions/addressbig.svg" />
+    <view class="content">
+      <view class="line1">添加新地址</view>
+      <view class="line2">请填写您的收件地址</view>
+    </view>
+  </view>
+
+      <view
+    wx:for="{{ productList }}"
+    wx:key
+    data-index="{{ index }}"
+    class="box-cell"
+    bindtap="selectOne"
+  >
+    <view class="box-cell__left">
+      <image
+        mode="aspectFit"
+        src="{{ assetsUrl }}{{ item.front_image_url }}"
+      />
+    </view>
+    <view class="box-cell__right">
+      <view class="title">{{ item.brand_name }}{{ item.name }}</view>
+      <view class="tags">
+        <view
+          wx:for="{{ item.tag_list }}"
+          wx:key
+          class="tag {{ item.type === 5 ? 'no-show' : '' }}"
+        >
+          {{ item.name }}
+        </view>
+      </view>
+      <image
+        src="http://static.wx.qiaqiabox.com{{ vip }}"
+        class="membership"
+      />
+      <view class="price">
+        <view class="price__now">¥{{ filters.toFix(item.qiaqia_price) }}</view>
+        <view class="price__origin">¥{{ filters.toFix(item.retail_price) }}</view>
+      </view>
+    </view>
+    <view style="width: 15px;" />
+  </view>
+
+  <view wx:if="{{ true }}" class="coupon" bindtap="navToCounpon">
+    <view class="label">优惠券</view>  
+    <view class="label-text" wx:if="{{ true }}">折扣：{{ 5 }}折</view>
+    <view class="label-text" wx:else>减免：{{ coupon.amount }}元</view>
+  </view>
+  <view wx:else class="coupon" bindtap="navToCounpon">
+    <view class="label" >优惠券</view>
+  </view>
+  <view class="coupon">
+    <view class="label" style="position: relative; top: 3px;">悄悄话</view>
+    <input bindinput="bindReplaceInput" placeholder="请填写想要留言的内容" class="input-field" />
+  </view>
+
+  <view class="btn" bindtap="onClickSubmit">提交</view>
+  <van-toast id="van-toast" />
+</view>

@@ -1,5 +1,5 @@
 import Toast from 'vant-weapp/dist/toast/toast';
-import zx from 'weapp-zx';
+
 
 Page({
   data: {
@@ -37,9 +37,9 @@ Page({
   onLoad() {
     // 获取 user 信息
     let userInfo = wx.BaaS.storage.get('userinfo');
-    zx.get('user', 'me').then(res => {
-      console.log(res);
-    });
+    // zx.get('user', 'me').then(res => {
+    //   console.log(res);
+    // });
     if (userInfo) {
       this.setData({
         userInfo,
@@ -76,12 +76,9 @@ Page({
       url: '/packages/address/list/index'
     });
   },
-
-  onShareAppMessage() {
-    return {
-      title: '爱戴小盒，快来看看吧!',
-      path: '/pages/entry/index',
-      imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
-    };
-  }
+  navToOrders() {
+    wx.navigateTo({
+      url: '/packages/orders/index?userId=' + this.data.userInfo.id
+    });
+  },
 });

@@ -1,5 +1,7 @@
 {
     "component": true,
-    "usingComponents":{}
+    "usingComponents":{
+      "product-cell": "components/product-cell/index"
+    }
   }
   

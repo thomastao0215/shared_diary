@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "提价订单",
+  "usingComponents": {
+    "calendar": "components/calendar/index"
+  }
+}

@@ -1,0 +1,54 @@
+<van-popup
+  show="{{ show }}"
+  round
+  position="bottom"
+  custom-style="height: 950rpx;"
+  bind:close="onClose"
+  safe-area-inset-bottom
+>
+  <view class="body">
+    <view class="header">
+      <view class="preview-img">
+        <image src="{{selectedSku?selectedSku.sku_image:defaultImage}}" />
+      </view>
+      <view class="preview-data">
+
+        <view class="sku-goods-price">
+          ${{selectedSku.discount_price}}
+        </view>
+        <view class="sku-goods-stock">
+          <span>库存{{selectedSku?selectedSku.inventory:100}}件</span>
+        </view>
+        <view class="sku-goods-choose">
+          <span>
+            已选择:
+            <block wx:for="{{skuGroup}}"wx:key="*this" wx:key="*this">
+              {{item.value[selectedKeys[index]]}}
+            </block>
+          </span>
+        </view>
+        
+      </view>
+    </view>
+    <block wx:for="{{skuGroup}}" wx:key="*this" wx:for-item="group_value" wx:for-index="group_index">
+      <view class="sku-group">
+        <view class="sku-class-title">{{group_value.key}}</view>
+        <view class="sku-choose-body">
+              <block wx:for="{{group_value.value}}" wx:key="*this" wx:for-index="key" wx:for-item="type_value">
+                 <text class="{{key == selectedKeys[group_index]?'sku-choose-item-selected':'sku-choose-item'}}" id="{{key}}" data-group="{{group_index}}" bind:tap="select" >{{type_value}}</text>
+              </block>
+        </view>
+      </view>
+    </block>
+    <view class="sku-class-title">数量</view>
+    <view class="sku-count">
+      <van-stepper value="{{ 1 }}" bind:change="onCountChange" />
+    </view>
+  </view>
+  <view class="sku-operation-button" bind:tap="onOperation">
+    <span>{{operation}}</span>
+    <span class="tip">可获得{{credit}}积分</span>
+  </view>
+
+
+</van-popup>

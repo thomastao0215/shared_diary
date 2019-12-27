@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view
-  wx:if="{{ inited }}"
   class="container"
 >
   <image

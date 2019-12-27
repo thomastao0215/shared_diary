@@ -39,7 +39,9 @@
     "van-tree-select": "vant-weapp/dist/tree-select/index",
     "van-goods-action": "vant-weapp/dist/goods-action/index",
     "van-goods-action-icon": "vant-weapp/dist/goods-action-icon/index",
-    "van-goods-action-button": "vant-weapp/dist/goods-action-button/index"
+    "van-goods-action-button": "vant-weapp/dist/goods-action-button/index",
+    "van-dropdown-menu":"vant-weapp/dist/dropdown-menu/index",
+    "van-dropdown-item":"vant-weapp/dist/dropdown-item/index"
   },
   "pages": [
     "pages/entry/index",
@@ -48,8 +50,6 @@
     "pages/my/index",
     "pages/class/index",
     "pages/cart/index"
-
-
   ],
   "subPackages": [
     {
@@ -63,7 +63,10 @@
         "membership/index",
         "success/index",
         "wallet/index",
-        "back/index"
+        "back/index",
+        "order/index",
+        "order-edit/index",
+        "orders/index"
       ]
     }
   ],

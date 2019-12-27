@@ -7,12 +7,10 @@
   },
   "description": "小分香",
   "scripts": {
-    "dev": "./build/run-dev.sh",
-    "build": "./build/run-build.sh",
+    "dev": "set NODE_ENV=development && webpack --mode development --watch --config ./build/webpack.config.js",
+    "build": "set NODE_ENV=production && webpack --mode production --config ./build/webpack.config.js",
     "lint": "eslint --ext .js ./src ./shared",
-    "precommit": "lint-staged",
-    "clean": "rm -rf dist* .cache-loader",
-    "sync-subtree": "./build/run-sync-shared.sh"
+    "clean": "rm -rf dist* .cache-loader"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
@@ -74,7 +72,7 @@
   "dependencies": {
     "lin-ui": "^0.6.12",
     "mobx": "^4.3.0",
-    "vant-weapp": "^0.5.3",
+    "vant-weapp": "1.0.0-beta.4",
     "weapp-zx": "^1.0.4"
   },
   "moduleRoots": [

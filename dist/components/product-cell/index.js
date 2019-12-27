@@ -1,18 +1,14 @@
 /******/ var webpackRequire = require("././../../webpack-require");
 /******/ webpackRequire(
 "./src/components/product-cell/index.js",
-Object.assign(require("././../../commons.js").modules, {
+{
 
 /***/ "./src/components/product-cell/index.js":
 /*!**********************************************!*\
   !*** ./src/components/product-cell/index.js ***!
   \**********************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var weapp_zx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! weapp-zx */ "./node_modules/_weapp-zx@1.1.0@weapp-zx/index.js");
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 Component({
   type: 'product-cell',
@@ -73,4 +69,4 @@ Component({
 
 /***/ })
 
-/******/ }));
+/******/ });
