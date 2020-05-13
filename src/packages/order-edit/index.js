@@ -4,21 +4,12 @@ import Toast from 'vant-weapp/dist/toast/toast';
 
 const app = getApp();
 
-function fix2(value) {
-  return value < 10 ? '0' + value : value;
-}
 
 Page({
   data: {
-    DateTitle: '预定寄盒日期',
     AddressTitle: '小香将寄往…',
-    typeTitle: '这次想试戴的品类',
-    needTitle: '还有需求，悄悄告诉我:',
-    endTitle: '',
     addressId: '',
     addressInfo: '',
-    date: '',
-    otherNeed: '',
     productList: [
       {
         isSelected: false,
@@ -49,59 +40,6 @@ Page({
 
   onLoad(query = {}) {
     this.edit = !!query.edit;
-    const endTitle = this.edit ? '定制爱戴小盒，还有一步之遥！' : '预约新的爱戴小盒！';
-    this.setData({ endTitle });
-    if (this.edit) {
-      request(api.order_box)
-        .then(res => {
-          const { order } = res;
-          this.id = order.id;
-          const {
-            recomanded_send_time: date = '',
-            user_note: otherNeed = '',
-            preferred_product_type: types,
-            send_address_id: addressId
-          } = order;
-          const {
-            province, city, county, address, name, phone
-          } = order.send_address_id__user_address;
-          const d = new Date(date);
-          const dd = fix2(d.getFullYear()) + fix2(d.getMonth() + 1) + fix2(d.getDate());
-          const [...copyTryTypes] = this.data.tryTypes;
-          const map = ['耳环', '项链', '戒指', '手链'];
-          types && types.split('、').forEach(item => {
-            const index = map.indexOf(item);
-            copyTryTypes[index].active = true;
-          });
-          this.setData({
-            addressInfo: {
-              name,
-              phone,
-              address: province + city + county + address
-            },
-            addressId,
-            tryTypes: copyTryTypes,
-            date: dd,
-            otherNeed
-          });
-        });
-    } else { // 预约新的小盒
-      request(api.survey_info)
-        .then(res => {
-          if (res.survey.state) {
-            const list = res.survey.survey_tag_list;
-            const state = JSON.parse(res.survey.state);
-            this.list = list;
-            this.state = state;
-          }
-        })
-        .catch(err => {
-          Toast(err.message);
-          setTimeout(() => {
-            wx.switchTab({ url: '/pages/question/index' });
-          }, 1500);
-        });
-    }
   },
 
   onShow() {
@@ -152,12 +90,10 @@ Page({
       return;
     }
     const {
-      date, addressId, otherNeed, tryTypes
+      addressId, otherNeed, tryTypes
     } = this.data;
 
-    if (!date) {
-      return Toast('请选择日期');
-    }
+
     if (!addressId) {
       return Toast('请选择地址');
     }
@@ -172,14 +108,7 @@ Page({
     }
     this.lock = true;
     Toast.loading('提交中...');
-    const submitDate = [date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join('-');
     let tryTypesResult = '';
-    tryTypes.forEach(item => {
-      if (item.active) {
-        tryTypesResult += (item.text + '、');
-      }
-    });
-    tryTypesResult = tryTypesResult.slice(0, -1);
 
     if (this.edit) { // 编辑
       request({
@@ -187,7 +116,6 @@ Page({
         id: this.id
       }, {
         send_address_id: addressId,
-        recomanded_send_time: submitDate,
         preferred_product_type: tryTypesResult,
         user_note: otherNeed
       })
@@ -213,7 +141,6 @@ Page({
 
       // 问卷数据刷新
       this.list[22].value = addressId;
-      this.list[23].value = submitDate;
       this.list[24].value = tryTypesResult;
       this.list[25].value = otherNeed;
 
@@ -245,12 +172,4 @@ Page({
         });
     }
   },
-
-  onShareAppMessage() {
-    return {
-      title: '爱戴小盒，快来看看吧!',
-      path: '/pages/entry/index',
-      imageUrl: 'http://static.wx.qiaqiabox.com/slice/share/1.jpeg'
-    };
-  }
 });
