@@ -727,19 +727,11 @@ Page({
   },
   onLoad: function onLoad(query) {
     var _this = this;
-<<<<<<< HEAD
 
     if (query === void 0) {
       query = {};
     }
 
-=======
-
-    if (query === void 0) {
-      query = {};
-    }
-
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
     var _query = query,
         productId = _query.productId;
     wx.showLoading({
@@ -800,7 +792,6 @@ Page({
     });
   },
   showShareImageModal: function showShareImageModal() {
-<<<<<<< HEAD
     this.setData({
       showModal: true
     });
@@ -816,23 +807,6 @@ Page({
       showModal: false
     });
   },
-=======
-    this.setData({
-      showModal: true
-    });
-  },
-  closeActionSheet: function closeActionSheet() {
-    this.setData({
-      'sheet.show': false
-    });
-    this.triggerEvent('finished');
-  },
-  closeShareImageModal: function closeShareImageModal() {
-    this.setData({
-      showModal: false
-    });
-  },
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
   handleActionClick: function handleActionClick(e) {
     if (e.detail.openType === 'share') return;
     wx.showLoading({
@@ -857,15 +831,9 @@ Page({
       _this2.setData({
         showCanvas: false
       });
-<<<<<<< HEAD
 
       _this2.closeShareImageModal();
 
-=======
-
-      _this2.closeShareImageModal();
-
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
       _this2.closeActionSheet();
     });
   },

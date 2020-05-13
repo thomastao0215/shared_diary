@@ -3,13 +3,6 @@
 "./src/pages/cart/index.js",
 {
 
-<<<<<<< HEAD
-/***/ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/dialog/dialog.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/dialog/dialog.js ***!
-  \********************************************************************************/
-/*! exports provided: default */
-=======
 /***/ "./node_modules/_underscore@1.8.3@underscore/underscore.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/_underscore@1.8.3@underscore/underscore.js ***!
@@ -1573,13 +1566,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
   !*** ./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/common/utils.js ***!
   \*******************************************************************************/
 /*! exports provided: isDef, isObj, isNumber, range, nextTick, getSystemInfoSync, addUnit */
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-<<<<<<< HEAD
-=======
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDef", function() { return isDef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObj", function() { return isObj; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNumber", function() { return isNumber; });
@@ -1632,72 +1622,10 @@ function addUnit(value) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 let queue = [];
 function getContext() {
     const pages = getCurrentPages();
     return pages[pages.length - 1];
-<<<<<<< HEAD
-}
-const Dialog = options => {
-    options = Object.assign(Object.assign({}, Dialog.currentOptions), options);
-    return new Promise((resolve, reject) => {
-        const context = options.context || getContext();
-        const dialog = context.selectComponent(options.selector);
-        delete options.context;
-        delete options.selector;
-        if (dialog) {
-            dialog.setData(Object.assign({ onCancel: reject, onConfirm: resolve }, options));
-            queue.push(dialog);
-        }
-        else {
-            console.warn('未找到 van-dialog 节点，请确认 selector 及 context 是否正确');
-        }
-    });
-};
-Dialog.defaultOptions = {
-    show: true,
-    title: '',
-    width: null,
-    message: '',
-    zIndex: 100,
-    overlay: true,
-    selector: '#van-dialog',
-    className: '',
-    asyncClose: false,
-    transition: 'scale',
-    customStyle: '',
-    messageAlign: '',
-    overlayStyle: '',
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
-    showConfirmButton: true,
-    showCancelButton: false,
-    closeOnClickOverlay: false,
-    confirmButtonOpenType: ''
-};
-Dialog.alert = Dialog;
-Dialog.confirm = options => Dialog(Object.assign({ showCancelButton: true }, options));
-Dialog.close = () => {
-    queue.forEach(dialog => {
-        dialog.close();
-    });
-    queue = [];
-};
-Dialog.stopLoading = () => {
-    queue.forEach(dialog => {
-        dialog.stopLoading();
-    });
-};
-Dialog.setDefaultOptions = options => {
-    Object.assign(Dialog.currentOptions, options);
-};
-Dialog.resetDefaultOptions = () => {
-    Dialog.currentOptions = Object.assign({}, Dialog.defaultOptions);
-};
-Dialog.resetDefaultOptions();
-/* harmony default export */ __webpack_exports__["default"] = (Dialog);
-=======
 }
 const Dialog = options => {
     options = Object.assign(Object.assign({}, Dialog.currentOptions), options);
@@ -1837,7 +1765,6 @@ Toast.resetDefaultOptions = () => {
     currentOptions = Object.assign({}, defaultOptions);
 };
 /* harmony default export */ __webpack_exports__["default"] = (Toast);
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 
 
 /***/ }),
@@ -1857,19 +1784,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vant_weapp_dist_dialog_dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vant-weapp/dist/dialog/dialog */ "./node_modules/_vant-weapp@1.0.0-beta.4@vant-weapp/dist/dialog/dialog.js");
 /* harmony import */ var utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! utils/config */ "./src/utils/config.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-<<<<<<< HEAD
-=======
-
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 
 
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 var app = getApp();
 Component({
   properties: {
@@ -1971,82 +1891,6 @@ Component({
       if (!this.data.selectAll) {
         this.triggerEvent('select-all');
       }
-<<<<<<< HEAD
-
-      this.setData({
-        selectAll: !this.data.selectAll
-      });
-    },
-    reasonInput: function reasonInput(e) {
-      this.remark = e.detail.value;
-    },
-    toggleReason: function toggleReason(e) {
-      var index = e.currentTarget.dataset.index;
-      var selectedReasons = this.data.selectedReasons;
-      selectedReasons[index] = !selectedReasons[index];
-      this.setData({
-        selectedReasons: selectedReasons
-      });
-    },
-    confirmBack: function confirmBack() {
-      var _this$data = this.data,
-          selectedReasons = _this$data.selectedReasons,
-          reasons = _this$data.reasons;
-      var reason = '';
-      selectedReasons.forEach(function (i, index) {
-        if (i) {
-          reason = !reason ? reasons[index] : reason + ";" + reasons[index];
-        }
-      });
-      this.setData({
-        show: false,
-        selectAll: false
-      });
-      this.triggerEvent('confirm-back', {
-        index: this.index,
-        reason: reason,
-        remark: this.remark
-      });
-    },
-    onClickBuy: function onClickBuy() {
-      var _this$data2 = this.data,
-          productList = _this$data2.productList,
-          orderProductList = _this$data2.orderProductList,
-          totalPrice = _this$data2.totalPrice,
-          totalOriginPrice = _this$data2.totalOriginPrice,
-          orderId = _this$data2.orderId;
-      var orderInfo = {
-        productList: productList,
-        orderProductList: orderProductList,
-        totalPrice: totalPrice,
-        totalOriginPrice: totalOriginPrice,
-        orderId: orderId
-      };
-      app.globalData.orderInfo = orderInfo;
-      wx.navigateTo({
-        url: '/packages/order/index'
-      });
-    },
-    onClickAllBack: function onClickAllBack() {
-      var _this = this;
-
-      vant_weapp_dist_dialog_dialog__WEBPACK_IMPORTED_MODULE_3__["default"].confirm({
-        message: '确定全部寄回吗？'
-      }).then(function () {
-        Object(utils_api__WEBPACK_IMPORTED_MODULE_1__["request"])(_extends({}, utils_api__WEBPACK_IMPORTED_MODULE_1__["api"].pay_nothing, {
-          id: _this.data.orderId
-        })).then(function () {
-          if (getCurrentPages().length != 0) {
-            getCurrentPages()[getCurrentPages().length - 1].onShow();
-          }
-        }).catch(function () {
-          Object(vant_weapp_dist_toast_toast__WEBPACK_IMPORTED_MODULE_2__["default"])('请求失败');
-        });
-      }).catch(function () {});
-    }
-  }
-});
-=======
 
       this.setData({
         selectAll: !this.data.selectAll
@@ -2384,7 +2228,6 @@ var uploadUrl = utils_config__WEBPACK_IMPORTED_MODULE_0__["default"].uploadUrl;
 function getImageUrl(path) {
   return "" + uploadUrl + path;
 }
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 
 /***/ })
 

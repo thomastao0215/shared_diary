@@ -1,9 +1,6 @@
 /******/ var webpackRequire = require("././../../webpack-require");
 /******/ webpackRequire(
 "./src/packages/membership/index.js",
-<<<<<<< HEAD
-Object.assign(require("././../../commons.js").modules, {
-=======
 {
 
 /***/ "./node_modules/_underscore@1.8.3@underscore/underscore.js":
@@ -1695,7 +1692,6 @@ Toast.resetDefaultOptions = () => {
 
 
 /***/ }),
->>>>>>> 5996f6f0cfb6e258926ec794f04edda07a9fda22
 
 /***/ "./src/packages/membership/index.js":
 /*!******************************************!*\
